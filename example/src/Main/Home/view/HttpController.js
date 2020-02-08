@@ -33,7 +33,7 @@ export default class HttpController extends PureComponent {
     }
 
     animalImageList = () => {//返回标准的json的http请求
-        RFHttp().url(Api.animalImageList).loadingFunc((loading) => true).get((success, data, msg, code) => {
+        RFHttp().url(Api.animalImageList).get((success, data, msg, code) => {
             if (success) {
                 showToast('请求成功');
                 this.setState({content: JSON.stringify(data)});

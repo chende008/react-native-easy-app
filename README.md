@@ -83,7 +83,7 @@ or yarn add react-native-fast-app
             .cacheEnable([true|false])
             .execute(method,callback)
             .resendRequest(data, callback)
-            .loadingText('加载中，请稍候...')
+            .loadingFunc((loading)=> showLoading('请求中，请稍候...', loading))
             .[formJson|formData|formEncoded]()
             .[get|post|put|patch|delete|options](callback);
      ```
