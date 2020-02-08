@@ -18,7 +18,7 @@ or yarn add react-native-fast-app
 
    * 数据存储RFStorage
    
-     * 最多10行代码实现一个可持久化的数据存储管理类（包括library的引入代码）
+     * 实现一个可持久化的数据存储管理类
      
      ```jsx 
         export const RNStorage = {// RNStorage 自定义数据存储对象
@@ -34,7 +34,7 @@ or yarn add react-native-fast-app
     
    * 支持可配置的Http请求框架
    
-     * 一切基于配置（默认配置可选，自由设定），配置示例：[多平台配置示例](https://git.wecash.net/MobileDevCenter/ReactNativeDemo/blob/master/src/Main/Home/http/HttpConfig.js "功夫好车、功夫车服、闪管家、闪银等多平台多域名配置")
+     * 一切基于配置（默认配置可选，自由设定）
      
       ```jsx 
         RFApi.default = {
