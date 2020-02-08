@@ -12,7 +12,6 @@ or yarn add react-native-fast-app
   * 支持快捷访问AsyncStorage
   * 支持可配置的Http请求框架
   * 灵活的基础控件(无感知多屏蔽适配)
-  * 不依赖任何第三方原始库
 
 
 ### 用法 
