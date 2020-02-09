@@ -1,6 +1,6 @@
 ## react-native-fast-app （RN 项目快速开发基础库）
 
-### Installation
+### 安装
 
 npm install react-native-fast-app --save 
 
@@ -9,9 +9,9 @@ or yarn add react-native-fast-app
 
 ### 功能点
 
-  * 支持快捷访问AsyncStorage
+  * 支持快捷[同步]访问AsyncStorage
   * 支持可配置的Http请求框架
-  * 灵活的基础控件(无感知多屏蔽适配)
+  * 灵活的基础控件(无感知多屏适配)
 
 
 ### 用法 
@@ -27,9 +27,13 @@ or yarn add react-native-fast-app
      ```
      
      ```jsx 
-        RFLibrary.init(RNStorage, () => {//初始化RNLibrary->Storage
-            //从此以后就可以随意访问RNStorage中的变量了
-        }, Assets, '1.0');
+        RFLibrary.initStorage(RNStorage, 
+        () => {// 初始化完成回调
+           //从此以后就可以同步访问RNStorage中的变量了
+        },
+        (data)=>{//持久化数据变更回调
+            console.log(JSON.stringify(data));
+        }, '1.0');
      ```
     
    * 支持可配置的Http请求框架
@@ -39,7 +43,7 @@ or yarn add react-native-fast-app
       ```jsx 
         RFApi.default = {
            baseUrl: '', // 默认的BaseUrl
-           timeout: false, // 设置支持的超时时长(ms)
+           timeout: null, // 设置支持的超时时长(ms)
            httpLogOn: true, // 是否打印Http请求日志
            contentType: ApiConst.CONTENT_TYPE_JSON,
            isConnected: MDCNative.networkConnected,
@@ -79,9 +83,7 @@ or yarn add react-native-fast-app
             .timeout(10000)
             .extra({tag: 'xx'})
             .contentType('text/xml')
-            .cacheEnable([true|false])
-            .execute(method,callback)
-            .resendRequest(data, callback)
+            .resendRequest(data, callback) //重新请求（用于刷新accessToken后，重新发关已经失败的请求）
             .loadingFunc((loading)=> showLoading('请求中，请稍候...', loading))
             .[formJson|formData|formEncoded]()
             .[get|post|put|patch|delete|options](callback);
@@ -96,8 +98,9 @@ or yarn add react-native-fast-app
         RFlatList
         
         RFImage 非全路径在线图片则依赖图片资源BaseUrl的设置
+        
         可在使用前如下配置：
-        RFLibrary.init(null, null, baseImageUrl);
+        RFLibrary.initResource(baseImageUrl);
      ```
     
  
