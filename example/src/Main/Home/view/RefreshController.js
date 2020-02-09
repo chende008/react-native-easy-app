@@ -38,10 +38,10 @@ export default class RefreshController extends PureComponent {
     queryDataList = (isPullDown) => {
         let {dataList} = this.state;
         this.pageIndex = isPullDown ? 1 : this.pageIndex + 1;
-        this.refreshList.refreshPreLoad(isPullDown);
+        this.refreshList && this.refreshList.refreshPreLoad(isPullDown);
         let params = {page: isPullDown ? 1 : this.pageIndex};
         RFHttp().url(Api.queryAnimations).param(params).contentType(null).get((success, {results, last_page}, msg, code) => {
-            this.refreshList.refreshLoaded(success, isPullDown, params.page >= last_page, code);
+            this.refreshList && this.refreshList.refreshLoaded(success, isPullDown, params.page >= last_page, code);
             if (success) {
                 this.setState({dataList: isPullDown ? results : [...dataList, ...results]});
             } else {
