@@ -7,6 +7,7 @@ import RFlatList from './lib/views/RFlatList';
 
 import {RFPackage, RFRequestLog} from './lib/http/HttpUtils';
 import RFApi, {RFApiConst, RFHttp} from './lib/http/RFApi';
+import RFStorage from './lib/storage/RFStorage'
 import RFLibrary from './lib/RFLibrary';
 
 
@@ -17,6 +18,7 @@ export {
     RFPackage,
     RFApiConst,
     RFRequestLog,
+    RFStorage,
 
     RFTouch,
     RFView,
