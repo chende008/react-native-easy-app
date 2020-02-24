@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 
 import {Clipboard, ScrollView, StyleSheet, View} from 'react-native';
 import {Colors, CommonStyles} from '../../Common/storage/Const';
-import {isEmpty, toStr} from '../../Common/utils/Utils';
+import {toStr} from '../../Common/utils/Utils';
 import {dateFormat} from '../../Common/utils/DateUtils';
 import {RNStorage} from '../../Common/storage/AppStorage';
 import {RFText, RFView} from 'react-native-fast-app';

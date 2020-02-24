@@ -5,20 +5,16 @@ import {RFImage, RFText, RFView} from './lib/widget/WidgetBase';
 import RFlattenStyle, {RFResetStyle, RFSize, RFSplitStyle, RTSize} from './lib/utils/StyleUtils';
 import RFlatList from './lib/views/RFlatList';
 
-import {RFPackage, RFRequestLog} from './lib/http/HttpUtils';
-import RFApi, {RFApiConst, RFHttp} from './lib/http/RFApi';
+import {RFHttp, RFPackage, RFRequestLog} from './lib/http/HttpUtils';
+import {RFApiConst, RFHttpConfig} from './lib/http/RFHttpConfig';
 import RFStorage from './lib/storage/RFStorage'
 import RFLibrary from './lib/RFLibrary';
 
 
 export {
 
-    RFApi,
     RFHttp,
-    RFPackage,
     RFApiConst,
-    RFRequestLog,
-    RFStorage,
 
     RFTouch,
     RFView,
@@ -33,4 +29,6 @@ export {
     RFlattenStyle,
 
     RFLibrary,
+    RFStorage,
+    RFHttpConfig
 };

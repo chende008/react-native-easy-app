@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
 
 import {Actions} from 'react-native-router-flux';
-import {RFLibrary} from 'react-native-fast-app';
+import {RFLibrary, RFStorage} from 'react-native-fast-app';
 import {RNStorage} from '../Common/storage/AppStorage';
 import {Assets} from '../Home/http/Api';
 
@@ -14,9 +14,16 @@ export default class LaunchController extends PureComponent {
 
     init = () => {
         console.disableYellowBox = true;
-        RFLibrary.init(RNStorage, () => {//初始化RNLibrary
-            Actions.reset('main');
-        }, Assets, '1.0');
+        RFStorage.initStorage(RNStorage,
+            () => {
+                Actions.reset('main');
+            }, (data) => {
+                data.map(([keyStr, value]) => {
+                    let [, key] = keyStr.split('#');
+                    console.log('持久化数据变更:', key, '<###>', value);
+                })
+            }, '1.0');
+        RFLibrary.initResource(Assets)
     };
 
     render() {

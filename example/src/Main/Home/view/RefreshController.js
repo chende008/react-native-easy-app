@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
 
-import {StyleSheet, View, Text} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 
 import {Colors, CommonStyles, Const} from '../../Common/storage/Const';
 import {RFHttp, RFImage, RFlatList, RFText, RFView} from 'react-native-fast-app';

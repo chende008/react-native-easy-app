@@ -4,11 +4,11 @@ import DeviceInfo from 'react-native-device-info';
 export const RNStorage = {//持久化数据列表
     userId: undefined,//用户ID
     customerId: undefined,//客户ID
-    token: undefined,//用户token
     accessToken: undefined,//OAuth2.0 accessToken
     refreshToken: undefined,//OAuth2.0 refreshToken
     str: undefined,//测试符串
     json: undefined,//测试符串
+    [DeviceInfo.getBundleId()]: undefined,
 };
 
 export const RNData = {//临时内存数据

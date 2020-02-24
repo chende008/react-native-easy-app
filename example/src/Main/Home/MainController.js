@@ -4,7 +4,6 @@ import {Actions} from 'react-native-router-flux';
 import {NavigationBar} from '../Common/widgets/WidgetNavigation';
 import {RNItem} from '../Common/widgets/WidgetDefault';
 import HttpConfig from './http/HttpConfig';
-import DeviceInfo from 'react-native-device-info';
 import {showToast} from '../Common/widgets/Loading';
 
 let lastClickTime = (new Date()).valueOf();
