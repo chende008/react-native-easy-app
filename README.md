@@ -27,7 +27,7 @@ or yarn add react-native-fast-app
      ```
      
      ```jsx 
-        RFLibrary.initStorage(RNStorage, 
+        RFStorage.initStorage(RNStorage, 
         () => {// 初始化完成回调
            //从此以后就可以同步访问RNStorage中的变量了
         },
@@ -38,25 +38,21 @@ or yarn add react-native-fast-app
     
    * 支持可配置的Http请求框架
    
-     * 一切基于配置（默认配置可选，自由设定）
+     * 一切基于配置（配置可选，自由设定）
      
       ```jsx 
-        RFApi.default = {
-           baseUrl: '', // 默认的BaseUrl
-           timeout: null, // 设置支持的超时时长(ms)
-           httpLogOn: true, // 是否打印Http请求日志
-           contentType: ApiConst.CONTENT_TYPE_JSON,
-           isConnected: MDCNative.networkConnected,
-           headerSetFunc: (headers, request) => {
-               //在这里设置公共header参数
-           },
-           paramSetFunc: (params, request) => {
-               //在这里设置公共params参数
-           },
-           parseDataFunc: (result, request, callback) => {
-               //指定当前app的特定数据解析方式
-           }
-        };
+      
+      RFHttpConfig.initHttpLogOn(true) // 是否打印Http请求日志
+                  .initBaseUrl(ApiCredit.baseUrl) // 默认的BaseUrl
+                  .initContentType(RFApiConst.CONTENT_TYPE_URLENCODED)
+                  .initHeaderSetFunc((headers, request) => {
+                     //在这里设置公共header参数
+                  })
+                  .initParamSetFunc((params, request) => {
+                     //在这里设置公共params参数
+                  }).initParseDataFunc((result, request, callback) => {
+                     //指定当前app的特定数据解析方式
+              });
       ```
      
      * 发送请求模板
@@ -65,7 +61,7 @@ or yarn add react-native-fast-app
         let url = 'v1/account/login/';
         let param = {phone: '18600000000', authCode: '123456'};
         let header = {Authorization: "Basic Y3Rlcm1pbmF......HcVp0WGtI"};
-        let callback = () => (success, jData, msg) => {//请求结果回调
+        let callback = () => (success, jData, msg,code) => {//请求结果回调
              if (success) {
                 showToast(JSON.stringify(jData))
              } else {
