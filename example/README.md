@@ -78,7 +78,7 @@
    * RFTouch 系列防快速点击基础组件（所有点击事件的基础）
    * RFText 支持RNTouch点击事件、支持图标设置(相对于文本图标可设置居left、top、right、bottom)
    
-   ![首页工作台](images/RNText.png)
+   ![image](https://github.com/chende008/react-native-fast-app/blob/master/example/images/RNText.png)
    
    ```jsx
      * RFText 带图标的Text形式代码如下
@@ -98,7 +98,7 @@
    ```
    * RFImage 支持点击事件（相应的提供图标尺寸可独立设置）
    
-   ![首页工作台](images/RNImage.png)
+   ![image](https://github.com/chende008/react-native-fast-app/blob/master/example/images/RNImage.png)
    
    ```jsx
      *  RFImage 图片属性设置源码如下
