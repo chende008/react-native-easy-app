@@ -69,7 +69,7 @@ or yarn add react-native-fast-app
              }
         };
      
-        // 可设置的参数以builder形式拼接
+        * 可设置的参数以builder形式拼接
         RFHttp().url(url)
             .param(param)
             .header(header)
@@ -130,4 +130,4 @@ or yarn add react-native-fast-app
      ```
     
  
-  详细使用方法请参考example中的示例
+  详细使用方法请参考example中的示例 [example](https://github.com/chende008/react-native-fast-app/tree/master/example)
