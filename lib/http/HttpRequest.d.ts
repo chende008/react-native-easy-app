@@ -48,27 +48,6 @@ export default class HttpRequest {
 
     /**
      *
-     * contentType => [application/json;charset=utf-8]
-     * @return return HttpRequest Builder
-     */
-    formJson(): HttpRequest;
-
-    /**
-     *
-     * contentType => [multipart/form-data;charset=utf-8]
-     * @return return HttpRequest Builder
-     */
-    formData(): HttpRequest;
-
-    /**
-     *
-     *  contentType => [application/x-www-form-urlencoded;charset=utf-8]
-     * @return return HttpRequest Builder
-     */
-    formEncoded(): HttpRequest;
-
-    /**
-     *
      * @param extra  extend data
      * @return return HttpRequest Builder
      */
@@ -99,6 +78,27 @@ export default class HttpRequest {
      * @return return HttpRequest Builder
      */
     pureText(): HttpRequest;
+
+    /**
+     *
+     * contentType => [application/json;charset=utf-8]
+     * @return return HttpRequest Builder
+     */
+    formJson(): HttpRequest;
+
+    /**
+     *
+     * contentType => [multipart/form-data;charset=utf-8]
+     * @return return HttpRequest Builder
+     */
+    formData(): HttpRequest;
+
+    /**
+     *
+     *  contentType => [application/x-www-form-urlencoded;charset=utf-8]
+     * @return return HttpRequest Builder
+     */
+    formEncoded(): HttpRequest;
 
     /**
      *
@@ -135,5 +135,18 @@ export default class HttpRequest {
      * @param callback
      */
     patch(callback: (success: boolean, json: object, message: string, status: number) => void): void;
+
+    /**
+     *
+     * @param method
+     * @param callback
+     */
+    request(method: string, callback: (success: boolean, json: object, message: string, status: number) => void): void;
+
+    /**
+     *
+     * @param method
+     */
+    execute(method: string): Promise<any>
 }
 

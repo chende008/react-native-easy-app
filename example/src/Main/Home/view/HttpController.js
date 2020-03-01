@@ -23,9 +23,10 @@ export default class HttpController extends PureComponent {
         let {content} = this.state;
         return <RFView style={CommonStyles.container}>
             <NavigationBar title='请求示例'/>
-            <RNItem text='获取图片列表(返回标准的json)' onPress={() => this.animalImageList()}/>
-            <RNItem text='号码归属地(返回非标准json)' onPress={() => this.getPhoneAddress()}/>
-            <RNItem text='省份、城市记录数量(返回xml)' onPress={() => this.getCityAmount()}/>
+            <RNItem text='获取图片列表：标准的json' onPress={() => this.animalImageList()}/>
+            <RNItem text='同步请求成员列表：标准的json' onPress={() => this.queryMemberList()}/>
+            <RNItem text='号码归属地：【非】标准json' onPress={() => this.getPhoneAddress()}/>
+            <RNItem text='省份、城市记录数量：返回 XML' onPress={() => this.getCityAmount()}/>
             <ScrollView>
                 <RFText style={{fontSize: 12, color: Colors.text_lighter, padding: 10}} text={content}/>
             </ScrollView>
@@ -42,9 +43,32 @@ export default class HttpController extends PureComponent {
             }
         });
     };
+
+    queryMemberList = async () => {//同步请求数据
+        let {success, jData, message, status} = await RFHttp().url(Api.queryMembers).execute('GET');
+
+        success ? this.setState({content: JSON.stringify(jData)}) : showToast(message);
+
+        /***
+         * 或者得使用标准的promise方式解析数据（异步promise）
+         *
+         * RFHttp().url(Api.queryMembers).execute('GET').then(({success, jData, message, status}) => {
+            if (success) {
+                showToast('请求成功');
+                this.setState({content: JSON.stringify(jData)});
+            } else {
+                showToast(message);
+            }
+        }).catch(({message}) => {
+            showToast(message);
+        })
+         */
+
+    };
+
     getPhoneAddress = () => {//返回非标准的json的http请求
         RFHttp().url(Api.queryMobileAddress)
-            .internal(false).pureText().get((success, data, msg, code) => {
+            .pureText().get((success, data, msg, code) => {
             if (success) {
                 showToast('请求成功');
                 this.setState({content: data});
@@ -58,7 +82,7 @@ export default class HttpController extends PureComponent {
         RFHttp().url(Api.queryCitiesAmount)
             .contentType('text/xml; charset=utf-8')
             .loadingFunc((loading) => showLoading('请求中，请稍候...', loading))
-            .internal(false).pureText().get((success, data, msg, code) => {
+            .pureText().get((success, data, msg, code) => {
             if (success) {
                 showToast('请求成功');
                 this.setState({content: data});

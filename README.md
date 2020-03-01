@@ -69,7 +69,7 @@ or yarn add react-native-fast-app
              }
         };
      
-        // 示例只为是为了展示有哪些参数可以设置，真正的请求通常不用设置这么多参数
+        // 可设置的参数以builder形式拼接
         RFHttp().url(url)
             .param(param)
             .header(header)
@@ -83,6 +83,36 @@ or yarn add react-native-fast-app
             .loadingFunc((loading)=> showLoading('请求中，请稍候...', loading))
             .[formJson|formData|formEncoded]()
             .[get|post|put|patch|delete|options](callback);
+       
+     ```
+     
+     * 发送请求
+     
+     ```jsx
+        * 同步请求（1）
+        let {success, jData, message, status} = await RFHttp().url('http://www.baidu.com').execute('GET');
+        
+        success ? this.setState({content: JSON.stringify(jData)}) : showToast(message);
+        
+        * 异步请求（1）
+        RFHttp().url('http://www.baidu.com').get((success, jData, message, status)=>{
+            if(success){
+               this.setState({content: JSON.stringify(jData)});
+            } else {
+               showToast(msg);
+            }
+        });
+                
+        * 异步请求（2）
+        RFHttp().url('http://www.baidu.com').execute('GET').then(({success, jData, message, status}) => {
+            if (success) {
+                 this.setState({content: JSON.stringify(jData)});
+            } else {
+                 showToast(message);
+            }
+         }).catch(({message}) => {
+             showToast(message);
+         })
      ```
      
      * 灵活的基础控件
