@@ -79,7 +79,7 @@ or yarn add react-native-fast-app
             .timeout(10000)
             .extra({tag: 'xx'})
             .contentType('text/xml')
-            .resendRequest(data, callback) //重新请求（用于刷新accessToken后，重新发关已经失败的请求）
+            .resendRequest(data, callback) //重新请求（用于刷新accessToken后，重新发送已经失败的请求）
             .loadingFunc((loading)=> showLoading('请求中，请稍候...', loading))
             .[formJson|formData|formEncoded]()
             .[get|post|put|patch|delete|options](callback);
