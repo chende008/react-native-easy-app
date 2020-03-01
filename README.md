@@ -88,39 +88,41 @@ or yarn add react-native-fast-app
      
      * 发送请求
      
-     ```jsx
-        * 同步请求
-        const response = await RFHttp().url('http://www.baidu.com').execute('GET');
-        const {success, jData, message, status} = response;
+      ```jsx
+         const url = 'https://www.baidu.com';
         
-        if (success){
-           this.setState({content: JSON.stringify(jData)})
-        } else {
-           showToast(message)
-        }
-        
-        * 异步请求
-        RFHttp().url('http://www.baidu.com').get((success, jData, message, status)=>{
-            if(success){
-               this.setState({content: JSON.stringify(jData)});
-            } else {
-               showToast(msg);
-            }
-        });
-                
-        * 异步请求
-        RFHttp().url('http://www.baidu.com').execute('GET')
-        .then(({success, jData, message, status}) => {
-            if (success) {
-                 this.setState({content: JSON.stringify(jData)});
-            } else {
-                 showToast(message);
-            }
-         })
-         .catch(({message}) => {
-             showToast(message);
-         })
-     ```
+         * 同步请求
+         const response = await RFHttp().url(url).execute('GET');
+         const {success, jData, message, status} = response;
+         
+         if(success){
+            this.setState({content: JSON.stringify(jData)})
+         } else {
+            showToast(message)
+         }
+         
+         * 异步请求
+         RFHttp().url(url).get((success, jData, message, status)=>{
+             if (success){
+                this.setState({content: JSON.stringify(jData)});
+             } else {
+                showToast(msg);
+             }
+         });
+                 
+         * 异步请求
+         RFHttp().url(url).execute('GET')
+         .then(({success, jData, message, status}) => {
+             if (success) {
+                  this.setState({content: JSON.stringify(jData)});
+             } else {
+                  showToast(message);
+             }
+          })
+          .catch(({message}) => {
+              showToast(message);
+          })
+        ```
      
      * 灵活的基础控件
      ```
