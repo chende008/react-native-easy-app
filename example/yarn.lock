@@ -5375,7 +5375,7 @@ react-native-drawer-layout@1.3.2:
 
 "react-native-fast-app@git+https://github.com/chende008/react-native-fast-app.git#master":
   version "1.1.2"
-  resolved "git+https://github.com/chende008/react-native-fast-app.git#8d55ca9178d4031337f09b62882bb7cb8d306869"
+  resolved "git+https://github.com/chende008/react-native-fast-app.git#1a54eb618011106ce99fd346c74bf996d4b93608"
 
 react-native-gesture-handler@^1.5.3:
   version "1.5.3"
