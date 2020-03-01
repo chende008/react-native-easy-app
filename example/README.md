@@ -42,36 +42,39 @@
    * 支持通过重写属性访问器，实现 = (赋值)与 . (点操作)对变量进行读写操作
    * 支持读写的数据类型包括字符串、json对象(数组)、bool类型
    
-   ```jsx 
-   
-   * 自定义AsyncStorage实例对象
-   const RNStorage= {
-     customerId: undefined,
-     hasLogin: undefined,
-     userInfo: {}
-   }
-   
-   * 将实例对象 RNStorage 与AsyncStorage 存储数据关联起来
-   RFStorage.initStorage(RNStorage, () => {}, '1.0')
-   
-   * 假设登录后可以返回userInfo={}信息
-   RFHttp().url(Api.authCodeLogin).param(params).post((success, jData, msg) => {
-       if (success) {
-           RNStorage.hasLogin = true; // bool类型存储
-           RNStorage.customerId = String(jData.id); // 字符串类型存储
-           RNStorage.userInfo = jData.userInfo; // 对象类型存储
-           Actions.reset('main');
-       } else {
+   ```jsx
+    * 同步请求
+    const response = await RFHttp().url('http://www.baidu.com').execute('GET');
+    const {success, jData, message, status} = response;
+    
+    if(success){
+       this.setState({content: JSON.stringify(jData)})
+    } else {
+       showToast(message)
+    }
+    
+    * 异步请求
+    RFHttp().url('http://www.baidu.com').get((success, jData, message, status)=>{
+        if (success){
+           this.setState({content: JSON.stringify(jData)});
+        } else {
            showToast(msg);
-       }
-   });
-       
-   * 在其它需要的地方可以直接使用RNStorage访问存储过的数据
-   if (RNStorage.hasLogin) {
-       let {name, age, idCard} = RNStorage.userInfo;
-       console.log(name, age, idCard, RNStorage.customerId); // 打印用户信息    
-   }
-   ```
+        }
+    });
+            
+    * 异步请求
+    RFHttp().url('http://www.baidu.com').execute('GET')
+    .then(({success, jData, message, status}) => {
+        if (success) {
+             this.setState({content: JSON.stringify(jData)});
+        } else {
+             showToast(message);
+        }
+     })
+     .catch(({message}) => {
+         showToast(message);
+     })
+     ```
 
  * 基础控件的封装，提高各种应用场景的快速开发
     

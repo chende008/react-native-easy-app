@@ -89,12 +89,17 @@ or yarn add react-native-fast-app
      * 发送请求
      
      ```jsx
-        * 同步请求（1）
-        let {success, jData, message, status} = await RFHttp().url('http://www.baidu.com').execute('GET');
+        * 同步请求
+        const response = await RFHttp().url('http://www.baidu.com').execute('GET');
+        const {success, jData, message, status} = response;
         
-        success ? this.setState({content: JSON.stringify(jData)}) : showToast(message);
+        if (success){
+           this.setState({content: JSON.stringify(jData)})
+        } else {
+           showToast(message)
+        }
         
-        * 异步请求（1）
+        * 异步请求
         RFHttp().url('http://www.baidu.com').get((success, jData, message, status)=>{
             if(success){
                this.setState({content: JSON.stringify(jData)});
@@ -103,14 +108,16 @@ or yarn add react-native-fast-app
             }
         });
                 
-        * 异步请求（2）
-        RFHttp().url('http://www.baidu.com').execute('GET').then(({success, jData, message, status}) => {
+        * 异步请求
+        RFHttp().url('http://www.baidu.com').execute('GET')
+        .then(({success, jData, message, status}) => {
             if (success) {
                  this.setState({content: JSON.stringify(jData)});
             } else {
                  showToast(message);
             }
-         }).catch(({message}) => {
+         })
+         .catch(({message}) => {
              showToast(message);
          })
      ```
