@@ -7,6 +7,7 @@ import {RFHttp, RFImage, RFlatList, RFText, RFView} from 'react-native-fast-app'
 import {NavigationBar} from '../../Common/widgets/WidgetNavigation';
 import {Api} from '../http/Api';
 import {showToast} from '../../Common/widgets/Loading';
+import {ImageRes} from "react-native-fast-app/lib/const/ImageRes";
 
 const headerText = '分页列表支持：无网络，加载中，无数据，加载错误，加载更多等一系列状态展示';
 
