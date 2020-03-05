@@ -6,17 +6,17 @@
 /**
  *
  */
-export class RFWidget {
-  /**
-   *
-   * @param imageBaseUrl
-   */
-  initResource(imageBaseUrl: string): RFWidget;
+export default class RFWidget {
+    /**
+     *
+     * @param imageBaseUrl
+     */
+    initResource(imageBaseUrl: string): RFWidget;
 
-  /**
-   *
-   * @param targetWidth
-   * @param targetHeight
-   */
-  initReferenceScreen(targetWidth: number, targetHeight: number): RFWidget;
+    /**
+     *
+     * @param targetWidth
+     * @param targetHeight
+     */
+    initReferenceScreen(targetWidth: number, targetHeight: number): RFWidget;
 }

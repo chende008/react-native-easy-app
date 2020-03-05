@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
 
 import {Actions} from 'react-native-router-flux';
-import {RFLibrary, RFStorage} from 'react-native-fast-app';
+import {RFStorage, RFWidget, RFHttp, RFHttpConfig} from 'react-native-fast-app';
 import {RNStorage} from '../Common/storage/AppStorage';
 import {Assets} from '../Home/http/Api';
 
@@ -23,7 +23,7 @@ export default class LaunchController extends PureComponent {
                     console.log('持久化数据变更:', key, '<###>', value);
                 })
             }, '1.0');
-        RFLibrary.initResource(Assets)
+        RFWidget.initResource(Assets).initReferenceScreen(375, 677);
     };
 
     render() {

@@ -6,7 +6,7 @@
 /**
  *
  */
-export class RFHttpConfig {
+export default class RFHttpConfig {
 
     /**
      *
