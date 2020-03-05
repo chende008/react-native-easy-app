@@ -135,7 +135,10 @@ or yarn add react-native-fast-app
         RFImage 非全路径在线图片则依赖图片资源BaseUrl的设置
         
         可在使用前如下配置：
-        RFWidget.initResource(baseImageUrl);
+        
+        RFWidget
+        .initResource(Assets)
+        .initReferenceScreen(375, 677); // UI 整体尺寸缩放参考屏幕尺寸
      ```
     
  
