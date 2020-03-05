@@ -132,7 +132,7 @@
              renderItem={({item, index}) => <CarItem onItemSelected={(model) => showToast(model.title)}/>}/>
    ```
    组件提供了两个方法实现控制列表的各种状态显示 请求前预处理：`this.refreshList.refreshPreLoad(isPullDown)`</br>
-   请求后状态设置：`this.refreshList.refreshLoaded(success, isPullDown, reachedEnd, code)`，具体用法可参考RNDemo项目
+   请求后状态设置：`this.refreshList.refreshLoaded(success, isPullDown, reachedEnd, code)`，具体用法可参考example项目
    
  * 多屏幕适配，在基础组件中实现多屏适配，使用得开发无感知适配
    

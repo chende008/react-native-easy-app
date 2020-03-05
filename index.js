@@ -8,7 +8,7 @@ import RFlatList from './lib/views/RFlatList';
 import {RFHttp, RFPackage, RFRequestLog} from './lib/http/HttpUtils';
 import {RFApiConst, RFHttpConfig} from './lib/http/RFHttpConfig';
 import RFStorage from './lib/storage/RFStorage'
-import RFLibrary from './lib/RFLibrary';
+import RFWidget from './lib/widget/RFWidget';
 
 
 export {
@@ -28,7 +28,7 @@ export {
     RFSplitStyle,
     RFlattenStyle,
 
-    RFLibrary,
+    RFWidget,
     RFStorage,
     RFHttpConfig
 };
