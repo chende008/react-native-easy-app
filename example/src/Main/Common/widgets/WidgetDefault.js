@@ -1,7 +1,7 @@
 import React from 'react';
 
 import PropTypes from 'prop-types';
-import {Colors, Const} from "../storage/Const";
+import {Colors, Const, ImageRes} from "../storage/Const";
 import {RFText} from 'react-native-fast-app';
 import {StyleSheet} from "react-native";
 
@@ -28,8 +28,8 @@ export function RNItem({text, style, noArrow, ...props}) {
     return <RFText style={[styles.rnTextItem, style]}
                    text={text}
                    iconSize={16}
-                   position='right'
-                   icon={noArrow ? '' : 'item_arrow_right'}
+                   iconPosition='right'
+                   icon={noArrow ? '' : ImageRes.right_arrow}
                    textExtend {...props}/>
 }
 
