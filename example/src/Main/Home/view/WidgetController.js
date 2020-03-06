@@ -1,38 +1,38 @@
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 
-import {ScrollView, StyleSheet, View} from 'react-native';
-import {Colors, Const, ImageRes} from '../../Common/storage/Const';
-import {RFImage, RFText, RFView} from 'react-native-fast-app';
-import {NavigationBar} from '../../Common/widgets/WidgetNavigation';
-import {showToast} from '../../Common/widgets/Loading';
+import { ScrollView, StyleSheet, View } from 'react-native';
+import { Colors, Const, ImageRes } from '../../Common/storage/Const';
+import { RFImage, RFText, RFView } from 'react-native-fast-app';
+import { NavigationBar } from '../../Common/widgets/WidgetNavigation';
+import { showToast } from '../../Common/widgets/Loading';
 
 const imgUrl = 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3867329393,945558571&fm=26&gp=0.jpg';
 
 export default class WidgetController extends PureComponent {
 
     render() {
-        return <View style={{flex: 1, backgroundColor: Colors.page_bg}}>
-            <NavigationBar title='基础组件'/>
+        return <View style={{ flex: 1, backgroundColor: Colors.page_bg }}>
+            <NavigationBar title='基础组件' />
             <ScrollView>
-                <RFText style={styles.grayText} text='文本显示'/>
-                <RFText style={styles.text} onPress={() => showToast('点击事件')} text='文本显示（有触摸效果）'/>
+                <RFText style={styles.grayText} text='文本显示' />
+                <RFText style={styles.text} onPress={() => showToast('点击事件')} text='文本显示（有触摸效果）' />
                 <RFView style={styles.iconTextParent}>
-                    <RFText style={styles.iconText} text='文本' icon={ImageRes.mine_focus_shop} iconSize={20} position='left'/>
-                    <RFText style={styles.iconText} text='文本' icon={ImageRes.mine_focus_shop} iconSize={20} position='right'/>
-                    <RFText style={styles.iconText} text='文本' icon={ImageRes.mine_focus_shop} iconSize={20} position='top'/>
-                    <RFText style={styles.iconText} text='可点击' icon={ImageRes.mine_focus_shop} iconSize={20} position='bottom' onPress={() => showToast('点击事件')}/>
-                    <RFText style={styles.iconText} text='无图标'/>
+                    <RFText style={styles.iconText} text='文本' icon={ImageRes.mine_focus_shop} iconSize={20} position='left' />
+                    <RFText style={styles.iconText} text='文本' icon={ImageRes.mine_focus_shop} iconSize={20} position='right' />
+                    <RFText style={styles.iconText} text='文本' icon={ImageRes.mine_focus_shop} iconSize={20} position='top' />
+                    <RFText style={styles.iconText} text='可点击' icon={ImageRes.mine_focus_shop} iconSize={20} position='bottom' onPress={() => showToast('点击事件')} />
+                    <RFText style={styles.iconText} text='无图标' />
                 </RFView>
-                <RFText style={styles.rnTextItem} text='订单' icon={ImageRes.right_arrow} iconSize={16} position='right' textExtend={true}/>
-                <RFView style={{backgroundColor: Colors.white, marginBottom: 30}}>
-                    <RFText style={styles.rnSearch} text='请输入客户姓名...' icon={ImageRes.search_icon} iconSize={16} position='left' iconMargin={6} onPress={() => showToast('点击跳转去搜索')}/>
+                <RFText style={styles.rnTextItem} text='订单' icon={ImageRes.right_arrow} iconSize={16} position='right' textExtend={true} />
+                <RFView style={{ backgroundColor: Colors.white, marginBottom: 30 }}>
+                    <RFText style={styles.rnSearch} text='请输入客户姓名...' icon={ImageRes.search_icon} iconSize={16} position='left' iconMargin={6} onPress={() => showToast('点击跳转去搜索')} />
                 </RFView>
-                <RFView style={{flexDirection: 'row', justifyContent: 'space-between', marginBottom: 30}}>
-                    <RFImage style={{width: 65, height: 65}} icon={ImageRes.login_logo}/>
-                    <RFImage style={{width: 65, height: 65}} icon={imgUrl}/>
-                    <RFImage style={styles.rnImage} icon={imgUrl} onPress={() => showToast('柯南')}/>
-                    <RFImage style={{width: 65, height: 65}} icon={ImageRes.mine_setting} onPress={() => showToast('点击事件')}/>
-                    <RFImage style={{width: 65, height: 65}} icon={ImageRes.mine_setting} onPress={() => showToast('点击事件')} iconSize={30}/>
+                <RFView style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 30 }}>
+                    <RFImage style={{ width: 65, height: 65 }} icon={ImageRes.login_logo} />
+                    <RFImage style={{ width: 65, height: 65 }} icon={imgUrl} />
+                    <RFImage style={styles.rnImage} icon={imgUrl} onPress={() => showToast('柯南')} />
+                    <RFImage style={{ width: 65, height: 65 }} icon={ImageRes.mine_setting} onPress={() => showToast('点击事件')} />
+                    <RFImage style={{ width: 65, height: 65 }} icon={ImageRes.mine_setting} onPress={() => showToast('点击事件')} iconSize={30} />
                 </RFView>
             </ScrollView>
         </View>;
