@@ -61,9 +61,9 @@ or yarn add react-native-fast-app
         let url = 'v1/account/login/';
         let param = {phone: '18600000000', authCode: '123456'};
         let header = {Authorization: "Basic Y3Rlcm1pbmF......HcVp0WGtI"};
-        let callback = () => (success, jData, message, status) => {//请求结果回调
+        let callback = () => (success, json, message, status) => {//请求结果回调
              if (success) {
-                showToast(JSON.stringify(jData))
+                showToast(JSON.stringify(json))
              } else {
                 showToast(msg)
              }
@@ -93,18 +93,18 @@ or yarn add react-native-fast-app
         
          * 同步请求
          const response = await RFHttp().url(url).execute('GET');
-         const {success, jData, message, status} = response;
+         const {success, json, message, status} = response;
          
          if(success){
-            this.setState({content: JSON.stringify(jData)})
+            this.setState({content: JSON.stringify(json)})
          } else {
             showToast(message)
          }
          
          * 异步请求
-         RFHttp().url(url).get((success, jData, message, status)=>{
+         RFHttp().url(url).get((success, json, message, status)=>{
              if (success){
-                this.setState({content: JSON.stringify(jData)});
+                this.setState({content: JSON.stringify(json)});
              } else {
                 showToast(msg);
              }
@@ -112,9 +112,9 @@ or yarn add react-native-fast-app
                  
          * 异步请求
          RFHttp().url(url).execute('GET')
-         .then(({success, jData, message, status}) => {
+         .then(({success, json, message, status}) => {
              if (success) {
-                  this.setState({content: JSON.stringify(jData)});
+                  this.setState({content: JSON.stringify(json)});
              } else {
                   showToast(message);
              }

@@ -1,9 +1,9 @@
-// Storage
-export type RFStorage = RFStorageType;
-export var RFStorage: RFStorageType;
+// @ts-ignore
+import React from 'react'
+// @ts-ignore
+import {Image, TextProps, ImageProps, TouchableOpacityProps, FlatListProps, ItemT} from 'react-native'
 
 interface RFStorageType {
-
     initStorage(targetObj: object, initializedCallback: () => void, dataChangedCallback: (dataSet) => void, version: string): void
 
     init(targetObj: object, initializedCallback: () => void, dataChangedCallback: (dataSet) => void, version: string): void
@@ -17,12 +17,8 @@ interface RFStorageType {
     clear(): Promise<any>;
 }
 
-// HttpConfig
-export type RFHttpConfig = RFHttpConfigType;
-export var RFHttpConfig: RFHttpConfigType;
 
 interface RFHttpConfigType {
-
     initBaseUrl(baseUrl: String): RFHttpConfig;
 
     initTimeout(timeout: number): RFHttpConfig;
@@ -40,12 +36,8 @@ interface RFHttpConfigType {
     initContentType(contentType: string): RFHttpConfig;
 }
 
-// Http reqeust
-export type HttpRequest = HttpRequestType;
-export var HttpRequest: HttpRequestType;
 
 interface HttpRequestType {
-
     new(): HttpRequest;
 
     url(url: string): HttpRequest;
@@ -92,17 +84,74 @@ interface HttpRequestType {
 
 }
 
-export function RFHttp(): HttpRequest
+interface RFWidgetType {
+    initResource(imageBaseUrl: string): RFWidget;
+
+    initReferenceScreen(targetWidth: number, targetHeight: number): RFWidget;
+}
+
+// Storage
+export type RFStorage = RFStorageType;
+export var RFStorage: RFStorageType;
+
+// HttpConfig
+export type RFHttpConfig = RFHttpConfigType;
+export var RFHttpConfig: RFHttpConfigType;
+
+// Http reqeust
+export type HttpRequest = HttpRequestType;
+export var HttpRequest: HttpRequestType;
 
 // Widget Resource
 export type RFWidget = RFWidgetType;
 export var RFWidget: RFWidgetType;
 
-interface RFWidgetType {
-
-    initResource(imageBaseUrl: string): RFWidget;
-
-    initReferenceScreen(targetWidth: number, targetHeight: number): RFWidget;
+export interface RFImageProps {
+    raw?: boolean
+    icon?: string,
+    iconSize?: number,
 }
+
+// RFImage
+export class RFImage extends React.Component<RFImageProps & ImageProps & TouchableOpacityProps> {
+}
+
+declare type IconPosition = 'left' | 'top' | 'right' | 'bottom';
+
+export interface RFTextProps {
+    raw: boolean,
+    icon: string,
+    iconSize: number,
+    iconMargin: number,
+    textExtend: boolean,
+    iconPosition: IconPosition,
+}
+
+// RFText
+export class RFText extends React.Component<RFTextProps & TextProps & TouchableOpacityProps> {
+}
+
+// RFView
+export class RFView extends React.Component<TouchableOpacityProps> {
+}
+
+// RFTouch
+export class RFTouch extends React.Component<TouchableOpacityProps> {
+}
+
+export interface RFlatListProps {
+    onLoadMore?: Function,
+    noDataText?: string,
+    noDataImage?: boolean,
+    indicatorOffset?: number,
+    refreshStatus?: object,
+    emptyViewHeight: number,
+}
+
+// RFlatList
+export class RFlatList extends React.Component<RFlatListProps & FlatListProps<any>> {
+}
+
+
 
 

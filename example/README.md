@@ -15,18 +15,18 @@
     
      * 同步请求
      const response = await RFHttp().url(url).execute('GET');
-     const {success, jData, message, status} = response;
+     const {success, json, message, status} = response;
      
      if(success){
-        this.setState({content: JSON.stringify(jData)})
+        this.setState({content: JSON.stringify(json)})
      } else {
         showToast(message)
      }
      
      * 异步请求
-     RFHttp().url(url).get((success, jData, message, status)=>{
+     RFHttp().url(url).get((success, json, message, status)=>{
          if (success){
-            this.setState({content: JSON.stringify(jData)});
+            this.setState({content: JSON.stringify(json)});
          } else {
             showToast(msg);
          }
@@ -34,9 +34,9 @@
              
      * 异步请求
      RFHttp().url(url).execute('GET')
-     .then(({success, jData, message, status}) => {
+     .then(({success, json, message, status}) => {
          if (success) {
-              this.setState({content: JSON.stringify(jData)});
+              this.setState({content: JSON.stringify(json)});
          } else {
               showToast(message);
          }
@@ -64,11 +64,11 @@
    RFStorage.initStorage(RNStorage, () => {}, '1.0')
    
    * 假设登录后可以返回userInfo={}信息
-   RFHttp().url(Api.authCodeLogin).param(params).post((success, jData, msg) => {
+   RFHttp().url(Api.authCodeLogin).param(params).post((success, json, msg, code) => {
        if (success) {
            RNStorage.hasLogin = true; // bool类型存储
-           RNStorage.customerId = String(jData.id); // 字符串类型存储
-           RNStorage.userInfo = jData.userInfo; // 对象类型存储
+           RNStorage.customerId = String(json.id); // 字符串类型存储
+           RNStorage.userInfo = json.userInfo; // 对象类型存储
            Actions.reset('main');
        } else {
            showToast(msg);

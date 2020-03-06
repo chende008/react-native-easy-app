@@ -34,10 +34,10 @@ export default class HttpController extends PureComponent {
     }
 
     animalImageList = () => {//返回标准的json的http请求
-        RFHttp().url(Api.animalImageList).get((success, data, msg, code) => {
+        RFHttp().url(Api.animalImageList).get((success, json, msg, code) => {
             if (success) {
                 showToast('请求成功');
-                this.setState({content: JSON.stringify(data)});
+                this.setState({content: JSON.stringify(json)});
             } else {
                 showToast(msg);
             }
@@ -45,17 +45,17 @@ export default class HttpController extends PureComponent {
     };
 
     queryMemberList = async () => {//同步请求数据
-        let {success, jData, message, status} = await RFHttp().url(Api.queryMembers).execute('GET');
+        let {success, json, message, status} = await RFHttp().url(Api.queryMembers).execute('GET');
 
-        success ? this.setState({content: JSON.stringify(jData)}) : showToast(message);
+        success ? this.setState({content: JSON.stringify(json)}) : showToast(message);
 
         /***
          * 或者得使用标准的promise方式解析数据（异步promise）
          *
-         * RFHttp().url(Api.queryMembers).execute('GET').then(({success, jData, message, status}) => {
+         * RFHttp().url(Api.queryMembers).execute('GET').then(({success, json, message, status}) => {
             if (success) {
                 showToast('请求成功');
-                this.setState({content: JSON.stringify(jData)});
+                this.setState({content: JSON.stringify(json)});
             } else {
                 showToast(message);
             }

@@ -17,15 +17,15 @@ export default class WidgetController extends PureComponent {
                 <RFText style={styles.grayText} text='文本显示' />
                 <RFText style={styles.text} onPress={() => showToast('点击事件')} text='文本显示（有触摸效果）' />
                 <RFView style={styles.iconTextParent}>
-                    <RFText style={styles.iconText} text='文本' icon={ImageRes.mine_focus_shop} iconSize={20} position='left' />
-                    <RFText style={styles.iconText} text='文本' icon={ImageRes.mine_focus_shop} iconSize={20} position='right' />
-                    <RFText style={styles.iconText} text='文本' icon={ImageRes.mine_focus_shop} iconSize={20} position='top' />
-                    <RFText style={styles.iconText} text='可点击' icon={ImageRes.mine_focus_shop} iconSize={20} position='bottom' onPress={() => showToast('点击事件')} />
+                    <RFText style={styles.iconText} text='文本' icon={ImageRes.mine_focus_shop} iconSize={20} iconPosition='left' />
+                    <RFText style={styles.iconText} text='文本' icon={ImageRes.mine_focus_shop} iconSize={20} iconPosition='right' />
+                    <RFText style={styles.iconText} text='文本' icon={ImageRes.mine_focus_shop} iconSize={20} iconPosition='top' />
+                    <RFText style={styles.iconText} text='可点击' icon={ImageRes.mine_focus_shop} iconSize={20} iconPosition='bottom' onPress={() => showToast('点击事件')} />
                     <RFText style={styles.iconText} text='无图标' />
                 </RFView>
-                <RFText style={styles.rnTextItem} text='订单' icon={ImageRes.right_arrow} iconSize={16} position='right' textExtend={true} />
+                <RFText style={styles.rnTextItem} text='订单' icon={ImageRes.right_arrow} iconSize={16} iconPosition='right' textExtend={true} />
                 <RFView style={{ backgroundColor: Colors.white, marginBottom: 30 }}>
-                    <RFText style={styles.rnSearch} text='请输入客户姓名...' icon={ImageRes.search_icon} iconSize={16} position='left' iconMargin={6} onPress={() => showToast('点击跳转去搜索')} />
+                    <RFText style={styles.rnSearch} text='请输入客户姓名...' icon={ImageRes.search_icon} iconSize={16} iconPosition='left' iconMargin={6} onPress={() => showToast('点击跳转去搜索')} />
                 </RFView>
                 <RFView style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 30 }}>
                     <RFImage style={{ width: 65, height: 65 }} icon={ImageRes.login_logo} />
