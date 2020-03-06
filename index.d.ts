@@ -1,7 +1,7 @@
 // @ts-ignore
 import React from 'react'
 // @ts-ignore
-import {Image, TextProps, ImageProps, TouchableOpacityProps, FlatListProps, ItemT} from 'react-native'
+import {Image, TextProps, ImageProps, TouchableOpacityProps, FlatListProps, ViewStyle} from 'react-native'
 
 interface RFStorageType {
     initStorage(targetObj: object, initializedCallback: () => void, dataChangedCallback: (dataSet) => void, version: string): void
@@ -34,6 +34,16 @@ interface RFHttpConfigType {
     initParseDataFunc(parseDataFunc: ({success, jData, msg, status}, request: any, callback: any) => void): RFHttpConfig;
 
     initContentType(contentType: string): RFHttpConfig;
+}
+
+interface RFApiConstType {
+    TIMEOUT: number,
+    CONTENT_TYPE_JSON: string,
+    CONTENT_TYPE_FORM_DATA: string,
+    CONTENT_TYPE_URLENCODED: string,
+    Methods: object,
+    errorDesc: object
+    statusDesc: object,
 }
 
 
@@ -84,6 +94,18 @@ interface HttpRequestType {
 
 }
 
+export function RFHttp(): HttpRequest
+
+export function RFSize(size: number): number
+
+export function RTSize(size: number): number
+
+export function RFResetStyle(style: ViewStyle): ViewStyle
+
+export function RFSplitStyle(style: ViewStyle): object
+
+export function RFlattenStyle(style: ViewStyle): ViewStyle
+
 interface RFWidgetType {
     initResource(imageBaseUrl: string): RFWidget;
 
@@ -98,7 +120,11 @@ export var RFStorage: RFStorageType;
 export type RFHttpConfig = RFHttpConfigType;
 export var RFHttpConfig: RFHttpConfigType;
 
-// Http reqeust
+// RFApiConst
+export type RFApiConst = RFApiConstType;
+export var RFApiConst: RFApiConstType;
+
+// Http HttpRequest
 export type HttpRequest = HttpRequestType;
 export var HttpRequest: HttpRequestType;
 
@@ -151,7 +177,4 @@ export interface RFlatListProps {
 // RFlatList
 export class RFlatList extends React.Component<RFlatListProps & FlatListProps<any>> {
 }
-
-
-
 
