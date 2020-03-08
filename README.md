@@ -146,4 +146,4 @@ or yarn add react-native-fast-app
      ```
     
  
-  Please refer to the detailed usage method [示例](https://github.com/chende008/react-native-fast-app/tree/master/example)
+  Please refer to the detailed usage method [example](https://github.com/chende008/react-native-fast-app/tree/master/example)
