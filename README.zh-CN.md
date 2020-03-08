@@ -34,7 +34,7 @@ or yarn add react-native-fast-app
         },
         (data)=>{//持久化数据变更回调
             console.log(JSON.stringify(data));
-        }, '1.0');
+        });
      ```
     
    * 支持可配置的Http请求框架

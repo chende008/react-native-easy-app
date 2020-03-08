@@ -36,7 +36,7 @@ or yarn add react-native-fast-app
         },
         (data)=>{// Persist data change callbacks
             console.log(JSON.stringify(data));
-        }, '1.0');
+        });
      ```
     
    * Configurable Http request framework
