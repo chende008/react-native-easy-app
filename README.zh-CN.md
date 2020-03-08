@@ -1,71 +1,69 @@
-## react-native-fast-app （RN rapid development library）
+## react-native-fast-app （RN 项目快速开发基础库）
 
+[English version doc here](README.md)
 
-查看中文文档 [请点击 README-CHN.md](README.zh-CN.md)
-
-
-### Installation
+### 安装
 
 npm install react-native-fast-app --save 
 
 or yarn add react-native-fast-app
 
 
-### Features
+### 功能点
 
-  * Support for fast synchronous access to AsyncStorage
-  * Support for flexible Http requests through optional configuration
-  * Support for Flexible base widget (no sensory multi-screen adaptation)
+  * 支持快捷[同步]访问AsyncStorage
+  * 支持可配置的Http请求框架
+  * 灵活的基础控件(无感知多屏适配)
 
 
-### Usage 
+### 用法 
 
-   * Data Storage : RFStorage
+   * 数据存储RFStorage
    
-     * Implement a persistent data store manager
+     * 实现一个可持久化的数据存储管理类
      
      ```jsx 
-        export const RNStorage = {// RNStorage : Custom data store object
-            token: undefined, // Custom Properties
+        export const RNStorage = {// RNStorage 自定义数据存储对象
+            token: undefined, // 自定义属性
         };
      ```
      
      ```jsx 
-        RFStorage.initStorage(RNStorage, () => { // Initialize the completion callback
-           // From now on, you can access the variables in RNStorage synchronously
+        RFStorage.initStorage(RNStorage, () => { // 初始化完成回调
+           //从此以后就可以同步访问RNStorage中的变量了
         },
-        (data)=>{// Persist data change callbacks
+        (data)=>{//持久化数据变更回调
             console.log(JSON.stringify(data));
         }, '1.0');
      ```
     
-   * Configurable Http request framework
+   * 支持可配置的Http请求框架
    
-     * All based on configuration (configuration optional, free to set)
+     * 一切基于配置（配置可选，自由设定）
      
       ```jsx 
       
-      RFHttpConfig.initHttpLogOn(true) // Print the Http request log or not
-                  .initBaseUrl(ApiCredit.baseUrl) // BaseUrl
+      RFHttpConfig.initHttpLogOn(true) // 是否打印Http请求日志
+                  .initBaseUrl(ApiCredit.baseUrl) // 默认的BaseUrl
                   .initContentType(RFApiConst.CONTENT_TYPE_URLENCODED)
                   .initHeaderSetFunc((headers, request) => {
-                     // Set the public header parameter here
+                     // 在这里设置公共header参数
                   })
                   .initParamSetFunc((params, request) => {
-                     // Set the public params parameter here
+                     // 在这里设置公共params参数
                   })
                   .initParseDataFunc((result, request, callback) => {
-                     // Specifies the specific data parsing method for the current app
+                     // 指定当前app的特定数据解析方式
               });
       ```
      
-     * Send request template
+     * 发送请求模板
      
      ```jsx 
         let url = 'v1/account/login/';
         let param = {phone: '18600000000', authCode: '123456'};
         let header = {Authorization: "Basic Y3Rlcm1pbmF......HcVp0WGtI"};
-        let callback = () => (success, json, message, status) => { // Request a result callback
+        let callback = () => (success, json, message, status) => {//请求结果回调
              if (success) {
                 showToast(JSON.stringify(json))
              } else {
@@ -73,7 +71,7 @@ or yarn add react-native-fast-app
              }
         };
      
-        * Settable parameters are spliced in builder form
+        * 可设置的参数以builder形式拼接
         RFHttp().url(url)
             .param(param)
             .header(header)
@@ -83,19 +81,19 @@ or yarn add react-native-fast-app
             .timeout(10000)
             .extra({tag: 'xx'})
             .contentType('text/xml')
-            .resendRequest(data, callback) // Rerequest (used to refresh accessToken to resend a request that has failed)
-            .loadingFunc((loading)=> showLoading('Please wait for a moment ...', loading))
+            .resendRequest(data, callback) //重新请求（用于刷新accessToken后，重新发送已经失败的请求）
+            .loadingFunc((loading)=> showLoading('请求中，请稍候...', loading))
             .[formJson|formData|formEncoded]()
             .[get|post|put|patch|delete|options](callback);
        
      ```
      
-     * request-send
+     * 发送请求
      
       ```jsx
-         const url = 'https://www.google.com';
+         const url = 'https://www.baidu.com';
         
-         * Synchronous request
+         * 同步请求
          const response = await RFHttp().url(url).execute('GET');
          const {success, json, message, status} = response;
          
@@ -105,7 +103,7 @@ or yarn add react-native-fast-app
             showToast(message)
          }
          
-         * Asynchronous requests
+         * 异步请求
          RFHttp().url(url).get((success, json, message, status)=>{
              if (success){
                 this.setState({content: JSON.stringify(json)});
@@ -114,7 +112,7 @@ or yarn add react-native-fast-app
              }
          });
                  
-         * Asynchronous requests
+         * 异步请求
          RFHttp().url(url).execute('GET')
          .then(({success, json, message, status}) => {
              if (success) {
@@ -128,7 +126,7 @@ or yarn add react-native-fast-app
           })
         ```
      
-     * Flexible base widget
+     * 灵活的基础控件
      ```
         RFImage
         RFText
@@ -136,14 +134,14 @@ or yarn add react-native-fast-app
         RFTouch
         RFlatList
         
-        RFImage Partial path online images depend on the Settings of image resource BaseUrl
+        RFImage 非全路径在线图片则依赖图片资源BaseUrl的设置
         
-        Can be configured as follows before use：
+        可在使用前如下配置：
         
         RFWidget
         .initResource(Assets)
-        .initReferenceScreen(375, 677); // The component scales the reference screen size
+        .initReferenceScreen(375, 677); // UI 整体尺寸缩放参考屏幕尺寸
      ```
     
  
-  Please refer to the detailed usage method [示例](https://github.com/chende008/react-native-fast-app/tree/master/example)
+  详细使用方法请参考 [example](https://github.com/chende008/react-native-fast-app/tree/master/example)
