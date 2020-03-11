@@ -1,4 +1,4 @@
-## react-native-fast-app （RN rapid development library）
+## react-native-fast-app （Efficient pure js library）
 
 
 查看中文文档 [请点击 README-CHN.md](README.zh-CN.md)
