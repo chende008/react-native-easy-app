@@ -1,6 +1,5 @@
 import React from 'react';
 
-import {RFTouch} from './lib/widget/WidgetTouchable';
 import {RFImage, RFText, RFView} from './lib/widget/WidgetBase';
 import RFlattenStyle, {RFResetStyle, RFSize, RFSplitStyle, RTSize} from './lib/utils/StyleUtils';
 import RFlatList from './lib/views/RFlatList';
@@ -16,7 +15,6 @@ export {
     RFHttp,
     RFApiConst,
 
-    RFTouch,
     RFView,
     RFText,
     RFImage,
