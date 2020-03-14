@@ -148,5 +148,11 @@ export default class HttpRequest {
      * @param method
      */
     execute(method: string): Promise<any>
+
+    /**
+     *
+     * @param method
+     */
+    fetch(method: string): Promise<any>
 }
 

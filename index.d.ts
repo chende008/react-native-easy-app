@@ -92,6 +92,8 @@ interface HttpRequestType {
 
     execute(method: string): Promise<any>
 
+    fetch(method: string): Promise<any>
+
 }
 
 export function RFHttp(): HttpRequest
