@@ -29,6 +29,8 @@ or yarn add react-native-fast-app
      ```
      
      ```jsx 
+        import {RFStorage} from 'react-native-fast-app';
+     
         RFStorage.initStorage(RNStorage, () => { // 初始化完成回调
            //从此以后就可以同步访问RNStorage中的变量了
         },
@@ -42,6 +44,7 @@ or yarn add react-native-fast-app
      * 一切基于配置（配置可选，自由设定）
      
       ```jsx 
+      import {RFHttpConfig} from 'react-native-fast-app';
       
       RFHttpConfig.initHttpLogOn(true) // 是否打印Http请求日志
                   .initBaseUrl(ApiCredit.baseUrl) // 默认的BaseUrl
@@ -60,6 +63,8 @@ or yarn add react-native-fast-app
      * 发送请求模板
      
      ```jsx 
+        import {RFHttp} from 'react-native-fast-app';
+     
         let url = 'v1/account/login/';
         let param = {phone: '18600000000', authCode: '123456'};
         let header = {Authorization: "Basic Y3Rlcm1pbmF......HcVp0WGtI"};
@@ -91,6 +96,8 @@ or yarn add react-native-fast-app
      * 发送请求
      
       ```jsx
+         import {RFHttp} from 'react-native-fast-app';
+      
          const url = 'https://www.baidu.com';
         
          * 同步请求

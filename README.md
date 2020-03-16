@@ -31,6 +31,8 @@ or yarn add react-native-fast-app
      ```
      
      ```jsx 
+        import {RFStorage} from 'react-native-fast-app';
+        
         RFStorage.initStorage(RNStorage, () => { // Initialize the completion callback
            // From now on, you can access the variables in RNStorage synchronously
         },
@@ -44,6 +46,7 @@ or yarn add react-native-fast-app
      * All based on configuration (configuration optional, free to set)
      
       ```jsx 
+      import {RFHttpConfig} from 'react-native-fast-app';
       
       RFHttpConfig.initHttpLogOn(true) // Print the Http request log or not
                   .initBaseUrl(ApiCredit.baseUrl) // BaseUrl
@@ -62,6 +65,8 @@ or yarn add react-native-fast-app
      * Send request template
      
      ```jsx 
+        import {RFHttp} from 'react-native-fast-app';
+     
         let url = 'v1/account/login/';
         let param = {phone: '18600000000', authCode: '123456'};
         let header = {Authorization: "Basic Y3Rlcm1pbmF......HcVp0WGtI"};
@@ -93,6 +98,8 @@ or yarn add react-native-fast-app
      * request-send
      
       ```jsx
+         import {RFHttp} from 'react-native-fast-app';
+         
          const url = 'https://www.google.com';
         
          * Synchronous request
