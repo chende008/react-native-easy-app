@@ -163,10 +163,6 @@ export class RFText extends React.Component<RFTextProps & TextProps & TouchableO
 export class RFView extends React.Component<TouchableOpacityProps> {
 }
 
-// RFTouch
-export class RFTouch extends React.Component<TouchableOpacityProps> {
-}
-
 export interface RFlatListProps {
     onLoadMore?: Function,
     noDataText?: string,
