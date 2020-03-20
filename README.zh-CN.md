@@ -2,6 +2,8 @@
 
 [English version doc here](README.md)
 
+[使用手册](https://www.jianshu.com/p/2cc661b1f3ab)
+
 ### 安装
 
 npm install react-native-fast-app --save 

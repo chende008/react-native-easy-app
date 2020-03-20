@@ -3,6 +3,8 @@
 
 查看中文文档 [请点击 README-CHN.md](README.zh-CN.md)
 
+ [Instruction Manual](https://www.jianshu.com/p/2cc661b1f3ab)
+
 
 ### Installation
 
