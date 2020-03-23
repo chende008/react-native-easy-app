@@ -140,7 +140,6 @@ or yarn add react-native-fast-app
         RFImage
         RFText
         RFView
-        RFTouch
         RFlatList
         
         RFImage 非全路径在线图片则依赖图片资源BaseUrl的设置

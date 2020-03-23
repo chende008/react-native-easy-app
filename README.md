@@ -142,7 +142,6 @@ or yarn add react-native-fast-app
         RFImage
         RFText
         RFView
-        RFTouch
         RFlatList
         
         RFImage Partial path online images depend on the Settings of image resource BaseUrl
