@@ -3,7 +3,7 @@ import React from 'react'
 // @ts-ignore
 import {Image, TextProps, ImageProps, TouchableOpacityProps, FlatListProps, ViewStyle} from 'react-native'
 
-interface RFStorageType {
+interface RFStorage {
     initStorage(targetObj: object, initializedCallback: () => void, dataChangedCallback: (dataSet) => void, version: string): void
 
     init(targetObj: object, initializedCallback: () => void, dataChangedCallback: (dataSet) => void, version: string): void
@@ -17,8 +17,10 @@ interface RFStorageType {
     clear(): Promise<any>;
 }
 
+// Storage
+export var RFStorage: RFStorage;
 
-interface RFHttpConfigType {
+interface RFHttpConfig {
     initBaseUrl(baseUrl: String): RFHttpConfig;
 
     initTimeout(timeout: number): RFHttpConfig;
@@ -36,7 +38,10 @@ interface RFHttpConfigType {
     initContentType(contentType: string): RFHttpConfig;
 }
 
-interface RFApiConstType {
+// HttpConfig
+export var RFHttpConfig: RFHttpConfig;
+
+interface RFApiConst {
     TIMEOUT: number,
     CONTENT_TYPE_JSON: string,
     CONTENT_TYPE_FORM_DATA: string,
@@ -46,8 +51,10 @@ interface RFApiConstType {
     statusDesc: object,
 }
 
+// RFApiConst
+export var RFApiConst: RFApiConst;
 
-interface HttpRequestType {
+interface HttpRequest {
     new(): HttpRequest;
 
     url(url: string): HttpRequest;
@@ -96,6 +103,9 @@ interface HttpRequestType {
 
 }
 
+// Http HttpRequest
+export var HttpRequest: HttpRequest;
+
 export function RFHttp(): HttpRequest
 
 export function RFSize(size: number): number
@@ -108,31 +118,14 @@ export function RFSplitStyle(style: ViewStyle): object
 
 export function RFlattenStyle(style: ViewStyle): ViewStyle
 
-interface RFWidgetType {
+interface RFWidget {
     initResource(imageBaseUrl: string): RFWidget;
 
     initReferenceScreen(targetWidth: number, targetHeight: number): RFWidget;
 }
 
-// Storage
-export type RFStorage = RFStorageType;
-export var RFStorage: RFStorageType;
-
-// HttpConfig
-export type RFHttpConfig = RFHttpConfigType;
-export var RFHttpConfig: RFHttpConfigType;
-
-// RFApiConst
-export type RFApiConst = RFApiConstType;
-export var RFApiConst: RFApiConstType;
-
-// Http HttpRequest
-export type HttpRequest = HttpRequestType;
-export var HttpRequest: HttpRequestType;
-
 // Widget Resource
-export type RFWidget = RFWidgetType;
-export var RFWidget: RFWidgetType;
+export var RFWidget: RFWidget;
 
 export interface RFImageProps {
     raw?: boolean
