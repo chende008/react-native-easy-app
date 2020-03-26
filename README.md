@@ -87,6 +87,7 @@ or yarn add react-native-fast-app
             .internal()
             .rawData()
             .pureText()
+            .encodeURI()
             .timeout(10000)
             .extra({tag: 'xx'})
             .contentType('text/xml')
