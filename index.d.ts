@@ -67,6 +67,8 @@ interface HttpRequest {
 
     header(header: object): HttpRequest;
 
+    encodeURI(): HttpRequest;
+
     extra(extra: any): HttpRequest;
 
     timeout(timeout: number): HttpRequest;

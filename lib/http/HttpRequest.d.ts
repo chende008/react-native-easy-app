@@ -48,6 +48,12 @@ export default class HttpRequest {
 
     /**
      *
+     * @return return HttpRequest Builder
+     */
+    encodeURI(): HttpRequest;
+
+    /**
+     *
      * @param extra  extend data
      * @return return HttpRequest Builder
      */
