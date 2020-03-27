@@ -36,6 +36,8 @@ interface RFHttpConfig {
     initParseDataFunc(parseDataFunc: ({success, jData, msg, status}, request: any, callback: any) => void): RFHttpConfig;
 
     initContentType(contentType: string): RFHttpConfig;
+
+    initLoadingFunc(loadingFunc: (loading: boolean) => void): RFHttpConfig;
 }
 
 // HttpConfig
