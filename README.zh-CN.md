@@ -63,6 +63,7 @@ or yarn add react-native-fast-app
                      // 在这里设置公共params参数
                   })
                   .initParseDataFunc((result, request, callback) => {
+                     let {success, json, response, message, status} = result;
                      // 指定当前app的特定数据解析方式
               });
       ```

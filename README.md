@@ -65,6 +65,7 @@ or yarn add react-native-fast-app
                      // Set the public params parameter here
                   })
                   .initParseDataFunc((result, request, callback) => {
+                     let {success, json, response, message, status} = result;
                      // Specifies the specific data parsing method for the current app
               });
       ```
