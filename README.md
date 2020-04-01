@@ -28,7 +28,9 @@ or yarn add react-native-fast-app
      
      ```jsx 
         export const RNStorage = {// RNStorage : Custom data store object
-            token: undefined, // Custom Properties
+            token: undefined, // Custom string value
+            isShow: undefined, // Custom bool value
+            userInfo: undefined, // Custom object
         };
      ```
      
@@ -37,6 +39,9 @@ or yarn add react-native-fast-app
         
         RFStorage.initStorage(RNStorage, () => { // Initialize the completion callback
            // From now on, you can access the variables in RNStorage synchronously
+           RNStorage.token = 'TOKEN1343DN23IDD3PJ2DBF3==';
+           RNStorage.isShow = true;
+           RNStorage.userInfo = { name:'rufeng', age:30};
         },
         (data)=>{// Persist data change callbacks
             console.log(JSON.stringify(data));

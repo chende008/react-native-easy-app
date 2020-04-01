@@ -26,7 +26,9 @@ or yarn add react-native-fast-app
      
      ```jsx 
         export const RNStorage = {// RNStorage 自定义数据存储对象
-            token: undefined, // 自定义属性
+            token: undefined, //  字符串类型
+            isShow: undefined, // 布尔类型
+            userInfo: undefined, // 对象类型
         };
      ```
      
@@ -35,6 +37,9 @@ or yarn add react-native-fast-app
      
         RFStorage.initStorage(RNStorage, () => { // 初始化完成回调
            //从此以后就可以同步访问RNStorage中的变量了
+           RNStorage.token = 'TOKEN1343DN23IDD3PJ2DBF3==';
+           RNStorage.isShow = true;
+           RNStorage.userInfo = { name:'rufeng', age:30};
         },
         (data)=>{//持久化数据变更回调
             console.log(JSON.stringify(data));
