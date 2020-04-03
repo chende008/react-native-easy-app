@@ -163,7 +163,7 @@ or yarn add react-native-fast-app
  
   Please refer to the detailed usage method [example](https://github.com/chende008/react-native-fast-app-sample)
   
-  Any questions are welcome to add QQ group
+  Any questions are welcome to add QQ group:
    
-  ![image](https://upload-images.jianshu.io/upload_images/22060892-30cecf251cc8b72a.jpg)
+  ![image](https://react-native-fast-app.oss-cn-beijing.aliyuncs.com/images/newQQ.jpg)
 

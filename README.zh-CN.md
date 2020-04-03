@@ -160,3 +160,7 @@ or yarn add react-native-fast-app
     
  
   详细使用方法请参考 [示例](https://github.com/chende008/react-native-fast-app-sample)
+  
+  有任何问题可以添加QQ群讨论:
+     
+  ![image](https://react-native-fast-app.oss-cn-beijing.aliyuncs.com/images/newQQ.jpg)
