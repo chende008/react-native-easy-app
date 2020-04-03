@@ -77,13 +77,7 @@ export default class HttpRequest {
      *
      * @return return HttpRequest Builder
      */
-    disableHeaderSetFunc(): HttpRequest;
-
-    /**
-     *
-     * @return return HttpRequest Builder
-     */
-    disableParamSetFunc(): HttpRequest;
+    configCommonFunc(enableHeaderFunc: boolean, enableParamFunc: boolean): HttpRequest;
 
     /**
      * callback result(json) : root data for request [ignore custom request parser]

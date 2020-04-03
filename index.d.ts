@@ -77,9 +77,7 @@ interface HttpRequest {
 
     loadingFunc(func: (loading: boolean) => void): HttpRequest;
 
-    disableHeaderSetFunc(): HttpRequest;
-
-    disableParamSetFunc(): HttpRequest;
+    configCommonFunc(enableHeaderFunc: boolean, enableParamFunc: boolean): HttpRequest;
 
     rawData(): HttpRequest;
 
