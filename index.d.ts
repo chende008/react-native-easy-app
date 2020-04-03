@@ -77,6 +77,10 @@ interface HttpRequest {
 
     loadingFunc(func: (loading: boolean) => void): HttpRequest;
 
+    disableHeaderSetFunc(): HttpRequest;
+
+    disableParamSetFunc(): HttpRequest;
+
     rawData(): HttpRequest;
 
     pureText(): HttpRequest;

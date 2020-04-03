@@ -74,6 +74,18 @@ export default class HttpRequest {
     loadingFunc(func: (loading: boolean) => void): HttpRequest;
 
     /**
+     *
+     * @return return HttpRequest Builder
+     */
+    disableHeaderSetFunc(): HttpRequest;
+
+    /**
+     *
+     * @return return HttpRequest Builder
+     */
+    disableParamSetFunc(): HttpRequest;
+
+    /**
      * callback result(json) : root data for request [ignore custom request parser]
      * @return return HttpRequest Builder
      */
