@@ -1,12 +1,11 @@
 // @ts-ignore
 import React from 'react'
 // @ts-ignore
-import {Image, TextProps, ImageProps, TouchableOpacityProps, FlatListProps, ViewStyle} from 'react-native'
+import {Image, TextProps, TouchableOpacityProps, FlatListProps, ViewStyle} from 'react-native'
 
 interface RFStorage {
-    initStorage(targetObj: object, initializedCallback: () => void, dataChangedCallback: (dataSet) => void, version: string): void
 
-    init(targetObj: object, initializedCallback: () => void, dataChangedCallback: (dataSet) => void, version: string): void
+    initStorage(targetObj: object, initializedCallback: () => void, dataChangedCallback?: (dataSet) => void, version?: string): void
 
     multiGet(keys: any): Promise<any>;
 
@@ -135,23 +134,24 @@ export var RFWidget: RFWidget;
 
 export interface RFImageProps {
     raw?: boolean
-    icon?: string,
+    icon: string,
     iconSize?: number,
 }
 
 // RFImage
-export class RFImage extends React.Component<RFImageProps & ImageProps & TouchableOpacityProps> {
+export class RFImage extends React.Component<RFImageProps & TouchableOpacityProps> {
 }
 
 declare type IconPosition = 'left' | 'top' | 'right' | 'bottom';
 
 export interface RFTextProps {
-    raw: boolean,
-    icon: string,
-    iconSize: number,
-    iconMargin: number,
-    textExtend: boolean,
-    iconPosition: IconPosition,
+    raw?: boolean,
+    text: string,
+    icon?: string,
+    iconSize?: number,
+    iconMargin?: number,
+    textExtend?: boolean,
+    iconPosition?: IconPosition,
 }
 
 // RFText
@@ -168,7 +168,7 @@ export interface RFlatListProps {
     noDataImage?: boolean,
     indicatorOffset?: number,
     refreshStatus?: object,
-    emptyViewHeight: number,
+    emptyViewHeight?: number,
 }
 
 // RFlatList
