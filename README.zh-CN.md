@@ -2,7 +2,7 @@
 
 [English version doc here](README.md)
 
-[使用手册](https://www.jianshu.com/p/2cc661b1f3ab)
+[使用手册](https://www.jianshu.com/u/13623408c1aa)
 
 ### 安装
 
@@ -160,7 +160,3 @@ or yarn add react-native-fast-app
     
  
   详细使用方法请参考 [示例](https://github.com/chende008/react-native-fast-app-sample)
-  
-  有任何问题可以添加QQ群讨论:
-     
-  ![image](https://react-native-fast-app.oss-cn-beijing.aliyuncs.com/images/newQQ.jpg)

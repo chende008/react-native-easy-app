@@ -3,7 +3,7 @@
 
 [查看中文文档](README.zh-CN.md)
 
-[Instruction Manual](https://www.jianshu.com/p/2cc661b1f3ab)
+[Instruction Manual](https://www.jianshu.com/u/13623408c1aa)
 
 
 ### Installation
@@ -162,8 +162,4 @@ or yarn add react-native-fast-app
     
  
   Please refer to the detailed usage method [example](https://github.com/chende008/react-native-fast-app-sample)
-  
-  Any questions are welcome to add QQ group:
-   
-  ![image](https://react-native-fast-app.oss-cn-beijing.aliyuncs.com/images/newQQ.jpg)
 
