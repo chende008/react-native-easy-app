@@ -33,21 +33,20 @@ or yarn add react-native-fast-app
      ```
      
      ```jsx 
-        import {RFStorage} from 'react-native-fast-app';
-     
-        RFStorage.initStorage(RNStorage, () => { // 初始化完成回调
+       import { RFStorage } from 'react-native-fast-app';
         
-          //从此以后就可以同步访问RNStorage中的变量了
-                     
-          console.log(RNStorage.isShow); // 等价于 [ console.log(await AsyncStorage.getItem('isShow')) ]
-          
-          RNStorage.token = 'TOKEN1343DN23IDD3PJ2DBF3=='; // 等价于 [ await AsyncStorage.setItem('token',TOKEN1343DN23IDD3PJ2DBF3==') ]
-          
-          RNStorage.userInfo = { name:'rufeng', age:30}; // 等价于 [ await AsyncStorage.setItem('userInfo',JSON.stringify({ name:'rufeng', age:30})) ]
-        },
-        (data)=>{//持久化数据变更回调
-            console.log(JSON.stringify(data));
-        });
+       const initCallback = () => {
+       
+            // 现在您可以同步访问RNStorage中的任何属性
+            
+            console.log(RNStorage.isShow); // 等价于 [ console.log(await AsyncStorage.getItem('isShow')) ]
+            
+            RNStorage.token = 'TOKEN1343DN23IDD3PJ2DBF3=='; // 等价于 [ await AsyncStorage.setItem('token',TOKEN1343DN23IDD3PJ2DBF3==') ]
+            
+            RNStorage.userInfo = {name: 'rufeng', age: 30}; // 等价于 [ await AsyncStorage.setItem('userInfo',JSON.stringify({ name:'rufeng', age:30})) ]
+       };
+       
+       RFStorage.initStorage(RNStorage, initCallback);
      ```
     
    * 支持可配置的Http请求框架
