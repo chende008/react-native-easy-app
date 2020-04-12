@@ -41,11 +41,11 @@ or yarn add react-native-fast-app
         
            // From now on, you can access the variables in RNStorage synchronously
            
-           console.log(RNStorage.isShow); // equal to console.log(await AsyncStorage.getItem('isShow'))
+           console.log(RNStorage.isShow); // equal to [ console.log(await AsyncStorage.getItem('isShow')) ]
            
-           RNStorage.token = 'TOKEN1343DN23IDD3PJ2DBF3=='; // equal to AsyncStorage.setItem('token',TOKEN1343DN23IDD3PJ2DBF3==')
+           RNStorage.token = 'TOKEN1343DN23IDD3PJ2DBF3=='; // equal to [ await AsyncStorage.setItem('token',TOKEN1343DN23IDD3PJ2DBF3==') ]
            
-           RNStorage.userInfo = { name:'rufeng', age:30}; // equal to AsyncStorage.setItem('userInfo',JSON.stringify({ name:'rufeng', age:30}))
+           RNStorage.userInfo = { name:'rufeng', age:30}; // equal to [ await AsyncStorage.setItem('userInfo',JSON.stringify({ name:'rufeng', age:30})) ]
         },
         (data)=>{// Persist data change callbacks
             console.log(JSON.stringify(data));

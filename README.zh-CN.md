@@ -39,11 +39,11 @@ or yarn add react-native-fast-app
         
           //从此以后就可以同步访问RNStorage中的变量了
                      
-          console.log(RNStorage.isShow); // 等价于 console.log(await AsyncStorage.getItem('isShow'))
+          console.log(RNStorage.isShow); // 等价于 [ console.log(await AsyncStorage.getItem('isShow')) ]
           
-          RNStorage.token = 'TOKEN1343DN23IDD3PJ2DBF3=='; // 等价于 AsyncStorage.setItem('token',TOKEN1343DN23IDD3PJ2DBF3==')
+          RNStorage.token = 'TOKEN1343DN23IDD3PJ2DBF3=='; // 等价于 [ await AsyncStorage.setItem('token',TOKEN1343DN23IDD3PJ2DBF3==') ]
           
-          RNStorage.userInfo = { name:'rufeng', age:30}; // 等价于 AsyncStorage.setItem('userInfo',JSON.stringify({ name:'rufeng', age:30}))
+          RNStorage.userInfo = { name:'rufeng', age:30}; // 等价于 [ await AsyncStorage.setItem('userInfo',JSON.stringify({ name:'rufeng', age:30})) ]
         },
         (data)=>{//持久化数据变更回调
             console.log(JSON.stringify(data));
