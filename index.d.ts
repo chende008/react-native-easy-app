@@ -1,7 +1,7 @@
 // @ts-ignore
 import React from 'react'
 // @ts-ignore
-import {Image, TextProps, TouchableOpacityProps, FlatListProps, ViewStyle} from 'react-native'
+import {Image, TextProps, TouchableOpacityProps, FlatListProps, SectionListProps, ViewStyle} from 'react-native'
 
 interface RFStorage {
 
@@ -172,6 +172,6 @@ export interface RFlatListProps {
 }
 
 // RFlatList
-export class RFlatList extends React.Component<RFlatListProps & FlatListProps<any>> {
+export class RFlatList extends React.Component<RFlatListProps & FlatListProps<any> & SectionListProps<any>> {
 }
 
