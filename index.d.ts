@@ -19,43 +19,8 @@ interface RFStorage {
 // Storage
 export var RFStorage: RFStorage;
 
-interface RFHttpConfig {
-    initBaseUrl(baseUrl: String): RFHttpConfig;
-
-    initTimeout(timeout: number): RFHttpConfig;
-
-    initHttpLogOn(httpLogOn: boolean): RFHttpConfig;
-
-    initNetConnect(isConnected: Promise<boolean>): RFHttpConfig;
-
-    initHeaderSetFunc(headerSetFunc: (params: object, request: object) => void): RFHttpConfig;
-
-    initParamSetFunc(paramSetFunc: (params: object, request: object) => void): RFHttpConfig;
-
-    initParseDataFunc(parseDataFunc: ({success, jData, msg, status}, request: any, callback: any) => void): RFHttpConfig;
-
-    initContentType(contentType: string): RFHttpConfig;
-
-    initLoadingFunc(loadingFunc: (loading: boolean) => void): RFHttpConfig;
-}
-
-// HttpConfig
-export var RFHttpConfig: RFHttpConfig;
-
-interface RFApiConst {
-    TIMEOUT: number,
-    CONTENT_TYPE_JSON: string,
-    CONTENT_TYPE_FORM_DATA: string,
-    CONTENT_TYPE_URLENCODED: string,
-    Methods: object,
-    errorDesc: object
-    statusDesc: object,
-}
-
-// RFApiConst
-export var RFApiConst: RFApiConst;
-
 interface HttpRequest {
+
     new(): HttpRequest;
 
     url(url: string): HttpRequest;
@@ -108,10 +73,51 @@ interface HttpRequest {
 
 }
 
+interface HttpConfig {
+
+    new(serverTag?: string): HttpConfig;
+
+    initBaseUrl(baseUrl: string): HttpConfig;
+
+    initTimeout(timeout: number): HttpConfig;
+
+    initHttpLogOn(httpLogOn: boolean): HttpConfig;
+
+    initHeaderSetFunc(headerSetFunc: (headers: object, request: object) => void): HttpConfig;
+
+    initParamSetFunc(paramSetFunc: (params: object, request: object) => void): HttpConfig;
+
+    initParseDataFunc(result: object, request: object, callback: (success: boolean, data: object, message: string, status: number, response: object) => void): HttpConfig;
+
+    initContentType(contentType: string): HttpConfig;
+
+    initLoadingFunc(loadingFunc: (loading: boolean) => void): HttpConfig;
+
+}
+
+interface RFHttpConst {
+    TIMEOUT: number,
+    CONTENT_TYPE_JSON: string,
+    CONTENT_TYPE_FORM_DATA: string,
+    CONTENT_TYPE_URLENCODED: string,
+    ServerTag: string,
+    Methods: object,
+    errorDesc: object
+    statusDesc: object,
+}
+
+// RFHttpConst
+export var RFHttpConst: RFHttpConst;
+
 // Http HttpRequest
 export var HttpRequest: HttpRequest;
 
+// Http HttpConfig
+export var HttpConfig: HttpConfig;
+
 export function RFHttp(): HttpRequest
+
+export function RFHttpConfig(serverTag?: string): HttpConfig
 
 export function RFSize(size: number): number
 

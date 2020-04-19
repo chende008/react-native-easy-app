@@ -4,15 +4,19 @@ import {RFImage, RFText, RFView} from './lib/widget/WidgetBase';
 import RFlattenStyle, {RFResetStyle, RFSize, RFSplitStyle, RTSize} from './lib/utils/StyleUtils';
 import RFlatList from './lib/widget/RFlatList';
 
-import RFHttpConfig, {RFHttpConst} from './lib/http/RFHttpConfig';
 import RFStorage from './lib/storage/RFStorage'
 import RFWidget from './lib/widget/RFWidget';
-import {RFHttp} from './lib/http/HttpUtils';
+import {RFHttp, RFHttpConfig} from './lib/http/HttpUtils';
+import HttpConfig, {RFHttpConst} from './lib/http/HttpConfig';
+import HttpRequest from './lib/http/HttpRequest'
 
 
 export {
 
     RFHttp,
+    RFHttpConfig,
+    HttpConfig,
+    HttpRequest,
     RFHttpConst,
 
     RFView,
@@ -27,6 +31,5 @@ export {
     RFlattenStyle,
 
     RFWidget,
-    RFStorage,
-    RFHttpConfig
+    RFStorage
 };

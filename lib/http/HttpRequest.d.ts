@@ -74,10 +74,11 @@ export default class HttpRequest {
     loadingFunc(func: (loading: boolean) => void): HttpRequest;
 
     /**
-     *
+     * @enableCommonHeader enable or disable common header
+     * @enableCommonParams  enable or disable common params
      * @return return HttpRequest Builder
      */
-    configCommonFunc(enableHeaderFunc: boolean, enableParamFunc: boolean): HttpRequest;
+    configCommonFunc(enableCommonHeader: boolean, enableCommonParams: boolean): HttpRequest;
 
     /**
      * callback result(json) : root data for request [ignore custom request parser]
