@@ -59,19 +59,19 @@ or yarn add react-native-fast-app
       ```jsx 
       import {RFHttpConfig} from 'react-native-fast-app';
       
-      RFHttpConfig.initHttpLogOn(true) // Print the Http request log or not
-                  .initBaseUrl(ApiCredit.baseUrl) // BaseUrl
-                  .initContentType(RFApiConst.CONTENT_TYPE_URLENCODED)
-                  .initHeaderSetFunc((headers, request) => {
-                     // Set the public header parameter here
-                  })
-                  .initParamSetFunc((params, request) => {
+      RFHttpConfig().initHttpLogOn(true) // Print the Http request log or not
+                    .initBaseUrl(ApiCredit.baseUrl) // BaseUrl
+                    .initContentType(RFApiConst.CONTENT_TYPE_URLENCODED)
+                    .initHeaderSetFunc((headers, request) => {
+                       // Set the public header parameter here
+                    })
+                    .initParamSetFunc((params, request) => {
                      // Set the public params parameter here
-                  })
-                  .initParseDataFunc((result, request, callback) => {
-                     let {success, json, response, message, status} = result;
-                     // Specifies the specific data parsing method for the current app
-              });
+                    })
+                    .initParseDataFunc((result, request, callback) => {
+                       let {success, json, response, message, status} = result;
+                       // Specifies the specific data parsing method for the current app
+                });
       ```
      
      * Send request template

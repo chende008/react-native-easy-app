@@ -56,19 +56,19 @@ or yarn add react-native-fast-app
       ```jsx 
       import {RFHttpConfig} from 'react-native-fast-app';
       
-      RFHttpConfig.initHttpLogOn(true) // 是否打印Http请求日志
-                  .initBaseUrl(ApiCredit.baseUrl) // 默认的BaseUrl
-                  .initContentType(RFApiConst.CONTENT_TYPE_URLENCODED)
-                  .initHeaderSetFunc((headers, request) => {
-                     // 在这里设置公共header参数
-                  })
-                  .initParamSetFunc((params, request) => {
-                     // 在这里设置公共params参数
-                  })
-                  .initParseDataFunc((result, request, callback) => {
-                     let {success, json, response, message, status} = result;
-                     // 指定当前app的特定数据解析方式
-              });
+      RFHttpConfig().initHttpLogOn(true) // 是否打印Http请求日志
+                    .initBaseUrl(ApiCredit.baseUrl) // 默认的BaseUrl
+                    .initContentType(RFApiConst.CONTENT_TYPE_URLENCODED)
+                    .initHeaderSetFunc((headers, request) => {
+                       // 在这里设置公共header参数
+                    })
+                    .initParamSetFunc((params, request) => {
+                       // 在这里设置公共params参数
+                    })
+                    .initParseDataFunc((result, request, callback) => {
+                       let {success, json, response, message, status} = result;
+                       // 指定当前app的特定数据解析方式
+                });
       ```
      
      * 发送请求模板
