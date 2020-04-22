@@ -5,7 +5,9 @@ import {Image, TextProps, TouchableOpacityProps, FlatListProps, SectionListProps
 
 interface RFStorage {
 
-    initStorage(targetObj: object, initializedCallback: () => void, dataChangedCallback?: (dataSet) => void, version?: string): void
+    initStorage(targetObj: object, initializedCallback: () => void, dataChangedCallback?: (dataSet) => void, version?: string): string
+
+    syncInitStorage(targetObj: object, dataChangedCallback?: (dataSet) => void, version?: string): Promise<string>;
 
     multiGet(keys: any): Promise<any>;
 
