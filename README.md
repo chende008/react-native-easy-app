@@ -8,9 +8,13 @@
 
 ### Installation
 
-npm install react-native-fast-app --save 
-
-or yarn add react-native-fast-app
+```bash 
+npm install react-native-fast-app --save
+``` 
+or 
+```bash
+yarn add react-native-fast-app
+```
 
 
 ### Features
@@ -20,7 +24,7 @@ or yarn add react-native-fast-app
   * Support for Flexible base widget (no sensory multi-screen adaptation)
 
 
-### Usage 
+### Quick Start 
 
    * Data Storage : RFStorage
    

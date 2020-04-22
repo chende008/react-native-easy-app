@@ -6,9 +6,14 @@
 
 ### 安装
 
-npm install react-native-fast-app --save 
+```bash
+npm install react-native-fast-app --save
+``` 
+或者
 
-or yarn add react-native-fast-app
+```bash
+yarn add react-native-fast-app
+```
 
 
 ### 功能点
@@ -18,7 +23,7 @@ or yarn add react-native-fast-app
   * 灵活的基础控件(无感知多屏适配)
 
 
-### 用法 
+### 快速开始 
 
    * 数据存储RFStorage
    
