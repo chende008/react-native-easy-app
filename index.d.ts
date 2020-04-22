@@ -7,7 +7,7 @@ interface RFStorage {
 
     initStorage(targetObj: object, initializedCallback: () => void, dataChangedCallback?: (dataSet) => void, version?: string): string
 
-    syncInitStorage(targetObj: object, dataChangedCallback?: (dataSet) => void, version?: string): Promise<string>;
+    syncInitStorage(targetObj: object, dataChangedCallback?: (dataSet) => void, version?: string): Promise<boolean>;
 
     multiGet(keys: any): Promise<any>;
 
