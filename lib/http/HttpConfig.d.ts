@@ -48,12 +48,10 @@ export default class HttpConfig {
 
     /**
      *
-     * @param result  common request header
-     * @param request  common request params
-     * @param callback  common data parser interceptor
+     * @param parseDataFunc  common request header
      * @return return HttpConfig Builder
      */
-    initParseDataFunc(result: object, request: object, callback: (success: boolean, data: object, message: string, status: number, response: object) => void): HttpConfig;
+    initParseDataFunc(parseDataFunc: (result: object, request: object, callback: () => void) => void): HttpConfig;
 
     /**
      *
