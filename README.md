@@ -1,4 +1,4 @@
-## react-native-fast-app （Efficient pure js library）
+## react-native-fast-app （React Native One-stop solution）
 
 
 [查看中文文档](README.zh-CN.md)
