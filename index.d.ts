@@ -3,7 +3,7 @@ import React from 'react'
 // @ts-ignore
 import {Image, TextProps, TouchableOpacityProps, FlatListProps, SectionListProps, ViewStyle} from 'react-native'
 
-interface RFStorage {
+interface XStorage {
 
     initStorage(targetObj: object, initializedCallback: () => void, dataChangedCallback?: (dataSet) => void, version?: string): string
 
@@ -19,7 +19,7 @@ interface RFStorage {
 }
 
 // Storage
-export var RFStorage: RFStorage;
+export var XStorage: XStorage;
 
 interface HttpRequest {
 
@@ -97,7 +97,7 @@ interface HttpConfig {
 
 }
 
-interface RFHttpConst {
+interface XHttpConst {
     TIMEOUT: number,
     CONTENT_TYPE_JSON: string,
     CONTENT_TYPE_FORM_DATA: string,
@@ -109,7 +109,7 @@ interface RFHttpConst {
 }
 
 // XHttpConst
-export var RFHttpConst: RFHttpConst;
+export var XHttpConst: XHttpConst;
 
 // Http HttpRequest
 export var HttpRequest: HttpRequest;
@@ -117,42 +117,42 @@ export var HttpRequest: HttpRequest;
 // Http HttpConfig
 export var HttpConfig: HttpConfig;
 
-export function RFHttp(): HttpRequest
+export function XHttp(): HttpRequest
 
-export function RFHttpConfig(serverTag?: string): HttpConfig
+export function XHttpConfig(serverTag?: string): HttpConfig
 
-export function RFSize(size: number): number
+export function XSize(size: number): number
 
-export function RTSize(size: number): number
+export function XTSize(size: number): number
 
-export function RFResetStyle(style: ViewStyle): ViewStyle
+export function XResetStyle(style: ViewStyle): ViewStyle
 
-export function RFSplitStyle(style: ViewStyle): object
+export function XSplitStyle(style: ViewStyle): object
 
-export function RFlattenStyle(style: ViewStyle): ViewStyle
+export function XFattenStyle(style: ViewStyle): ViewStyle
 
-interface RFWidget {
-    initResource(imageBaseUrl: string): RFWidget;
+interface XWidget {
+    initResource(imageBaseUrl: string): XWidget;
 
-    initReferenceScreen(targetWidth: number, targetHeight: number): RFWidget;
+    initReferenceScreen(targetWidth: number, targetHeight: number): XWidget;
 }
 
 // Widget Resource
-export var RFWidget: RFWidget;
+export var XWidget: XWidget;
 
-export interface RFImageProps {
+export interface XImageProps {
     raw?: boolean
     icon: string,
     iconSize?: number,
 }
 
 // XImage
-export class RFImage extends React.Component<RFImageProps & TouchableOpacityProps> {
+export class XImage extends React.Component<XImageProps & TouchableOpacityProps> {
 }
 
 declare type IconPosition = 'left' | 'top' | 'right' | 'bottom';
 
-export interface RFTextProps {
+export interface XTextProps {
     raw?: boolean,
     text: string,
     icon?: string,
@@ -163,14 +163,14 @@ export interface RFTextProps {
 }
 
 // XText
-export class RFText extends React.Component<RFTextProps & TextProps & TouchableOpacityProps> {
+export class XText extends React.Component<XTextProps & TextProps & TouchableOpacityProps> {
 }
 
 // XView
-export class RFView extends React.Component<TouchableOpacityProps> {
+export class XView extends React.Component<TouchableOpacityProps> {
 }
 
-export interface RFlatListProps {
+export interface XFatListProps {
     onLoadMore?: Function,
     noDataText?: string,
     noDataImage?: boolean,
@@ -180,6 +180,6 @@ export interface RFlatListProps {
 }
 
 // XFlatList
-export class RFlatList extends React.Component<RFlatListProps & FlatListProps<any> & SectionListProps<any>> {
+export class XFlatList extends React.Component<XFatListProps & FlatListProps<any> & SectionListProps<any>> {
 }
 
