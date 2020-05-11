@@ -1,35 +1,35 @@
 import React from 'react';
 
-import {RFImage, RFText, RFView} from './lib/widget/WidgetBase';
-import RFlattenStyle, {RFResetStyle, RFSize, RFSplitStyle, RTSize} from './lib/utils/StyleUtils';
-import RFlatList from './lib/widget/RFlatList';
+import {XImage, XText, XView} from './lib/widget/WidgetBase';
+import FlattenStyle, {ResetStyle, XSize, SplitStyle, XTSize} from './lib/utils/StyleUtils';
+import XFlatList from './lib/widget/XFlatList';
 
-import RFStorage from './lib/storage/RFStorage'
-import RFWidget from './lib/widget/RFWidget';
-import {RFHttp, RFHttpConfig} from './lib/http/HttpUtils';
-import HttpConfig, {RFHttpConst} from './lib/http/HttpConfig';
+import XStorage from './lib/storage/XStorage'
+import XWidget from './lib/widget/XWidget';
+import {XHttp, XHttpConfig} from './lib/http/HttpUtils';
+import HttpConfig, {XHttpConst} from './lib/http/HttpConfig';
 import HttpRequest from './lib/http/HttpRequest'
 
 
 export {
 
-    RFHttp,
-    RFHttpConfig,
+    XHttp,
+    XHttpConst,
+    XHttpConfig,
     HttpConfig,
     HttpRequest,
-    RFHttpConst,
 
-    RFView,
-    RFText,
-    RFImage,
-    RFlatList,
+    XView,
+    XText,
+    XImage,
+    XFlatList,
 
-    RFSize,
-    RTSize,
-    RFResetStyle,
-    RFSplitStyle,
-    RFlattenStyle,
+    XSize,
+    XTSize,
+    ResetStyle,
+    SplitStyle,
+    FlattenStyle,
 
-    RFWidget,
-    RFStorage
+    XWidget,
+    XStorage
 };

@@ -1,4 +1,4 @@
-## react-native-fast-app （RN 项目快速开发基础库）
+## react-native-easy-app （RN 项目快速开发基础库）
 
 [English version doc here](README.md)
 
@@ -7,12 +7,12 @@
 ### 安装
 
 ```bash
-npm install react-native-fast-app --save
+npm install react-native-easy-app --save
 ``` 
 或者
 
 ```bash
-yarn add react-native-fast-app
+yarn add react-native-easy-app
 ```
 
 
@@ -25,7 +25,7 @@ yarn add react-native-fast-app
 
 ### 快速开始 
 
-   * 数据存储RFStorage
+   * 数据存储XStorage
    
      * 实现一个可持久化的数据存储管理类
      
@@ -38,7 +38,7 @@ yarn add react-native-fast-app
      ```
      
      ```jsx 
-       import { RFStorage } from 'react-native-fast-app';
+       import { XStorage } from 'react-native-easy-app';
         
        const initCallback = () => {
        
@@ -51,7 +51,7 @@ yarn add react-native-fast-app
             RNStorage.userInfo = {name: 'rufeng', age: 30}; // 等价于 [ await AsyncStorage.setItem('userInfo',JSON.stringify({ name:'rufeng', age:30})) ]
        };
        
-       RFStorage.initStorage(RNStorage, initCallback);
+       XStorage.initStorage(RNStorage, initCallback);
      ```
     
    * 支持可配置的Http请求框架
@@ -59,11 +59,11 @@ yarn add react-native-fast-app
      * 一切基于配置（配置可选，自由设定）
      
       ```jsx 
-      import {RFHttpConfig} from 'react-native-fast-app';
+      import {XHttpConfig} from 'react-native-easy-app';
       
-      RFHttpConfig().initHttpLogOn(true) // 是否打印Http请求日志
+      XHttpConfig().initHttpLogOn(true) // 是否打印Http请求日志
                     .initBaseUrl(ApiCredit.baseUrl) // 默认的BaseUrl
-                    .initContentType(RFApiConst.CONTENT_TYPE_URLENCODED)
+                    .initContentType(XHttpConst.CONTENT_TYPE_URLENCODED)
                     .initHeaderSetFunc((headers, request) => {
                        // 在这里设置公共header参数
                     })
@@ -79,7 +79,7 @@ yarn add react-native-fast-app
      * 发送请求模板
      
      ```jsx 
-        import {RFHttp} from 'react-native-fast-app';
+        import {XHttp} from 'react-native-easy-app';
      
         let url = 'v1/account/login/';
         let param = {phone: '18600000000', authCode: '123456'};
@@ -93,7 +93,7 @@ yarn add react-native-fast-app
         };
      
         * 可设置的参数以builder形式拼接
-        RFHttp().url(url)
+        XHttp().url(url)
             .param(param)
             .header(header)
             .internal()
@@ -113,12 +113,12 @@ yarn add react-native-fast-app
      * 发送请求
      
       ```jsx
-         import {RFHttp} from 'react-native-fast-app';
+         import {XHttp} from 'react-native-easy-app';
       
          const url = 'https://www.baidu.com';
         
          * 同步请求
-         const response = await RFHttp().url(url).execute('GET');
+         const response = await XHttp().url(url).execute('GET');
          const {success, json, message, status} = response;
          
          if(success){
@@ -128,7 +128,7 @@ yarn add react-native-fast-app
          }
          
          * 异步请求
-         RFHttp().url(url).get((success, json, message, status)=>{
+         XHttp().url(url).get((success, json, message, status)=>{
              if (success){
                 this.setState({content: JSON.stringify(json)});
              } else {
@@ -137,7 +137,7 @@ yarn add react-native-fast-app
          });
                  
          * 异步请求
-         RFHttp().url(url).execute('GET')
+         XHttp().url(url).execute('GET')
          .then(({success, json, message, status}) => {
              if (success) {
                   this.setState({content: JSON.stringify(json)});
@@ -152,19 +152,19 @@ yarn add react-native-fast-app
      
      * 灵活的基础控件
      ```
-        RFImage
-        RFText
-        RFView
-        RFlatList
+        XImage
+        XText
+        XView
+        XFlatList
         
-        RFImage 非全路径在线图片则依赖图片资源BaseUrl的设置
+        XImage 非全路径在线图片则依赖图片资源BaseUrl的设置
         
         可在使用前如下配置：
         
-        RFWidget
+        XWidget
         .initResource(Assets)
         .initReferenceScreen(375, 677); // UI 整体尺寸缩放参考屏幕尺寸
      ```
     
  
-  详细使用方法请参考 [示例](https://github.com/chende008/react-native-fast-app-sample)
+  详细使用方法请参考 [示例](https://github.com/chende008/react-native-easy-app-sample)

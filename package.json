@@ -1,14 +1,14 @@
 {
-  "name": "react-native-fast-app",
-  "version": "1.5.5",
-  "description": "fast development library for react-native",
+  "name": "react-native-easy-app",
+  "version": "1.6.0",
+  "description": "one-stop solution for react-native",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chende008/react-native-fast-app.git"
+    "url": "git+https://github.com/chende008/react-native-easy-app.git"
   },
   "keywords": [
     "react-native",
@@ -20,7 +20,7 @@
   "author": "chende",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/chende008/react-native-fast-app/issues"
+    "url": "https://github.com/chende008/react-native-easy-app/issues"
   },
-  "homepage": "https://github.com/chende008/react-native-fast-app#readme"
+  "homepage": "https://github.com/chende008/react-native-easy-app#readme"
 }

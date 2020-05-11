@@ -69,7 +69,7 @@ export default class HttpConfig {
 
 }
 
-interface RFHttpConst {
+interface XHttpConst {
     TIMEOUT: number,
     CONTENT_TYPE_JSON: string,
     CONTENT_TYPE_FORM_DATA: string,
@@ -80,5 +80,5 @@ interface RFHttpConst {
     statusDesc: object,
 }
 
-// RFHttpConst
-export var RFHttpConst: RFHttpConst;
+// XHttpConst
+export var XHttpConst: XHttpConst;

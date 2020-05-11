@@ -108,7 +108,7 @@ interface RFHttpConst {
     statusDesc: object,
 }
 
-// RFHttpConst
+// XHttpConst
 export var RFHttpConst: RFHttpConst;
 
 // Http HttpRequest
@@ -146,7 +146,7 @@ export interface RFImageProps {
     iconSize?: number,
 }
 
-// RFImage
+// XImage
 export class RFImage extends React.Component<RFImageProps & TouchableOpacityProps> {
 }
 
@@ -162,11 +162,11 @@ export interface RFTextProps {
     iconPosition?: IconPosition,
 }
 
-// RFText
+// XText
 export class RFText extends React.Component<RFTextProps & TextProps & TouchableOpacityProps> {
 }
 
-// RFView
+// XView
 export class RFView extends React.Component<TouchableOpacityProps> {
 }
 
@@ -179,7 +179,7 @@ export interface RFlatListProps {
     emptyViewHeight?: number,
 }
 
-// RFlatList
+// XFlatList
 export class RFlatList extends React.Component<RFlatListProps & FlatListProps<any> & SectionListProps<any>> {
 }
 

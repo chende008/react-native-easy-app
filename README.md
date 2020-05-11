@@ -1,4 +1,4 @@
-## react-native-fast-app （React Native One-stop solution）
+## react-native-easy-app （React Native One-stop solution）
 
 
 [查看中文文档](README.zh-CN.md)
@@ -9,11 +9,12 @@
 ### Installation
 
 ```bash 
-npm install react-native-fast-app --save
+npm install react-native-easy-app --save
 ``` 
 or 
+
 ```bash
-yarn add react-native-fast-app
+yarn add react-native-easy-app
 ```
 
 
@@ -26,7 +27,7 @@ yarn add react-native-fast-app
 
 ### Quick Start 
 
-   * Data Storage : RFStorage
+   * Data Storage : XStorage
    
      * Implement a persistent data store manager
      
@@ -39,7 +40,7 @@ yarn add react-native-fast-app
      ```
      
      ```jsx 
-       import { RFStorage } from 'react-native-fast-app';
+       import { XStorage } from 'react-native-easy-app';
         
        const initCallback = () => {
        
@@ -52,7 +53,7 @@ yarn add react-native-fast-app
             RNStorage.userInfo = {name: 'rufeng', age: 30}; // equal to [ await AsyncStorage.setItem('userInfo',JSON.stringify({ name:'rufeng', age:30})) ]
        };
        
-       RFStorage.initStorage(RNStorage, initCallback);   
+       XStorage.initStorage(RNStorage, initCallback);   
                
      ```
     
@@ -61,11 +62,11 @@ yarn add react-native-fast-app
      * All based on configuration (configuration optional, free to set)
      
       ```jsx 
-      import {RFHttpConfig} from 'react-native-fast-app';
+      import { XHttpConfig } from 'react-native-easy-app';
       
-      RFHttpConfig().initHttpLogOn(true) // Print the Http request log or not
+      XHttpConfig().initHttpLogOn(true) // Print the Http request log or not
                     .initBaseUrl(ApiCredit.baseUrl) // BaseUrl
-                    .initContentType(RFApiConst.CONTENT_TYPE_URLENCODED)
+                    .initContentType(XHttpConst.CONTENT_TYPE_URLENCODED)
                     .initHeaderSetFunc((headers, request) => {
                        // Set the public header parameter here
                     })
@@ -81,7 +82,7 @@ yarn add react-native-fast-app
      * Send request template
      
      ```jsx 
-        import {RFHttp} from 'react-native-fast-app';
+        import { XHttp } from 'react-native-easy-app';
      
         let url = 'v1/account/login/';
         let param = {phone: '18600000000', authCode: '123456'};
@@ -95,7 +96,7 @@ yarn add react-native-fast-app
         };
      
         * Settable parameters are spliced in builder form
-        RFHttp().url(url)
+        XHttp().url(url)
             .param(param)
             .header(header)
             .internal()
@@ -115,12 +116,12 @@ yarn add react-native-fast-app
      * request-send
      
       ```jsx
-         import {RFHttp} from 'react-native-fast-app';
+         import {XHttp} from 'react-native-easy-app';
          
          const url = 'https://www.google.com';
         
          * Synchronous request
-         const response = await RFHttp().url(url).execute('GET');
+         const response = await XHttp().url(url).execute('GET');
          const {success, json, message, status} = response;
          
          if(success){
@@ -130,7 +131,7 @@ yarn add react-native-fast-app
          }
          
          * Asynchronous requests
-         RFHttp().url(url).get((success, json, message, status)=>{
+         XHttp().url(url).get((success, json, message, status)=>{
              if (success){
                 this.setState({content: JSON.stringify(json)});
              } else {
@@ -139,7 +140,7 @@ yarn add react-native-fast-app
          });
                  
          * Asynchronous requests
-         RFHttp().url(url).execute('GET')
+         XHttp().url(url).execute('GET')
          .then(({success, json, message, status}) => {
              if (success) {
                   this.setState({content: JSON.stringify(json)});
@@ -153,21 +154,22 @@ yarn add react-native-fast-app
         ```
      
      * Flexible base widget
+     
      ```
-        RFImage
-        RFText
-        RFView
-        RFlatList
+        XImage
+        XText
+        XView
+        XFlatList
         
-        RFImage Partial path online images depend on the Settings of image resource BaseUrl
+        XImage Partial path online images depend on the Settings of image resource BaseUrl
         
         Can be configured as follows before use：
         
-        RFWidget
+        XWidget
         .initResource(Assets)
         .initReferenceScreen(375, 677); // The component scales the reference screen size
      ```
     
  
-  Please refer to the detailed usage method [example](https://github.com/chende008/react-native-fast-app-sample)
+  Please refer to the detailed usage method [example](https://github.com/chende008/react-native-easy-app-sample)
 
