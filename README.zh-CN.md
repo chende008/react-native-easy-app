@@ -1,8 +1,8 @@
-## react-native-easy-app （RN 项目快速开发基础库）
+## react-native-easy-app （RN 开发一站式解决方案）
 
 [English version doc here](README.md)
 
-[使用手册](https://www.jianshu.com/u/13623408c1aa)
+[使用手册](https://www.jianshu.com/nb/44288056)
 
 ### 安装
 
@@ -15,76 +15,114 @@ npm install react-native-easy-app --save
 yarn add react-native-easy-app
 ```
 
-
 ### 功能点
 
   * 支持快捷[同步]访问AsyncStorage
-  * 支持可配置的Http请求框架
+  * 支持灵活、可配置的Http请求
   * 灵活的基础控件(无感知多屏适配)
 
 
 ### 快速开始 
 
-   * 数据存储XStorage
+   * **用AsyncStorage快速实现一个可持久化的数据存、取管理器**
    
-     * 实现一个可持久化的数据存储管理类
-     
-     ```jsx 
-        export const RNStorage = {// RNStorage 自定义数据存储对象
-            token: undefined, //  字符串类型
-            isShow: undefined, // 布尔类型
-            userInfo: undefined, // 对象类型
-        };
-     ```
-     
-     ```jsx 
-       import { XStorage } from 'react-native-easy-app';
+      ```jsx 
+         export const RNStorage = {// RNStorage 自定义数据存储对象
+             token: undefined, //  字符串类型
+             isShow: undefined, // 布尔类型
+             userInfo: undefined, // 对象类型
+         };
+      ```
+      
+      ```jsx 
+        import { XStorage } from 'react-native-easy-app';
+         
+        const initCallback = () => {
         
-       const initCallback = () => {
-       
-            // 现在您可以同步访问RNStorage中的任何属性
+             // 现在起，你可以同步读、写RNStorage中的任何属性了
+             
+             console.log(RNStorage.isShow); // 近似于 [ console.log(await AsyncStorage.getItem('isShow')) ]
+             
+             RNStorage.token = 'TOKEN1343DN23IDD3PJ2DBF3=='; // 近似于 [ await AsyncStorage.setItem('token',TOKEN1343DN23IDD3PJ2DBF3==') ]
+             
+             RNStorage.userInfo = {name: 'rufeng', age: 30}; // 近似于 [ await AsyncStorage.setItem('userInfo',JSON.stringify({ name:'rufeng', age:30})) ] 
+        };
+        
+        XStorage.initStorage(RNStorage, initCallback);   
+      ```
+      
+       **XStorage 对象** 
             
-            console.log(RNStorage.isShow); // 等价于 [ console.log(await AsyncStorage.getItem('isShow')) ]
-            
-            RNStorage.token = 'TOKEN1343DN23IDD3PJ2DBF3=='; // 等价于 [ await AsyncStorage.setItem('token',TOKEN1343DN23IDD3PJ2DBF3==') ]
-            
-            RNStorage.userInfo = {name: 'rufeng', age: 30}; // 等价于 [ await AsyncStorage.setItem('userInfo',JSON.stringify({ name:'rufeng', age:30})) ]
-       };
-       
-       XStorage.initStorage(RNStorage, initCallback);
-     ```
+       | 方法                  |                   参数                                            |      返回值类型                | 描述                                                                     |
+       | ----------------------|:-----------------------------------------------------------------|:-----------------------------:| :-----------------------------------------------------------------------|
+       | initStorage           | (targetObj, initCallback, dataCallback?, version?, storageImp?)  |  void                         | 将【targetObj】对象中的属性与【AsyncStorage】中的字段建立映射，形成绑定关系    |
+       | initStorageSync       | (targetObj, dataCallback?, version?, storageImp?)                |  Promise<boolean>             | 以Promise形式将【targetObj】与【AsyncStorage】建立绑定关系                  |                                                             |
+       | multiGet              |           **keys** *:string[]*                                   |  Promise<[string, string][]>  | 等价于 AsyncStorage.multiGet()                                           |
+       | saveItems             |           **keyValuePairs** *:string[][]*                        |  Promise<void>                | 等价于 AsyncStorage.multiSet()                                           |
+       | removeItems           |           **keys** *:string[]*                                   |  Promise<void>                | 等价于 AsyncStorage.multiRemove()                                        |
+       | clear                 |           none                                                   |  void                         | 等价于 AsyncStorage.clear()                                              |
+   
+       **XStorage.initStorage 方法参数描述：** 
+                  
+       | 参数名                                     |                   形式                        | 描述                                                         |
+       | ------------------------------------------|:---------------------------------------------:| :-----------------------------------------------------------|
+       | **storageObj** *:object*                  | { token:undefined, userName:undefined, ...}   | 需要持久化的数据列表对象                                       |
+       | **initializedFunc** *:callback function*  |              ()=>{ ... }                      | 持久化映射成功成功后的回调                                     |   
+       | **dataChangedFunc** *?:callback function* |              (dataSet)=>{ ... }               | 持久化数据变更后的回调                                         |
+       | **version** *?:string*                    |           '1.0'                               | 数据存储版本控制(默认:1.0)                                     |
+       | **storageImp** *?:AsyncStorage*           |           AsyncStorage                        | 数据持久化实现基础(默认为:AsyncStorage from 'react-native')    |
     
-   * 支持可配置的Http请求框架
+    
+   * **支持可配置的Http请求**
    
      * 一切基于配置（配置可选，自由设定）
      
       ```jsx 
-      import {XHttpConfig} from 'react-native-easy-app';
+      import { XHttpConfig, XHttpConst } from 'react-native-easy-app';
       
-      XHttpConfig().initHttpLogOn(true) // 是否打印Http请求日志
-                    .initBaseUrl(ApiCredit.baseUrl) // 默认的BaseUrl
+       XHttpConfig().initHttpLogOn(true)
+                    .initBaseUrl('https://www.baidu.com')
+                    .initTimeout(15000)
                     .initContentType(XHttpConst.CONTENT_TYPE_URLENCODED)
+                    .initLoadingFunc((isLoading)=>{
+                       ...
+                    })
                     .initHeaderSetFunc((headers, request) => {
-                       // 在这里设置公共header参数
+                       ...
                     })
                     .initParamSetFunc((params, request) => {
-                       // 在这里设置公共params参数
+                       ...
                     })
                     .initParseDataFunc((result, request, callback) => {
                        let {success, json, response, message, status} = result;
-                       // 指定当前app的特定数据解析方式
-                });
+                       ...
+                     }
+                );
       ```
+      
+      **XHttpConfig 对象 （所有方法都是可选的）** 
+      
+      | 方法                  |                   参数                                 |      返回类型           | 描述                                                         |
+      | ----------------------|:------------------------------------------------------|:----------------------:| :------------------------------------------------------------|
+      | constructor           |           **serverTag** *?:string*                    |  XHttpConfig Builder   | 与XHttp(serverTag)保持一致(用于多服务器请求配置)，默认为空        |
+      | initBaseUrl           |           **baseUrl** *:string*                       |  XHttpConfig Builder   | 设置Http请求公共的BaseUrl                                      |
+      | initTimeout           |           **timeout** *:number*                       |  XHttpConfig Builder   | 设置公共的默认请求超时时间                                       |
+      | initHttpLogOn         |           **logOn** *:bool*                           |  XHttpConfig Builder   | 设置是否打印Http请求日志                                        |
+      | initContentType       |           **contentType** *:string*                   |  XHttpConfig Builder   | 设置Http请求默认的ContentType                                  |
+      | initLoadingFunc       |           **(isLoading) => {...}**                    |  XHttpConfig Builder   | Http公共请求状态回调，isLoading为true表示请求进行中               |
+      | initHeaderSetFunc     |           **(headers, request) => {...}**             |  XHttpConfig Builder   | 请求header设置拦截器；可在此处，为请求添加公共的headers参数        |
+      | initParamSetFunc      |           **(params, request) => {...}**              |  HttpRequest Builder   | 请求body(params)设置拦截器；可在此处，为请求添加公共的params参数   |
+      | initParseDataFunc     |           **(result, request, callback) => {...}**    |  XHttpConfig Builder   | 请求回调拦截器；可在此处，为接口返回数据做公共解析处理              |
      
-     * 发送请求模板
+   * **发送请求模板**
      
      ```jsx 
-        import {XHttp} from 'react-native-easy-app';
+        import { XHttp } from 'react-native-easy-app';
      
         let url = 'v1/account/login/';
-        let param = {phone: '18600000000', authCode: '123456'};
-        let header = {Authorization: "Basic Y3Rlcm1pbmF......HcVp0WGtI"};
-        let callback = () => (success, json, message, status) => {//请求结果回调
+        let param = { phone: '18600000000', authCode: '123456'};
+        let header = { Authorization: "Basic Y3Rlcm1pbmF......HcVp0WGtI"};
+        let callback = () => (success, json, message, status, respoonse) => {
              if (success) {
                 showToast(JSON.stringify(json))
              } else {
@@ -94,61 +132,95 @@ yarn add react-native-easy-app
      
         * 可设置的参数以builder形式拼接
         XHttp().url(url)
-            .param(param)
             .header(header)
-            .internal()
+            .param(param)
+            .internal(true)
             .rawData()
             .pureText()
             .encodeURI()
             .timeout(10000)
             .extra({tag: 'xx'})
             .contentType('text/xml')
-            .resendRequest(data, callback) //重新请求（用于刷新accessToken后，重新发送已经失败的请求）
             .loadingFunc((loading)=> showLoading('请求中，请稍候...', loading))
+            .rawData()
+            .pureText()
+            .configCommonFunc(true,true)
             .[formJson|formData|formEncoded]()
-            .[get|post|put|patch|delete|options](callback);
+            .[get|post|put|patch|delete|options]((success, json, message, status, respoonse)=>{
+              ...
+            });
        
      ```
      
-     * 发送请求
+     **HttpRequest 对象** 
+     
+     | 方法                  |                   参数                                            |      返回类型          | 描述                                                                                                |
+     | ----------------------|:-----------------------------------------------------------------|:---------------------:|:----------------------------------------------------------------------------------------------------|
+     | constructor           |           **serverTag** *:string*                                |  HttpRequest Builder  | 与XHttpConfig(serverTag)保持一致(用于多服务器请求配置)，默认为空                                         |
+     | url                   |           **url** *:string*                                      |  HttpRequest Builder  | 设置请求的url；若XHttpConfig中配置了baseUrl，当前只需要配置接口url后缀即可                                |
+     | header                |  **{ Accept, Authorization ... }**  *:object*                    |  HttpRequest Builder  | 设置当前请求的header参数；若与XHttpConfig中配置的公共header参数同名，则以当前设置为准                       |
+     | param                 |  **{ userName, password, customerId ...  }** *:object*           |  HttpRequest Builder  | 设置当前请求的params参数；若与XHttpConfig中配置的公共params参数同名，则以当前设置为准                       |
+     | contentType           |           **contentType** *:string*                              |  HttpRequest Builder  | 设置当前请求的ContentType；若XHttpConfig中设置公共的ContentType，则以当前设置为准                         |
+     | internal              |           **internal** *:bool*                                   |  HttpRequest Builder  | 用于请求区别标记，默认为true；通常在XHttp中传入，在XHttpConfig的回调拦截器中使用，拦截器的request中可取该值   |
+     | extra                 |           **{customTag ...}**                                    |  HttpRequest Builder  | 用于请求区别标记，通常在XHttp中传入，在XHttpConfig的回调拦截器中使用，拦截器的request中可取该值              |
+     | timeout               |           **timeout** *:number*                                  |  HttpRequest Builder  | 设置当前请求的超时时长，单位毫秒                                                                        |
+     | loadingFunc           |           **(isLoading)=>{ ... }**                               |  HttpRequest Builder  | 当前接口请求状态回调；isLoading为true表示请求进行中                                                      |
+     | configCommonFunc      |( **enableHeaderFunc** *:bool*, **enableParamFunc** *:bool* )     |  HttpRequest Builder  | 设置在XHttpConfig添加的**[initHeaderSetFunc] [initParamSetFunc]**是否生效，默认为true（生效）            |
+     | rawData               |           none                                                   |  HttpRequest Builder  | 设置返回的接口数据是否为原始未处理过的数据；若调用，则会忽略XHttpConfig中设置**[initParseDataFunc]**函数作用  |
+     | pureText              |           none                                                   |  HttpRequest Builder  | 设置返回的接口数据是否为纯文本数据（框架默认为接口为json数据，若后台返回的数据为非json结构时间使用：如 XML 格式  |
+     | formJson              |           none                                                   |  HttpRequest Builder  | 等价于设置当前接口请求类型 ( headers['Content-Type'] = 'application/json' )                             |
+     | formData              |           none                                                   |  HttpRequest Builder  | 等价于设置当前接口请求类型 ( headers['Content-Type'] = 'multipart/form-data' )                          |
+     | formEncoded           |           none                                                   |  HttpRequest Builder  | 等价于设置当前接口请求类型 ( headers['Content-Type'] = 'application/x-www-form-urlencoded' )            |
+     | get                   |**(success, json, message, status ,response) => void**            |    void               | get 请求及回调                                                                                        |
+     | post                  |**(success, json, message, status ,response) => void**            |    void               | post 请求及回调                                                                                       |
+     | options               |**(success, json, message, status ,response) => void**            |    void               | options 请求及回调                                                                                    |
+     | put                   |**(success, json, message, status ,response) => void**            |    void               | put 请求及回调                                                                                        |
+     | delete                |**(success, json, message, status ,response) => void**            |    void               | delete 请求及回调                                                                                     |
+     | patch                 |**(success, json, message, status ,response) => void**            |    void               | patch 请求及回调                                                                                      |
+     | request               |**(method, (success, json, message, status ,response) => void )** |    void               | 以指定的请求method，发送请求并回调                                                                      |
+     | execute               |          **method** *:string*                                    |   Promise             | 以指定的请求method，发送请求并返回一个Promise对象                                                        |
+     | fetch                 |          **method** *:string*                                    |   Promise             | 以指定的请求method，发送请求并返回一个Promise对象，返回的数据不做任何处理，以RN原生fetch的方式结果原样返回     |
+     
+     *new HttpRequest() ==> XHttp()* 
+          
+     **推荐通过 XHttp() 的形式来发送Http请求会更便捷**
+     
+   * **发送请求**
      
       ```jsx
-         import {XHttp} from 'react-native-easy-app';
-      
-         const url = 'https://www.baidu.com';
+         import { XHttp } from 'react-native-easy-app';
+         
+         const url = 'https://www.google.com';
         
-         * 同步请求
-         const response = await XHttp().url(url).execute('GET');
-         const {success, json, message, status} = response;
+         const result = await XHttp().url(url).execute('GET');
+         const {success, json, message, status, response} = result;
          
          if(success){
             this.setState({content: JSON.stringify(json)})
          } else {
             showToast(message)
          }
+      ```
          
-         * 异步请求
-         XHttp().url(url).get((success, json, message, status)=>{
+      ```jsx
+         XHttp().url(url).get((success, json, message, status, response)=>{
              if (success){
                 this.setState({content: JSON.stringify(json)});
              } else {
                 showToast(msg);
              }
          });
+      ```
                  
-         * 异步请求
-         XHttp().url(url).execute('GET')
-         .then(({success, json, message, status}) => {
+      ```jsx
+         XHttp().url(url).execute('GET').then(({success, json, message, status, response}) => {
              if (success) {
                   this.setState({content: JSON.stringify(json)});
              } else {
                   showToast(message);
              }
           })
-          .catch(({message}) => {
-              showToast(message);
-          })
-        ```
+      ```
      
      * 灵活的基础控件
      ```

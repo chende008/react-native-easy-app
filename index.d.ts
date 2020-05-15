@@ -5,15 +5,15 @@ import {Image, TextProps, TouchableOpacityProps, FlatListProps, SectionListProps
 
 interface XStorage {
 
-    initStorage(targetObj: object, initializedCallback: () => void, dataChangedCallback?: (dataSet) => void, version?: string): string
+    initStorage(targetObj: object, initializedCallback: () => void, dataChangedCallback?: (dataSet) => void, version?: string, storageImp?: object): string
 
-    syncInitStorage(targetObj: object, dataChangedCallback?: (dataSet) => void, version?: string): Promise<boolean>;
+    initStorageSync(targetObj: object, dataChangedCallback?: (dataSet) => void, version?: string, storageImp?: object): Promise<boolean>;
 
-    multiGet(keys: any): Promise<any>;
+    multiGet(keys: string[]): Promise<any>;
 
-    saveItems(keyValuePairs: any): Promise<any>;
+    saveItems(keyValuePairs: string[][]): Promise<any>;
 
-    removeItems(keys: any): Promise<any>;
+    removeItems(keys: string[]): Promise<any>;
 
     clear(): Promise<any>;
 }
@@ -23,7 +23,7 @@ export var XStorage: XStorage;
 
 interface HttpRequest {
 
-    new(): HttpRequest;
+    constructor(serverTag?: string)
 
     url(url: string): HttpRequest;
 
@@ -77,7 +77,7 @@ interface HttpRequest {
 
 interface HttpConfig {
 
-    new(serverTag?: string): HttpConfig;
+    constructor(serverTag?: string)
 
     initBaseUrl(baseUrl: string): HttpConfig;
 
@@ -117,7 +117,7 @@ export var HttpRequest: HttpRequest;
 // Http HttpConfig
 export var HttpConfig: HttpConfig;
 
-export function XHttp(): HttpRequest
+export function XHttp(serverTag?: string): HttpRequest
 
 export function XHttpConfig(serverTag?: string): HttpConfig
 

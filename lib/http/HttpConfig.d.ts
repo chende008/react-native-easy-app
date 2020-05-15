@@ -9,7 +9,7 @@
  */
 export default class HttpConfig {
 
-    new(serverTag?: string): HttpConfig;
+    constructor(serverTag?: string)
 
     /**
      *

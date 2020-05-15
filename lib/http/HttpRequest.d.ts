@@ -9,7 +9,7 @@
  */
 export default class HttpRequest {
 
-    new(): HttpRequest;
+    constructor(serverTag?: string);
 
     /**
      *
