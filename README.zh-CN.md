@@ -41,11 +41,11 @@ yarn add react-native-easy-app
         
              // 现在起，你可以同步读、写RNStorage中的任何属性了
              
-             console.log(RNStorage.isShow); // 近似于 [ console.log(await AsyncStorage.getItem('isShow')) ]
+             console.log(RNStorage.isShow); // 相当于 [ console.log(await AsyncStorage.getItem('isShow')) ]
              
-             RNStorage.token = 'TOKEN1343DN23IDD3PJ2DBF3=='; // 近似于 [ await AsyncStorage.setItem('token',TOKEN1343DN23IDD3PJ2DBF3==') ]
+             RNStorage.token = 'TOKEN1343DN23IDD3PJ2DBF3=='; // 相当于 [ await AsyncStorage.setItem('token',TOKEN1343DN23IDD3PJ2DBF3==') ]
              
-             RNStorage.userInfo = {name: 'rufeng', age: 30}; // 近似于 [ await AsyncStorage.setItem('userInfo',JSON.stringify({ name:'rufeng', age:30})) ] 
+             RNStorage.userInfo = {name: 'rufeng', age: 30}; // 相当于 [ await AsyncStorage.setItem('userInfo',JSON.stringify({ name:'rufeng', age:30})) ] 
         };
         
         XStorage.initStorage(RNStorage, initCallback);   

@@ -44,13 +44,13 @@ yarn add react-native-easy-app
         
              // From now on, you can write or read the variables in RNStorage synchronously
              
-             // be similar to [console.log(await AsyncStorage.getItem('isShow'))]
+             // equal to [console.log(await AsyncStorage.getItem('isShow'))]
              console.log(RNStorage.isShow); 
              
-             // be similar to [ await AsyncStorage.setItem('token',TOKEN1343DN23IDD3PJ2DBF3==') ]
+             // equal to [ await AsyncStorage.setItem('token',TOKEN1343DN23IDD3PJ2DBF3==') ]
              RNStorage.token = 'TOKEN1343DN23IDD3PJ2DBF3=='; 
              
-             // be similar to [ await AsyncStorage.setItem('userInfo',JSON.stringify({ name:'rufeng', age:30})) ]
+             // equal to [ await AsyncStorage.setItem('userInfo',JSON.stringify({ name:'rufeng', age:30})) ]
              RNStorage.userInfo = {name: 'rufeng', age: 30}; 
         };
         
