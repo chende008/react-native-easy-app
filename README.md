@@ -237,12 +237,12 @@ yarn add react-native-easy-app
         XView
         XFlatList
         
-        XImage Partial path online images depend on the Settings of image resource BaseUrl
+        XImage Partial path online images depend on the Settings of image resource AssetsBaseUrl
         
         Can be configured as follows before use：
         
         XWidget
-        .initResource(Assets)
+        .initResource(AssetsBaseUrl)
         .initReferenceScreen(375, 677); // The component scales the reference screen size
      ```
     

@@ -229,12 +229,12 @@ yarn add react-native-easy-app
         XView
         XFlatList
         
-        XImage 非全路径在线图片则依赖图片资源BaseUrl的设置
+        XImage 非全路径在线图片则依赖图片资源AssetsBaseUrl的设置
         
         可在使用前如下配置：
         
         XWidget
-        .initResource(Assets)
+        .initResource(AssetsBaseUrl)
         .initReferenceScreen(375, 677); // UI 整体尺寸缩放参考屏幕尺寸
      ```
     
