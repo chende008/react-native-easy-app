@@ -1,8 +1,6 @@
-## react-native-easy-app （RN 开发一站式解决方案）
+## react-native-easy-app （RN开发 一站式解决方案）
 
 [English version doc here](README.md)
-
-[使用手册](https://www.jianshu.com/nb/44288056)
 
 ### 安装
 
@@ -23,6 +21,10 @@ yarn add react-native-easy-app
 
 
 ### 快速开始 
+
+   详细使用方法，请参考示例项目 [Sample](https://github.com/chende008/react-native-easy-app-sample),  [Sample_MobX](https://github.com/chende008/Sample_MobX),  [Sample_Redux](https://github.com/chende008/Sample_Redux)
+  
+   您也可以参考文章对react-native-easy-app使用介绍： [简书](https://www.jianshu.com/nb/44288056)
 
    * **用AsyncStorage快速实现一个可持久化的数据存、取管理器**
    
@@ -187,6 +189,7 @@ yarn add react-native-easy-app
      
    * **发送请求**
      
+      * 同步请求
       ```jsx
          import { XHttp } from 'react-native-easy-app';
          
@@ -201,7 +204,8 @@ yarn add react-native-easy-app
             showToast(message)
          }
       ```
-         
+      
+      * 异步请求 方式1
       ```jsx
          XHttp().url(url).get((success, json, message, status, response)=>{
              if (success){
@@ -211,7 +215,8 @@ yarn add react-native-easy-app
              }
          });
       ```
-                 
+            
+      * 异步请求 方式2           
       ```jsx
          XHttp().url(url).execute('GET').then(({success, json, message, status, response}) => {
              if (success) {
@@ -227,16 +232,77 @@ yarn add react-native-easy-app
         XImage
         XText
         XView
+        
         XFlatList
         
-        XImage 非全路径在线图片则依赖图片资源AssetsBaseUrl的设置
-        
-        可在使用前如下配置：
-        
         XWidget
-        .initResource(AssetsBaseUrl)
+        .initResource(AssetsBaseUrl)    // XImage组件的icon属性的uri前缀
         .initReferenceScreen(375, 677); // UI 整体尺寸缩放参考屏幕尺寸
      ```
-    
+
+     **XView，XImage，XText都包含raw属性，若raw值为true，则会忽略XWidget.initReferenceScreen( *referenceWidth*, *referenceHeight* )的设置：不自动处理多屏尺寸适配**
+
+     **XView 组件** 
+     
+     | 属性        |    类型     |      描述                                                                                   |
+     | ------------|:-----------:|:-------------------------------------------------------------------------------------------|
+     | raw         |    bool     | 默认为false，若为true则不会自动处理多屏幕尺寸适配                                               |
+     | ...         |    ...      | 若包含onPress或onLongPress属性，则等同于TouchableXXX系列组件,否则等同于View组件,并拥有其相应的属性 |
+     
+     **XImage Object** 
+     
+     | 属性        |    类型          |      描述                                                                                                                                                |
+     | ------------|:---------------:|:---------------------------------------------------------------------------------------------------------------------------------------------------------|
+     | raw         |    bool         | 默认为false，若为true则不会自动处理多屏幕尺寸适配                                                                                                             |
+     | icon        |     string      | 相当于Image的source属性，可以接受的参数格式如：[https://xxx.yy.com/image.jpg]，[data: image / png; base64, iVBORw0KGgoAAAAN ...]，[require ('./ image.jpg')]  |
+     | iconSize    |     number      | 图标的尺寸，优先级高于style的width与height                                                                                                                  |
+     | ...         |    ...          | 如果设置了onPress和onLongPress函数，XImage将被XView包裹，并且外部传入的属性将会自动被分配给正确的控件                                                             |
+
+     **XText 组件** 
+     
+     | 属性           |    类型          |      描述                                                                                                                                                |
+     | ---------------|:---------------:|:---------------------------------------------------------------------------------------------------------------------------------------------------------|
+     | raw            |    bool         | 默认为false，若为true则不会自动处理多屏幕尺寸适配                                                                                                             |
+     | text           |     string      | 文本                                                                                                                                                      |
+     | textExtend     |     bool        | 如果包含图标，则等效于将Text组件设置属性: {flex:1}                                                                                                            |
+     | icon           |     string  | 相当于Image的source属性，可以接受的参数格式如：[https://xxx.yy.com/image.jpg]，[data: image / png; base64, iVBORw0KGgoAAAAN ...]，[require ('./ image.jpg')]   |
+     | iconSize       |     number      | 图标尺寸                                                                                                                                                   |
+     | iconMargin     |     number      | 图标与文本之间的距离                                                                                                                                         |
+     | iconPosition   |     string      | 图标在当前控件中的位置，可以设置的值有： 'top', 'right', 'bottom', 'left'                                                                                      |
+     | ...            |    ...          | 如果设置了onPress和onLongPress函数，XImage将被XView包裹，并且外部传入的属性将会自动被分配给正确的控件                                                              |
+     
+     **XFlatList 组件** 
+     
+     | 属性                   |   类型            |    描述                                           |
+     | ----------------------|:-----------------:| :-------------------------------------------------|
+     | data                  |    array          | 相当于FlatList组件的data属性                        |
+     | noDataText            |    string         | 若数据为空时展示的文本                               |
+     | noDataImage           |     uri           | 若数据为空时展示在文本下的图片                        |
+     | indicatorOffset       |    number         | 下拉刷新loading指示器距顶部的距离                     |
+     | refreshStatus         |    object         | XFlatList列表在不同刷新状态展示的UI样式及文本设置对象   |
+     | onRefresh             |   () => {...}     | 相当于FlatList控件的onRefresh属性                    |
+     | onLoadMore            |   () => {...}     | 当列表滚动到底部，被执行的回调方法（需要加载更多数据时）  |
+     | emptyViewHeight       |   number          | 无数据时，空View的高度                               |
+     | ...                   |   ...             | FlatList组件的所有剩余属性                           |     
+
+     **FlatList 组件刷新状对象示例**
+     
+     ```jsx 
+      const RefreshStatus = {
+        Idle: {}, //闲置状态
+      
+        RefreshingData: {image: ImageRes.loading, text: '加载中，请稍候...'}, //下拉刷新中..
+        NoData: {image: ImageRes.noData, text: '加载完成，无数据'}, //下拉刷新（无数据）
+        LoadFailure: {image: ImageRes.loadFail, text: '加载失败'}, //下拉刷新（加载失败）
+      
+        LoadingMoreData: {moreText: '数据加载中…'}, //加载更多,进行中...
+        NoMoreData: {moreText: '已加载全部数据'}, //加载更多（无数据）
+        LoadMoreFailure: {moreText: '点击重新加载'}, //加载更多（加载失败）
+        
+        NetException: {text: '网络异常', moreText: '网络异常，点击重试'}, // 网络异常
+      }
+     ```
  
-  详细使用方法请参考 [示例](https://github.com/chende008/react-native-easy-app-sample)
+   详细使用方法，请参考示例项目 [Sample](https://github.com/chende008/react-native-easy-app-sample),  [Sample_MobX](https://github.com/chende008/Sample_MobX),  [Sample_Redux](https://github.com/chende008/Sample_Redux)
+    
+   您也可以参考文章对react-native-easy-app使用介绍： [简书](https://www.jianshu.com/nb/44288056)

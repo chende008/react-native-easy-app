@@ -3,8 +3,6 @@
 
 [查看中文文档](README.zh-CN.md)
 
-[Instruction Manual](https://www.jianshu.com/nb/44288056)
-
 
 ### Installation
 
@@ -17,7 +15,6 @@ or
 yarn add react-native-easy-app
 ```
 
-
 ### Features
 
   * Support for fast synchronous access to AsyncStorage
@@ -26,6 +23,10 @@ yarn add react-native-easy-app
 
 
 ### Usage 
+
+  For detailed usage, please refer to the example project [Sample](https://github.com/chende008/react-native-easy-app-sample),  [Sample_MobX](https://github.com/chende008/Sample_MobX),  [Sample_Redux](https://github.com/chende008/Sample_Redux)
+  
+  You can also refer to the introduction of react-native-easy-app article : [简书](https://www.jianshu.com/nb/44288056)
 
    * **Implement a persistent data store manager ( based AsyncStorage )**
    
@@ -194,6 +195,7 @@ yarn add react-native-easy-app
      
    * **request-send**
      
+      * synchronous request
       ```jsx
          import { XHttp } from 'react-native-easy-app';
          
@@ -209,6 +211,7 @@ yarn add react-native-easy-app
          }
       ```
          
+      * asynchronous request mode 1    
       ```jsx
          XHttp().url(url).get((success, json, message, status, response)=>{
              if (success){
@@ -219,6 +222,7 @@ yarn add react-native-easy-app
          });
       ```
                  
+      * asynchronous request mode 2
       ```jsx
          XHttp().url(url).execute('GET').then(({success, json, message, status, response}) => {
              if (success) {
@@ -232,20 +236,81 @@ yarn add react-native-easy-app
    * **Flexible base widget**
      
      ```
+        XView
         XImage
         XText
-        XView
+        
         XFlatList
         
-        XImage Partial path online images depend on the Settings of image resource AssetsBaseUrl
-        
-        Can be configured as follows before use：
-        
         XWidget
-        .initResource(AssetsBaseUrl)
+        .initResource(AssetsBaseUrl)    // The uri prefix of the icon attribute of the XImage component
         .initReferenceScreen(375, 677); // The component scales the reference screen size
      ```
-    
+
+     **XView, XImage, and XText all contain the raw attribute. If the raw value is true, the setting of XWidget.initReferenceScreen (*referenceWidth*, *referenceHeight*) is ignored: multi-screen size adaptation is not automatically processed**
+
+     **XView Object** 
+     
+     | Property    |    type     |      Description                                                                                                                           |
+     | ------------|:-----------:|:-------------------------------------------------------------------------------------------------------------------------------------------|
+     | raw         |    bool     | default:false, if true, the multi-screen adaptation function will be disabled.                                                             |
+     | ...         |    ...      | If the onPress or onLongPress property is included, it has the same property as TouchableXXX, otherwise it has the same property as View   |
+     
+     **XImage Object** 
+     
+     | Property              |     type         |       Description                                                                                                                                                             |
+     | ----------------------|:----------------:| :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+     | raw                   |     bool         | default:false, If true, the multi-screen adaptation function will be disabled.                                                                                                |
+     | icon                  |     string       | equivalent to Image's srouce attribute,Can accept such as [https://xxx.yy.com/../image.jpg], [data: image / png; base64, iVBORw0KGgoAAAAN ...] or [require ('./ image.jpg')]  |
+     | iconSize              |     number       | the size of the image has priority over the width and height of the style                                                                                                     |
+     | ...                   |    ...           | if the onPress and onLongPress functions are set, XImage will be wrapped by XView, and the externally passed properties will be automatically assigned to the correct control |
+
+     **XText Object** 
+     
+     | Property              |     type         |       Description                                                                                                                                                           |
+     | ----------------------|:----------------:| :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+     | raw                   |     bool         | default:false, If true, the multi-screen adaptation function will be disabled.                                                                                              |
+     | text                  |     string       | text                                                                                                                                                                        |
+     | textExtend            |     bool         | if the icon is included, it is equivalent to setting the property of the Text component: {flex: 1}                                                                          |
+     | icon                  |     string       | equivalent to Image's srouce attribute,Can accept such as [https://xxx.yy.com/../image.jpg], [data: image / png; base64, iVBORw0KGgoAAAAN ...] or [require ('./ image.jpg')]|
+     | iconSize              |     number       | icon size                                                                                                                                                                   |
+     | iconMargin            |     number       | distance between icon and text                                                                                                                                              |
+     | iconPosition          |     string       | the position of the icon in the View, only the following values can be set: 'top', 'right', 'bottom', 'left'                                                                |
+     | ...                   |    ...           | if the onPress and onLongPress functions are set, XText will be wrapped by XView, and the externally passed properties will be automatically assigned to the correct control|
+     
+     **XFlatList Object** 
+     
+     | Property              |   type            |       Description                                                                                       |
+     | ----------------------|:-----------------:| :-------------------------------------------------------------------------------------------------------|
+     | data                  |    array          | equivalent to data of FlatList control                                                                  |
+     | noDataText            |    string         | when there is no data, the text displayed by the control                                                |
+     | noDataImage           |     uri           | when there is no data, the picture displayed below the text displayed by the control                    |
+     | indicatorOffset       |    number         | the distance from the loading indicator to the top                                                      |
+     | refreshStatus         |    object         | XFlatList list displays UI styles and text setting objects in different refresh states                  |
+     | onRefresh             |   () => {...}     | equivalent to onRefresh of FlatList control                                                             |
+     | onLoadMore            |   () => {...}     | When the list scrolls to the bottom, the callback method is executed (when more data needs to be loaded)|
+     | emptyViewHeight       |   number          | when there is no data, refresh the size of the control                                                  |
+     | ...                   |   ...             | all remaining properties of [FlatList] component                                                        |     
+
+     **FlatList component refreshStatus attribute example**
+     
+     ```jsx 
+      const RefreshStatus = {
+        Idle: {}, //idle status
+      
+        RefreshingData: { image: ImageRes.loading, text: 'Loading...' }, // Pull-down refresh..
+        NoData: { image: ImageRes.noData, text: 'No data' }, // To drop down to refresh (no data).
+        LoadFailure: { image: ImageRes.loadFail, text: 'Failed to load' }, // Drop-down refresh (load failed)
+      
+        LoadingMoreData: { moreText: 'Loading more data…' }, // Load more, in progress...
+        NoMoreData: { moreText: 'No more data') }, // Load more (no data)
+        LoadMoreFailure: { moreText: 'Click to reload' } // Load more (load failed)
+        
+        NetException: {text: 'network exception', moreText: 'Network exception, click reload'}, // network exception
+      }
+     ```
  
-  Please refer to the detailed usage method [example](https://github.com/chende008/react-native-easy-app-sample)
+  For detailed usage, please refer to the example project [Sample](https://github.com/chende008/react-native-easy-app-sample),  [Sample_MobX](https://github.com/chende008/Sample_MobX),  [Sample_Redux](https://github.com/chende008/Sample_Redux)
+  
+  You can also refer to the introduction of react-native-easy-app article : [简书](https://www.jianshu.com/nb/44288056)
 
