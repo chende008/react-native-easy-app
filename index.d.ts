@@ -35,8 +35,6 @@ interface HttpRequest {
 
     header(header: object): HttpRequest;
 
-    encodeURI(): HttpRequest;
-
     extra(extra: any): HttpRequest;
 
     timeout(timeout: number): HttpRequest;
@@ -44,6 +42,8 @@ interface HttpRequest {
     loadingFunc(func: (loading: boolean) => void): HttpRequest;
 
     configCommonFunc(enableHeaderFunc: boolean, enableParamFunc: boolean): HttpRequest;
+
+    encodeURLComponent(encodeComponent: boolean): HttpRequest;
 
     rawData(): HttpRequest;
 
@@ -94,6 +94,8 @@ interface HttpConfig {
     initContentType(contentType: string): HttpConfig;
 
     initLoadingFunc(loadingFunc: (loading: boolean) => void): HttpConfig;
+
+    initEncodeURIComponent(encodeComponent: boolean): HttpConfig;
 
 }
 

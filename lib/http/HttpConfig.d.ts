@@ -48,24 +48,31 @@ export default class HttpConfig {
 
     /**
      *
-     * @param parseDataFunc  common request header
+     * @param parseDataFunc http response result parsing interceptor
      * @return return HttpConfig Builder
      */
     initParseDataFunc(parseDataFunc: (result: object, request: object, callback: () => void) => void): HttpConfig;
 
     /**
      *
-     * @param contentType  request header
+     * @param contentType http common  Content-Type
      * @return return HttpConfig Builder
      */
     initContentType(contentType: string): HttpConfig;
 
     /**
      *
-     * @param loadingFunc  request header
+     * @param loadingFunc http loading status
      * @return return HttpConfig Builder
      */
     initLoadingFunc(loadingFunc: (loading: boolean) => void): HttpConfig;
+
+    /**
+     *
+     * @param encodeComponent encodeURLComponent params or not
+     * @return return HttpConfig Builder
+     */
+    initEncodeURIComponent(encodeComponent: boolean): HttpConfig;
 
 }
 

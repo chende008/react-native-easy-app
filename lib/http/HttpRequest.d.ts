@@ -48,12 +48,6 @@ export default class HttpRequest {
 
     /**
      *
-     * @return return HttpRequest Builder
-     */
-    encodeURI(): HttpRequest;
-
-    /**
-     *
      * @param extra  extend data
      * @return return HttpRequest Builder
      */
@@ -79,6 +73,12 @@ export default class HttpRequest {
      * @return return HttpRequest Builder
      */
     configCommonFunc(enableCommonHeader: boolean, enableCommonParams: boolean): HttpRequest;
+
+    /**
+     *
+     * @return return HttpRequest Builder
+     */
+    encodeURLComponent(encodeComponent: boolean): HttpRequest;
 
     /**
      * callback result(json) : root data for request [ignore custom request parser]
