@@ -115,6 +115,7 @@ yarn add react-native-easy-app
       | initHeaderSetFunc     |           **(headers, request) => {...}**             |  XHttpConfig Builder   | 请求header设置拦截器；可在此处，为请求添加公共的headers参数        |
       | initParamSetFunc      |           **(params, request) => {...}**              |  HttpRequest Builder   | 请求body(params)设置拦截器；可在此处，为请求添加公共的params参数   |
       | initParseDataFunc     |           **(result, request, callback) => {...}**    |  XHttpConfig Builder   | 请求回调拦截器；可在此处，为接口返回数据做公共解析处理              |
+      | initEncodeURIComponent|           **encodeComponent** *:boolean*              |  HttpRequest Builder   | 全局设置是否对参数进行encodeURLComponent编码                        |
      
    * **发送请求模板**
      
@@ -139,10 +140,10 @@ yarn add react-native-easy-app
             .internal(true)
             .rawData()
             .pureText()
-            .encodeURI()
             .timeout(10000)
             .extra({tag: 'xx'})
             .contentType('text/xml')
+            .encodeURLComponent(true)
             .loadingFunc((loading)=> showLoading('请求中，请稍候...', loading))
             .rawData()
             .pureText()
@@ -168,6 +169,7 @@ yarn add react-native-easy-app
      | timeout               |           **timeout** *:number*                                  |  HttpRequest Builder  | 设置当前请求的超时时长，单位毫秒                                                                        |
      | loadingFunc           |           **(isLoading)=>{ ... }**                               |  HttpRequest Builder  | 当前接口请求状态回调；isLoading为true表示请求进行中                                                      |
      | configCommonFunc      |( **enableHeaderFunc** *:bool*, **enableParamFunc** *:bool* )     |  HttpRequest Builder  | 设置在XHttpConfig添加的**[initHeaderSetFunc] [initParamSetFunc]**是否生效，默认为true（生效）            |
+     | encodeURLComponent    |        **encodeComponent** *:boolean*                            |  HttpRequest Builder  | 设置是否对参数进行encodeURLComponent编码                                                               |
      | rawData               |           none                                                   |  HttpRequest Builder  | 设置返回的接口数据是否为原始未处理过的数据；若调用，则会忽略XHttpConfig中设置**[initParseDataFunc]**函数作用  |
      | pureText              |           none                                                   |  HttpRequest Builder  | 设置返回的接口数据是否为纯文本数据（框架默认为接口为json数据，若后台返回的数据为非json结构时间使用：如 XML 格式  |
      | formJson              |           none                                                   |  HttpRequest Builder  | 等价于设置当前接口请求类型 ( headers['Content-Type'] = 'application/json' )                             |
