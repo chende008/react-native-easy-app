@@ -1,40 +1,38 @@
-## react-native-easy-app （React Native One-stop solution）
+## react-native-easy-app （RN开发 一站式解决方案）
 
+[English version doc here](README.en-US.md)
 
-[查看中文文档](README.zh-CN.md)
+### 安装
 
-
-### Installation
-
-```bash 
+```bash
 npm install react-native-easy-app --save
 ``` 
-or 
+或者
 
 ```bash
 yarn add react-native-easy-app
 ```
 
-### Features
+### 功能点
 
-  * Support for fast synchronous access to AsyncStorage
-  * Support for flexible Http requests through optional configuration
-  * Support for Flexible base widget (no sensory multi-screen adaptation)
+  * 支持快捷[同步]访问AsyncStorage
+  * 支持灵活、可配置的Http请求
+  * 灵活的基础控件(无感知多屏适配)
 
 
-### Usage 
+### 快速开始 
 
-  For detailed usage, please refer to the example project [Sample](https://github.com/chende008/react-native-easy-app-sample),  [Sample_MobX](https://github.com/chende008/Sample_MobX),  [Sample_Redux](https://github.com/chende008/Sample_Redux)
+   详细使用方法，请参考示例项目 [Sample](https://github.com/chende008/react-native-easy-app-sample),  [Sample_MobX](https://github.com/chende008/Sample_MobX),  [Sample_Redux](https://github.com/chende008/Sample_Redux)
   
-  You can also refer to the introduction of react-native-easy-app article : [简书](https://www.jianshu.com/nb/44288056)
+   您也可以参考文章对react-native-easy-app使用介绍： [简书](https://www.jianshu.com/nb/44288056)
 
-   * **Implement a persistent data store manager ( based AsyncStorage )**
+   * **用AsyncStorage快速实现一个可持久化的数据存、取管理器**
    
       ```jsx 
-         export const RNStorage = {// RNStorage : custom data store object
-             token: undefined, // string type
-             isShow: undefined, // bool type
-             userInfo: undefined, // object type
+         export const RNStorage = {// RNStorage 自定义数据存储对象
+             token: undefined, //  字符串类型
+             isShow: undefined, // 布尔类型
+             userInfo: undefined, // 对象类型
          };
       ```
       
@@ -43,47 +41,43 @@ yarn add react-native-easy-app
          
         const initCallback = () => {
         
-             // From now on, you can write or read the variables in RNStorage synchronously
+             // 现在起，你可以同步读、写RNStorage中的任何属性了
              
-             // equal to [console.log(await AsyncStorage.getItem('isShow'))]
-             console.log(RNStorage.isShow); 
+             console.log(RNStorage.isShow); // 相当于 [ console.log(await AsyncStorage.getItem('isShow')) ]
              
-             // equal to [ await AsyncStorage.setItem('token',TOKEN1343DN23IDD3PJ2DBF3==') ]
-             RNStorage.token = 'TOKEN1343DN23IDD3PJ2DBF3=='; 
+             RNStorage.token = 'TOKEN1343DN23IDD3PJ2DBF3=='; // 相当于 [ await AsyncStorage.setItem('token',TOKEN1343DN23IDD3PJ2DBF3==') ]
              
-             // equal to [ await AsyncStorage.setItem('userInfo',JSON.stringify({ name:'rufeng', age:30})) ]
-             RNStorage.userInfo = {name: 'rufeng', age: 30}; 
+             RNStorage.userInfo = {name: 'rufeng', age: 30}; // 相当于 [ await AsyncStorage.setItem('userInfo',JSON.stringify({ name:'rufeng', age:30})) ] 
         };
         
         XStorage.initStorage(RNStorage, initCallback);   
-                
       ```
       
-       **XStorage Object**
+       **XStorage 对象** 
             
-       | Method                |                   param                                         |      ReturnType               | Description                                                             |
-       | ----------------------|:----------------------------------------------------------------|:-----------------------------:| :-----------------------------------------------------------------------|
-       | initStorage           | (storageObj, initCallback, dataCallback?, version?, storageImp?)|  void                         | Establish the mapping relationship between storageObj and AsyncStorage  |
-       | initStorageSync       | (storageObj, dataCallback?, version?, storageImp?)              |  Promise<boolean>             | Establish the mapping relationship between storageObj and AsyncStorage  |                                                             |
-       | multiGet              |           **keys** *:string[]*                                  |  Promise<[string, string][]>  | equal to AsyncStorage.multiGet()                                        |
-       | saveItems             |           **keyValuePairs** *:string[][]*                       |  Promise<void>                | equal to AsyncStorage.multiSet()                                        |
-       | removeItems           |           **keys** *:string[]*                                  |  Promise<void>                | equal to AsyncStorage.multiRemove()                                     |
-       | clear                 |           none                                                  |  void                         | equal to AsyncStorage.clear()                                           |
-       
-       **XStorage.initStorage parameters** 
-                  
-       | Parameter Name                            |                   mode                        | Description                                                                      |
-       | ------------------------------------------|:---------------------------------------------:| :--------------------------------------------------------------------------------|
-       | **storageObj** *:object*                  | { token:undefined, userName:undefined, ...}   | list of data that needs to be persisted                                          |
-       | **initializedFunc** *:callback function*  |              ()=>{ ... }                      | callback after persistent mapping success                                        |   
-       | **dataChangedFunc** *?:callback function* |              (dataSet)=>{ ... }               | persistent data change callback                                                  |
-       | **version** *?:string*                    |           '1.0'                               | data storage version control(default:1.0)                                        |
-       | **storageImp** *?:AsyncStorage*           |           AsyncStorage                        | data Persistence Implementation Carrier(default:AsyncStorage from 'react-native')|
-    
-    
-   * **Configurable Http request framework**
+       | 方法                  |                   参数                                            |      返回值类型                | 描述                                                                     |
+       | ----------------------|:-----------------------------------------------------------------|:-----------------------------:| :-----------------------------------------------------------------------|
+       | initStorage           | (targetObj, initCallback, dataCallback?, version?, storageImp?)  |  void                         | 将【targetObj】对象中的属性与【AsyncStorage】中的字段建立映射，形成绑定关系    |
+       | initStorageSync       | (targetObj, dataCallback?, version?, storageImp?)                |  Promise<boolean>             | 以Promise形式将【targetObj】与【AsyncStorage】建立绑定关系                  |                                                             |
+       | multiGet              |           **keys** *:string[]*                                   |  Promise<[string, string][]>  | 等价于 AsyncStorage.multiGet()                                           |
+       | saveItems             |           **keyValuePairs** *:string[][]*                        |  Promise<void>                | 等价于 AsyncStorage.multiSet()                                           |
+       | removeItems           |           **keys** *:string[]*                                   |  Promise<void>                | 等价于 AsyncStorage.multiRemove()                                        |
+       | clear                 |           none                                                   |  void                         | 等价于 AsyncStorage.clear()                                              |
    
-     * All based on configuration (configuration optional, free to set)
+       **XStorage.initStorage 方法参数描述：** 
+                  
+       | 参数名                                     |                   形式                        | 描述                                                         |
+       | ------------------------------------------|:---------------------------------------------:| :-----------------------------------------------------------|
+       | **storageObj** *:object*                  | { token:undefined, userName:undefined, ...}   | 需要持久化的数据列表对象                                       |
+       | **initializedFunc** *:callback function*  |              ()=>{ ... }                      | 持久化映射成功成功后的回调                                     |   
+       | **dataChangedFunc** *?:callback function* |              (dataSet)=>{ ... }               | 持久化数据变更后的回调                                         |
+       | **version** *?:string*                    |           '1.0'                               | 数据存储版本控制(默认:1.0)                                     |
+       | **storageImp** *?:AsyncStorage*           |           AsyncStorage                        | 数据持久化实现基础(默认为:AsyncStorage from 'react-native')    |
+    
+    
+   * **支持可配置的Http请求**
+   
+     * 一切基于配置（配置可选，自由设定）
      
       ```jsx 
       import { XHttpConfig, XHttpConst } from 'react-native-easy-app';
@@ -108,22 +102,22 @@ yarn add react-native-easy-app
                 );
       ```
       
-      **XHttpConfig Object （All method are optional）** 
+      **XHttpConfig 对象 （所有方法都是可选的）** 
       
-      | Method                |                   param                               |      ReturnType        | Description                                       |
-      | ----------------------|:------------------------------------------------------|:----------------------:| :------------------------------------------------ |
-      | constructor           |           **serverTag** *?:string*                    |  XHttpConfig Builder   | Corresponding to the server serverTag of XHttp    |
-      | initBaseUrl           |           **baseUrl** *:string*                       |  XHttpConfig Builder   | set baseUrl                                       |
-      | initTimeout           |           **timeout** *:number*                       |  XHttpConfig Builder   | set common timeout                                |
-      | initHttpLogOn         |           **logOn** *:bool*                           |  XHttpConfig Builder   | set print request log or not                      |
-      | initContentType       |           **contentType** *:string*                   |  XHttpConfig Builder   | set common contentType                            |
-      | initLoadingFunc       |           **(isLoading) => {...}**                    |  XHttpConfig Builder   | callback http request loading status              |
-      | initHeaderSetFunc     |           **(headers, request) => {...}**             |  XHttpConfig Builder   | Intercept header settings                         |
-      | initParamSetFunc      |           **(params, request) => {...}**              |  HttpRequest Builder   | Intercept params settings                         |
-      | initParseDataFunc     |           **(result, request, callback) => {...}**    |  XHttpConfig Builder   | Intercept interface returns data parsing          |
-      | initEncodeURIComponent|           **encodeComponent** *:boolean*              |  HttpRequest Builder   | Set common parameters(body) URL encoding          |
+      | 方法                  |                   参数                                 |      返回类型           | 描述                                                         |
+      | ----------------------|:------------------------------------------------------|:----------------------:| :------------------------------------------------------------|
+      | constructor           |           **serverTag** *?:string*                    |  XHttpConfig Builder   | 与XHttp(serverTag)保持一致(用于多服务器请求配置)，默认为空        |
+      | initBaseUrl           |           **baseUrl** *:string*                       |  XHttpConfig Builder   | 设置Http请求公共的BaseUrl                                      |
+      | initTimeout           |           **timeout** *:number*                       |  XHttpConfig Builder   | 设置公共的默认请求超时时间                                       |
+      | initHttpLogOn         |           **logOn** *:bool*                           |  XHttpConfig Builder   | 设置是否打印Http请求日志                                        |
+      | initContentType       |           **contentType** *:string*                   |  XHttpConfig Builder   | 设置Http请求默认的ContentType                                  |
+      | initLoadingFunc       |           **(isLoading) => {...}**                    |  XHttpConfig Builder   | Http公共请求状态回调，isLoading为true表示请求进行中               |
+      | initHeaderSetFunc     |           **(headers, request) => {...}**             |  XHttpConfig Builder   | 请求header设置拦截器；可在此处，为请求添加公共的headers参数        |
+      | initParamSetFunc      |           **(params, request) => {...}**              |  HttpRequest Builder   | 请求body(params)设置拦截器；可在此处，为请求添加公共的params参数   |
+      | initParseDataFunc     |           **(result, request, callback) => {...}**    |  XHttpConfig Builder   | 请求回调拦截器；可在此处，为接口返回数据做公共解析处理              |
+      | initEncodeURIComponent|           **encodeComponent** *:boolean*              |  HttpRequest Builder   | 全局设置是否对参数进行encodeURLComponent编码                        |
      
-   * **Send request template**
+   * **发送请求模板**
      
      ```jsx 
         import { XHttp } from 'react-native-easy-app';
@@ -139,7 +133,7 @@ yarn add react-native-easy-app
              }
         };
      
-        * Settable parameters are spliced in builder form
+        * 可设置的参数以builder形式拼接
         XHttp().url(url)
             .header(header)
             .param(param)
@@ -150,7 +144,7 @@ yarn add react-native-easy-app
             .extra({tag: 'xx'})
             .contentType('text/xml')
             .encodeURLComponent(true)
-            .loadingFunc((loading)=> showLoading('Please wait for a moment ...', loading))
+            .loadingFunc((loading)=> showLoading('请求中，请稍候...', loading))
             .rawData()
             .pureText()
             .configCommonFunc(true,true)
@@ -161,43 +155,43 @@ yarn add react-native-easy-app
        
      ```
      
-     **HttpRequest Object** 
+     **HttpRequest 对象** 
      
-     | Method                |                   params                                         | ReturnType            | Description                                                                           |
-     | ----------------------|:-----------------------------------------------------------------|:---------------------:|:--------------------------------------------------------------------------------------|
-     | constructor           |           **serverTag** *:string*                                |  HttpRequest Builder  | Corresponding to the server serverTag of XHttpConfig                                  |
-     | url                   |           **url** *:string*                                      |  HttpRequest Builder  | set full url or url suffixes                                                          |
-     | header                |  **{ Accept, Authorization ... }**  *:object*                    |  HttpRequest Builder  | Set the headers parameters                                                            |
-     | param                 |  **{ userName, password, customerId ...  }** *:object*           |  HttpRequest Builder  | Set the body parameters                                                               |
-     | contentType           |           **contentType** *:string*                              |  HttpRequest Builder  | set current request contentType (common contentType Settings will be replaced)        |
-     | internal              |           **internal** *:bool*                                   |  HttpRequest Builder  | set request tag (default true), And then you can get it anywhere there's a request    |
-     | extra                 |           **{customTag ...}**                                    |  HttpRequest Builder  | set request custom tag And then you can get it anywhere there's a request             |
-     | timeout               |           **timeout** *:number*                                  |  HttpRequest Builder  | set current request timeout (common timeout Settings will be replaced)                |
-     | loadingFunc           |           **(isLoading)=>{ ... }**                               |  HttpRequest Builder  | request status callback (Reflects the status is loading or not)                       |
-     | configCommonFunc      |( **enableHeaderFunc** *:bool*, **enableParamFunc** *:bool* )     |  HttpRequest Builder  | set common config **[initHeaderSetFunc] [initParamSetFunc]** are valid or not         |
-     | encodeURLComponent    |        **encodeComponent** *:boolean*                            |  HttpRequest Builder  | Set parameters(body) URL encoding                                                     |
-     | rawData               |           none                                                   |  HttpRequest Builder  | Sets the callback result to return raw json (**[initParseDataFunc]** will be ignored) |
-     | pureText              |           none                                                   |  HttpRequest Builder  | Set the callback result to return plain text                                          |
-     | formJson              |           none                                                   |  HttpRequest Builder  | equal to set ( headers['Content-Type'] = 'application/json' )                         |
-     | formData              |           none                                                   |  HttpRequest Builder  | equal to set ( headers['Content-Type'] = 'multipart/form-data' )                      |
-     | formEncoded           |           none                                                   |  HttpRequest Builder  | equal to set ( headers['Content-Type'] = 'application/x-www-form-urlencoded' )        |
-     | get                   |**(success, json, message, status ,response) => void**            |    void               | [get] request callback                                                                |
-     | post                  |**(success, json, message, status ,response) => void**            |    void               | [post] request callback                                                               |
-     | options               |**(success, json, message, status ,response) => void**            |    void               | [options] request callback                                                            |
-     | put                   |**(success, json, message, status ,response) => void**            |    void               | [put] request callback                                                                |
-     | delete                |**(success, json, message, status ,response) => void**            |    void               | [delete] request callback                                                             |
-     | patch                 |**(success, json, message, status ,response) => void**            |    void               | [patch] request callback                                                              |
-     | request               |**(method, (success, json, message, status ,response) => void )** |    void               | request callback for specified method                                                 |
-     | execute               |          **method** *:string*                                    |   Promise             | request for the specified method returned in the form of a promise                    |
-     | fetch                 |          **method** *:string*                                    |   Promise             | returns a fetch result without any processing                                         |
-          
+     | 方法                  |                   参数                                            |      返回类型          | 描述                                                                                                |
+     | ----------------------|:-----------------------------------------------------------------|:---------------------:|:----------------------------------------------------------------------------------------------------|
+     | constructor           |           **serverTag** *:string*                                |  HttpRequest Builder  | 与XHttpConfig(serverTag)保持一致(用于多服务器请求配置)，默认为空                                         |
+     | url                   |           **url** *:string*                                      |  HttpRequest Builder  | 设置请求的url；若XHttpConfig中配置了baseUrl，当前只需要配置接口url后缀即可                                |
+     | header                |  **{ Accept, Authorization ... }**  *:object*                    |  HttpRequest Builder  | 设置当前请求的header参数；若与XHttpConfig中配置的公共header参数同名，则以当前设置为准                       |
+     | param                 |  **{ userName, password, customerId ...  }** *:object*           |  HttpRequest Builder  | 设置当前请求的params参数；若与XHttpConfig中配置的公共params参数同名，则以当前设置为准                       |
+     | contentType           |           **contentType** *:string*                              |  HttpRequest Builder  | 设置当前请求的ContentType；若XHttpConfig中设置公共的ContentType，则以当前设置为准                         |
+     | internal              |           **internal** *:bool*                                   |  HttpRequest Builder  | 用于请求区别标记，默认为true；通常在XHttp中传入，在XHttpConfig的回调拦截器中使用，拦截器的request中可取该值   |
+     | extra                 |           **{customTag ...}**                                    |  HttpRequest Builder  | 用于请求区别标记，通常在XHttp中传入，在XHttpConfig的回调拦截器中使用，拦截器的request中可取该值              |
+     | timeout               |           **timeout** *:number*                                  |  HttpRequest Builder  | 设置当前请求的超时时长，单位毫秒                                                                        |
+     | loadingFunc           |           **(isLoading)=>{ ... }**                               |  HttpRequest Builder  | 当前接口请求状态回调；isLoading为true表示请求进行中                                                      |
+     | configCommonFunc      |( **enableHeaderFunc** *:bool*, **enableParamFunc** *:bool* )     |  HttpRequest Builder  | 设置在XHttpConfig添加的**[initHeaderSetFunc] [initParamSetFunc]**是否生效，默认为true（生效）            |
+     | encodeURLComponent    |        **encodeComponent** *:boolean*                            |  HttpRequest Builder  | 设置是否对参数进行encodeURLComponent编码                                                               |
+     | rawData               |           none                                                   |  HttpRequest Builder  | 设置返回的接口数据是否为原始未处理过的数据；若调用，则会忽略XHttpConfig中设置**[initParseDataFunc]**函数作用  |
+     | pureText              |           none                                                   |  HttpRequest Builder  | 设置返回的接口数据是否为纯文本数据（框架默认为接口为json数据，若后台返回的数据为非json结构时间使用：如 XML 格式  |
+     | formJson              |           none                                                   |  HttpRequest Builder  | 等价于设置当前接口请求类型 ( headers['Content-Type'] = 'application/json' )                             |
+     | formData              |           none                                                   |  HttpRequest Builder  | 等价于设置当前接口请求类型 ( headers['Content-Type'] = 'multipart/form-data' )                          |
+     | formEncoded           |           none                                                   |  HttpRequest Builder  | 等价于设置当前接口请求类型 ( headers['Content-Type'] = 'application/x-www-form-urlencoded' )            |
+     | get                   |**(success, json, message, status ,response) => void**            |    void               | get 请求及回调                                                                                        |
+     | post                  |**(success, json, message, status ,response) => void**            |    void               | post 请求及回调                                                                                       |
+     | options               |**(success, json, message, status ,response) => void**            |    void               | options 请求及回调                                                                                    |
+     | put                   |**(success, json, message, status ,response) => void**            |    void               | put 请求及回调                                                                                        |
+     | delete                |**(success, json, message, status ,response) => void**            |    void               | delete 请求及回调                                                                                     |
+     | patch                 |**(success, json, message, status ,response) => void**            |    void               | patch 请求及回调                                                                                      |
+     | request               |**(method, (success, json, message, status ,response) => void )** |    void               | 以指定的请求method，发送请求并回调                                                                      |
+     | execute               |          **method** *:string*                                    |   Promise             | 以指定的请求method，发送请求并返回一个Promise对象                                                        |
+     | fetch                 |          **method** *:string*                                    |   Promise             | 以指定的请求method，发送请求并返回一个Promise对象，返回的数据不做任何处理，以RN原生fetch的方式结果原样返回     |
+     
      *new HttpRequest() ==> XHttp()* 
           
-     **It is recommended that it be more convenient to send requests using XHttp()**
+     **推荐通过 XHttp() 的形式来发送Http请求会更便捷**
      
-   * **request-send**
+   * **发送请求**
      
-      * synchronous request
+      * 同步请求
       ```jsx
          import { XHttp } from 'react-native-easy-app';
          
@@ -212,8 +206,8 @@ yarn add react-native-easy-app
             showToast(message)
          }
       ```
-         
-      * asynchronous request mode 1    
+      
+      * 异步请求 方式1
       ```jsx
          XHttp().url(url).get((success, json, message, status, response)=>{
              if (success){
@@ -223,8 +217,8 @@ yarn add react-native-easy-app
              }
          });
       ```
-                 
-      * asynchronous request mode 2
+            
+      * 异步请求 方式2           
       ```jsx
          XHttp().url(url).execute('GET').then(({success, json, message, status, response}) => {
              if (success) {
@@ -235,84 +229,84 @@ yarn add react-native-easy-app
           })
       ```
      
-   * **Flexible base widget**
-     
+     * 灵活的基础控件
      ```
-        XView
         XImage
         XText
+        XView
         
         XFlatList
         
         XWidget
-        .initResource(AssetsBaseUrl)    // The uri prefix of the icon attribute of the XImage component
-        .initReferenceScreen(375, 677); // The component scales the reference screen size
+        .initResource(AssetsBaseUrl)    // XImage组件的icon属性的uri前缀
+        .initReferenceScreen(375, 677); // UI 整体尺寸缩放参考屏幕尺寸
      ```
 
-     **XView, XImage, and XText all contain the raw attribute. If the raw value is true, the setting of XWidget.initReferenceScreen (*referenceWidth*, *referenceHeight*) is ignored: multi-screen size adaptation is not automatically processed**
+     **XView，XImage，XText都包含raw属性，若raw值为true，则会忽略XWidget.initReferenceScreen( *referenceWidth*, *referenceHeight* )的设置：不自动处理多屏尺寸适配**
 
-     **XView Object** 
+     **XView 组件** 
      
-     | Property    |    type     |      Description                                                                                                                           |
-     | ------------|:-----------:|:-------------------------------------------------------------------------------------------------------------------------------------------|
-     | raw         |    bool     | default:false, if true, the multi-screen adaptation function will be disabled.                                                             |
-     | ...         |    ...      | If the onPress or onLongPress property is included, it has the same property as TouchableXXX, otherwise it has the same property as View   |
+     | 属性        |    类型     |      描述                                                                                   |
+     | ------------|:-----------:|:-------------------------------------------------------------------------------------------|
+     | raw         |    bool     | 默认为false，若为true则不会自动处理多屏幕尺寸适配                                               |
+     | ...         |    ...      | 若包含onPress或onLongPress属性，则等同于TouchableXXX系列组件,否则等同于View组件,并拥有其相应的属性 |
      
      **XImage Object** 
      
-     | Property              |     type         |       Description                                                                                                                                                             |
-     | ----------------------|:----------------:| :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-     | raw                   |     bool         | default:false, If true, the multi-screen adaptation function will be disabled.                                                                                                |
-     | icon                  |     string       | equivalent to Image's srouce attribute,Can accept such as [https://xxx.yy.com/../image.jpg], [data: image / png; base64, iVBORw0KGgoAAAAN ...] or [require ('./ image.jpg')]  |
-     | iconSize              |     number       | the size of the image has priority over the width and height of the style                                                                                                     |
-     | ...                   |    ...           | if the onPress and onLongPress functions are set, XImage will be wrapped by XView, and the externally passed properties will be automatically assigned to the correct control |
+     | 属性        |    类型          |      描述                                                                                                                                                |
+     | ------------|:---------------:|:---------------------------------------------------------------------------------------------------------------------------------------------------------|
+     | raw         |    bool         | 默认为false，若为true则不会自动处理多屏幕尺寸适配                                                                                                             |
+     | icon        |     string      | 相当于Image的source属性，可以接受的参数格式如：[https://xxx.yy.com/image.jpg]，[data: image / png; base64, iVBORw0KGgoAAAAN ...]，[require ('./ image.jpg')]  |
+     | iconSize    |     number      | 图标的尺寸，优先级高于style的width与height                                                                                                                  |
+     | ...         |    ...          | 如果设置了onPress和onLongPress函数，XImage将被XView包裹，并且外部传入的属性将会自动被分配给正确的控件                                                             |
 
-     **XText Object** 
+     **XText 组件** 
      
-     | Property              |     type         |       Description                                                                                                                                                           |
-     | ----------------------|:----------------:| :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-     | raw                   |     bool         | default:false, If true, the multi-screen adaptation function will be disabled.                                                                                              |
-     | text                  |     string       | text                                                                                                                                                                        |
-     | textExtend            |     bool         | if the icon is included, it is equivalent to setting the property of the Text component: {flex: 1}                                                                          |
-     | icon                  |     string       | equivalent to Image's srouce attribute,Can accept such as [https://xxx.yy.com/../image.jpg], [data: image / png; base64, iVBORw0KGgoAAAAN ...] or [require ('./ image.jpg')]|
-     | iconSize              |     number       | icon size                                                                                                                                                                   |
-     | iconMargin            |     number       | distance between icon and text                                                                                                                                              |
-     | iconPosition          |     string       | the position of the icon in the View, only the following values can be set: 'top', 'right', 'bottom', 'left'                                                                |
-     | ...                   |    ...           | if the onPress and onLongPress functions are set, XText will be wrapped by XView, and the externally passed properties will be automatically assigned to the correct control|
+     | 属性           |    类型          |      描述                                                                                                                                                |
+     | ---------------|:---------------:|:---------------------------------------------------------------------------------------------------------------------------------------------------------|
+     | raw            |    bool         | 默认为false，若为true则不会自动处理多屏幕尺寸适配                                                                                                             |
+     | text           |     string      | 文本                                                                                                                                                      |
+     | textExtend     |     bool        | 如果包含图标，则等效于将Text组件设置属性: {flex:1}                                                                                                            |
+     | icon           |     string  | 相当于Image的source属性，可以接受的参数格式如：[https://xxx.yy.com/image.jpg]，[data: image / png; base64, iVBORw0KGgoAAAAN ...]，[require ('./ image.jpg')]   |
+     | iconSize       |     number      | 图标尺寸                                                                                                                                                   |
+     | iconMargin     |     number      | 图标与文本之间的距离                                                                                                                                         |
+     | iconPosition   |     string      | 图标在当前控件中的位置，可以设置的值有： 'top', 'right', 'bottom', 'left'                                                                                      |
+     | ...            |    ...          | 如果设置了onPress和onLongPress函数，XImage将被XView包裹，并且外部传入的属性将会自动被分配给正确的控件                                                              |
      
-     **XFlatList Object** 
+     **XFlatList 组件** 
      
-     | Property              |   type            |       Description                                                                                       |
-     | ----------------------|:-----------------:| :-------------------------------------------------------------------------------------------------------|
-     | data                  |    array          | equivalent to data of FlatList control                                                                  |
-     | noDataText            |    string         | when there is no data, the text displayed by the control                                                |
-     | noDataImage           |     uri           | when there is no data, the picture displayed below the text displayed by the control                    |
-     | indicatorOffset       |    number         | the distance from the loading indicator to the top                                                      |
-     | refreshStatus         |    object         | XFlatList list displays UI styles and text setting objects in different refresh states                  |
-     | onRefresh             |   () => {...}     | equivalent to onRefresh of FlatList control                                                             |
-     | onLoadMore            |   () => {...}     | When the list scrolls to the bottom, the callback method is executed (when more data needs to be loaded)|
-     | emptyViewHeight       |   number          | when there is no data, refresh the size of the control                                                  |
-     | ...                   |   ...             | all remaining properties of [FlatList] component                                                        |     
+     | 属性                   |   类型            |    描述                                           |
+     | ----------------------|:-----------------:| :-------------------------------------------------|
+     | data                  |    array          | 相当于FlatList组件的data属性                        |
+     | noDataText            |    string         | 若数据为空时展示的文本                               |
+     | noDataImage           |     uri           | 若数据为空时展示在文本下的图片                        |
+     | indicatorOffset       |    number         | 下拉刷新loading指示器距顶部的距离                     |
+     | refreshStatus         |    object         | XFlatList列表在不同刷新状态展示的UI样式及文本设置对象   |
+     | onRefresh             |   () => {...}     | 相当于FlatList控件的onRefresh属性                    |
+     | onLoadMore            |   () => {...}     | 当列表滚动到底部，被执行的回调方法（需要加载更多数据时）  |
+     | emptyViewHeight       |   number          | 无数据时，空View的高度                               |
+     | ...                   |   ...             | FlatList组件的所有剩余属性                           |     
 
-     **FlatList component refreshStatus attribute example**
+     **FlatList 组件刷新状对象示例**
      
      ```jsx 
       const RefreshStatus = {
-        Idle: {}, //idle status
+        Idle: {}, //闲置状态
       
-        RefreshingData: { image: ImageRes.loading, text: 'Loading...' }, // Pull-down refresh..
-        NoData: { image: ImageRes.noData, text: 'No data' }, // To drop down to refresh (no data).
-        LoadFailure: { image: ImageRes.loadFail, text: 'Failed to load' }, // Drop-down refresh (load failed)
+        RefreshingData: {image: ImageRes.loading, text: '加载中，请稍候...'}, //下拉刷新中..
+        NoData: {image: ImageRes.noData, text: '加载完成，无数据'}, //下拉刷新（无数据）
+        LoadFailure: {image: ImageRes.loadFail, text: '加载失败'}, //下拉刷新（加载失败）
       
-        LoadingMoreData: { moreText: 'Loading more data…' }, // Load more, in progress...
-        NoMoreData: { moreText: 'No more data') }, // Load more (no data)
-        LoadMoreFailure: { moreText: 'Click to reload' } // Load more (load failed)
+        LoadingMoreData: {moreText: '数据加载中…'}, //加载更多,进行中...
+        NoMoreData: {moreText: '已加载全部数据'}, //加载更多（无数据）
+        LoadMoreFailure: {moreText: '点击重新加载'}, //加载更多（加载失败）
         
-        NetException: {text: 'network exception', moreText: 'Network exception, click reload'}, // network exception
+        NetException: {text: '网络异常', moreText: '网络异常，点击重试'}, // 网络异常
       }
      ```
  
-  For detailed usage, please refer to the example project [Sample](https://github.com/chende008/react-native-easy-app-sample),  [Sample_MobX](https://github.com/chende008/Sample_MobX),  [Sample_Redux](https://github.com/chende008/Sample_Redux)
-  
-  You can also refer to the introduction of react-native-easy-app article : [简书](https://www.jianshu.com/nb/44288056)
+   详细使用方法，请参考示例项目 [Sample](https://github.com/chende008/react-native-easy-app-sample),  [Sample_MobX](https://github.com/chende008/Sample_MobX),  [Sample_Redux](https://github.com/chende008/Sample_Redux)
+    
+   您也可以参考文章对react-native-easy-app使用介绍： [简书](https://www.jianshu.com/nb/44288056)
+
 
