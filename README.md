@@ -2,6 +2,8 @@
 
 [English version doc here](README.en-US.md)
 
+![开发交流QQ群](https://upload-images.jianshu.io/upload_images/22060892-fff0d333a861f9b5.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 ### 安装
 
 ```bash
