@@ -26,7 +26,7 @@ yarn add react-native-easy-app
 
   For detailed usage, please refer to the example project [Sample](https://github.com/chende008/react-native-easy-app-sample),  [Sample_MobX](https://github.com/chende008/Sample_MobX),  [Sample_Redux](https://github.com/chende008/Sample_Redux)
   
-  You can also refer to the introduction of react-native-easy-app article : [简书](https://www.jianshu.com/nb/44288056)
+  You can also refer to the introduction of react-native-easy-app article : [简书](https://www.jianshu.com/p/88821b1607a7)
 
    * **Implement a persistent data store manager ( based AsyncStorage )**
    

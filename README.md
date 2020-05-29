@@ -26,7 +26,7 @@ yarn add react-native-easy-app
 
    详细使用方法，请参考示例项目 [Sample](https://github.com/chende008/react-native-easy-app-sample),  [Sample_MobX](https://github.com/chende008/Sample_MobX),  [Sample_Redux](https://github.com/chende008/Sample_Redux)
   
-   您也可以参考文章对react-native-easy-app使用介绍： [简书](https://www.jianshu.com/nb/44288056)
+   您也可以参考文章对react-native-easy-app使用介绍： [简书](https://www.jianshu.com/p/88821b1607a7)
 
    * **用AsyncStorage快速实现一个可持久化的数据存、取管理器**
    
