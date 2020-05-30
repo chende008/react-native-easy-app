@@ -52,7 +52,7 @@ yarn add react-native-easy-app
              RNStorage.userInfo = {name: 'rufeng', age: 30}; // 相当于 [ await AsyncStorage.setItem('userInfo',JSON.stringify({ name:'rufeng', age:30})) ] 
         };
         
-        XStorage.initStorage(RNStorage, initCallback);   
+        XStorage.initStorage(RNStorage, initCallback, dataChangeCallback, '1.0', AsyncStorage);   
       ```
       
        **XStorage 对象** 
@@ -66,15 +66,17 @@ yarn add react-native-easy-app
        | removeItems           |           **keys** *:string[]*                                   |  Promise<void>                | 等价于 AsyncStorage.multiRemove()                                        |
        | clear                 |           none                                                   |  void                         | 等价于 AsyncStorage.clear()                                              |
    
-       **XStorage.initStorage 方法参数描述：** 
-                  
-       | 参数名                                     |                   形式                        | 描述                                                         |
-       | ------------------------------------------|:---------------------------------------------:| :-----------------------------------------------------------|
-       | **storageObj** *:object*                  | { token:undefined, userName:undefined, ...}   | 需要持久化的数据列表对象                                       |
-       | **initializedFunc** *:callback function*  |              ()=>{ ... }                      | 持久化映射成功成功后的回调                                     |   
-       | **dataChangedFunc** *?:callback function* |              (dataSet)=>{ ... }               | 持久化数据变更后的回调                                         |
-       | **version** *?:string*                    |           '1.0'                               | 数据存储版本控制(默认:1.0)                                     |
-       | **storageImp** *?:AsyncStorage*           |           AsyncStorage                        | 数据持久化实现基础(默认为:AsyncStorage from 'react-native')    |
+       **XStorage.initStorage 方法参数描述**  
+       
+       | 参数名                                     | 是否必须 |                   形式                        | 描述                                                         |
+       | ------------------------------------------|:-------:|:---------------------------------------------:| :-----------------------------------------------------------|
+       | **storageObj** *:object*                  |    是   | { token:undefined, userName:undefined, ...}   | 需要持久化的数据列表对象                                       |
+       | **initializedFunc** *:callback function*  |    是   |         ()=>{ ... }                           | 持久化映射成功成功后的回调                                     |   
+       | **dataChangedFunc** *?:callback function* |    否   |         (dataSet)=>{ ... }                    | 持久化数据变更后的回调                                         |
+       | **version** *?:string*                    |    否   |           '1.0'                               | 数据存储版本控制(默认:1.0)                                     |
+       | **storageImp** *?:AsyncStorage*           |    否   |           AsyncStorage                        | 数据持久化实现基础(默认为:AsyncStorage from 'react-native')    |
+       
+       <u>*注意：若项目的React Native 版本高于0.60，storageImp的参数，建议使用 '@react-native-community/async-storage'中的【AsyncStorage】实例*</u>
     
     
    * **支持可配置的Http请求**

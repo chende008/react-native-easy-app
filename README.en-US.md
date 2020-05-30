@@ -72,14 +72,15 @@ yarn add react-native-easy-app
        
        **XStorage.initStorage parameters** 
                   
-       | Parameter Name                            |                   mode                        | Description                                                                      |
-       | ------------------------------------------|:---------------------------------------------:| :--------------------------------------------------------------------------------|
-       | **storageObj** *:object*                  | { token:undefined, userName:undefined, ...}   | list of data that needs to be persisted                                          |
-       | **initializedFunc** *:callback function*  |              ()=>{ ... }                      | callback after persistent mapping success                                        |   
-       | **dataChangedFunc** *?:callback function* |              (dataSet)=>{ ... }               | persistent data change callback                                                  |
-       | **version** *?:string*                    |           '1.0'                               | data storage version control(default:1.0)                                        |
-       | **storageImp** *?:AsyncStorage*           |           AsyncStorage                        | data Persistence Implementation Carrier(default:AsyncStorage from 'react-native')|
+       | Parameter Name                            |  required   |                   mode                        | Description                                                                      |
+       | ------------------------------------------|:-----------:|:---------------------------------------------:| :--------------------------------------------------------------------------------|
+       | **storageObj** *:object*                  |    true     | { token:undefined, userName:undefined, ...}   | list of data that needs to be persisted                                          |
+       | **initializedFunc** *:callback function*  |    true     |              ()=>{ ... }                      | callback after persistent mapping success                                        |   
+       | **dataChangedFunc** *?:callback function* |    false    |              (dataSet)=>{ ... }               | persistent data change callback                                                  |
+       | **version** *?:string*                    |    false    |           '1.0'                               | data storage version control(default:1.0)                                        |
+       | **storageImp** *?:AsyncStorage*           |    false    |           AsyncStorage                        | data Persistence Implementation Carrier(default:AsyncStorage from 'react-native')|
     
+       <u>*Note: If the React Native version of the project is higher than 0.60, the parameters of storageImp, it is recommended to use the [AsyncStorage] instance in '@react-native-community/async-storage'*</u>
     
    * **Configurable Http request framework**
    
