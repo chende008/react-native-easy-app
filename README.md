@@ -52,7 +52,7 @@ yarn add react-native-easy-app
              RNStorage.userInfo = {name: 'rufeng', age: 30}; // 相当于 [ await AsyncStorage.setItem('userInfo',JSON.stringify({ name:'rufeng', age:30})) ] 
         };
         
-        XStorage.initStorage(RNStorage, initCallback, dataChangeCallback, '1.0', AsyncStorage);   
+        XStorage.initStorage(RNStorage, initCallback);   
       ```
       
        **XStorage 对象** 
