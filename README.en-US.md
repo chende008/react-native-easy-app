@@ -21,6 +21,10 @@ yarn add react-native-easy-app
   * Support for flexible Http requests through optional configuration
   * Support for Flexible base widget (no sensory multi-screen adaptation)
 
+### Versions
+
+  * 1.7.0 XStorage initialization adds required parameter storageImp (AsyncStorage instance) 
+
 
 ### Usage 
 
@@ -39,6 +43,7 @@ yarn add react-native-easy-app
       ```
       
       ```jsx 
+        import AsyncStorage from '@react-native-community/async-storage';
         import { XStorage } from 'react-native-easy-app';
          
         const initCallback = () => {
@@ -55,7 +60,7 @@ yarn add react-native-easy-app
              RNStorage.userInfo = {name: 'rufeng', age: 30}; 
         };
         
-        XStorage.initStorage(RNStorage, initCallback);   
+        XStorage.initStorage(RNStorage, AsyncStorage, initCallback);   
                 
       ```
       
@@ -63,7 +68,7 @@ yarn add react-native-easy-app
             
        | Method                |                   param                                         |      ReturnType               | Description                                                             |
        | ----------------------|:----------------------------------------------------------------|:-----------------------------:| :-----------------------------------------------------------------------|
-       | initStorage           | (storageObj, initCallback, dataCallback?, version?, storageImp?)|  void                         | Establish the mapping relationship between storageObj and AsyncStorage  |
+       | initStorage           | (storageObj, initCallback, storageImp, dataCallback?)           |  void                         | Establish the mapping relationship between storageObj and AsyncStorage  |
        | initStorageSync       | (storageObj, dataCallback?, version?, storageImp?)              |  Promise<boolean>             | Establish the mapping relationship between storageObj and AsyncStorage  |                                                             |
        | multiGet              |           **keys** *:string[]*                                  |  Promise<[string, string][]>  | equal to AsyncStorage.multiGet()                                        |
        | saveItems             |           **keyValuePairs** *:string[][]*                       |  Promise<void>                | equal to AsyncStorage.multiSet()                                        |
@@ -72,13 +77,12 @@ yarn add react-native-easy-app
        
        **XStorage.initStorage parameters** 
                   
-       | Parameter Name                            |  required   |                   mode                        | Description                                                                      |
-       | ------------------------------------------|:-----------:|:---------------------------------------------:| :--------------------------------------------------------------------------------|
-       | **storageObj** *:object*                  |    true     | { token:undefined, userName:undefined, ...}   | list of data that needs to be persisted                                          |
-       | **initializedFunc** *:callback function*  |    true     |              ()=>{ ... }                      | callback after persistent mapping success                                        |   
-       | **dataChangedFunc** *?:callback function* |    false    |              (dataSet)=>{ ... }               | persistent data change callback                                                  |
-       | **version** *?:string*                    |    false    |           '1.0'                               | data storage version control(default:1.0)                                        |
-       | **storageImp** *?:AsyncStorage*           |    false    |           AsyncStorage                        | data Persistence Implementation Carrier(default:AsyncStorage from 'react-native')|
+       | Parameter Name                            |  required   |                   mode                        | Description                                   |
+       | ------------------------------------------|:-----------:|:---------------------------------------------:| :---------------------------------------------|
+       | **storageObj** *:object*                  |    true     | { token:undefined, userName:undefined, ...}   | list of data that needs to be persisted       |
+       | **storageImp** *?:AsyncStorage*           |    false    |           AsyncStorage                        | data Persistence Implementation Carrier       |
+       | **initializedFunc** *:callback function*  |    true     |             ()=>{ ... }                       | callback after persistent mapping success     |   
+       | **dataChangedFunc** *?:callback function* |    false    |         (dataSet)=>{ ... }                    | persistent data change callback               |
     
        <u>*Note: If the React Native version of the project is higher than 0.60, the parameters of storageImp, it is recommended to use the [AsyncStorage] instance in '@react-native-community/async-storage'*</u>
     

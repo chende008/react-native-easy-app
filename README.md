@@ -21,6 +21,10 @@ yarn add react-native-easy-app
   * 支持灵活、可配置的Http请求
   * 灵活的基础控件(无感知多屏适配)
 
+### Versions
+
+  * 1.7.0 XStorage的初始参数storageImp(AsyncStorage实例)设定为必须参数，并移除了版本号。 
+
 
 ### 快速开始 
 
@@ -39,6 +43,7 @@ yarn add react-native-easy-app
       ```
       
       ```jsx 
+        import AsyncStorage from '@react-native-community/async-storage';
         import { XStorage } from 'react-native-easy-app';
          
         const initCallback = () => {
@@ -52,7 +57,7 @@ yarn add react-native-easy-app
              RNStorage.userInfo = {name: 'rufeng', age: 30}; // 相当于 [ await AsyncStorage.setItem('userInfo',JSON.stringify({ name:'rufeng', age:30})) ] 
         };
         
-        XStorage.initStorage(RNStorage, initCallback);   
+        XStorage.initStorage(RNStorage, AsyncStorage, initCallback);   
       ```
       
        **XStorage 对象** 
@@ -68,13 +73,12 @@ yarn add react-native-easy-app
    
        **XStorage.initStorage 方法参数描述**  
        
-       | 参数名                                     | 是否必须 |                   形式                        | 描述                                                         |
-       | ------------------------------------------|:-------:|:---------------------------------------------:| :-----------------------------------------------------------|
-       | **storageObj** *:object*                  |    是   | { token:undefined, userName:undefined, ...}   | 需要持久化的数据列表对象                                       |
-       | **initializedFunc** *:callback function*  |    是   |         ()=>{ ... }                           | 持久化映射成功成功后的回调                                     |   
-       | **dataChangedFunc** *?:callback function* |    否   |         (dataSet)=>{ ... }                    | 持久化数据变更后的回调                                         |
-       | **version** *?:string*                    |    否   |           '1.0'                               | 数据存储版本控制(默认:1.0)                                     |
-       | **storageImp** *?:AsyncStorage*           |    否   |           AsyncStorage                        | 数据持久化实现基础(默认为:AsyncStorage from 'react-native')    |
+       | 参数名                                     | 是否必须 |                   形式                        | 描述                                   |
+       | ------------------------------------------|:-------:|:---------------------------------------------:| :------------------------------------|
+       | **storageObj** *:object*                  |    是   | { token:undefined, userName:undefined, ...}   | 需要持久化的数据列表对象                 |
+       | **storageImp** *?:AsyncStorage*           |    否   |           AsyncStorage                        | 数据持久化实现基础(AsyncStorage实例)     |
+       | **initializedFunc** *:callback function*  |    是   |         ()=>{ ... }                           | 持久化映射成功成功后的回调                |   
+       | **dataChangedFunc** *?:callback function* |    否   |         (dataSet)=>{ ... }                    | 持久化数据变更后的回调                   |
        
        <u>*注意：若项目的React Native 版本高于0.60，storageImp的参数，建议使用 '@react-native-community/async-storage'中的【AsyncStorage】实例*</u>
     
