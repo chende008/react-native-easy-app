@@ -80,7 +80,7 @@ yarn add react-native-easy-app
        | Parameter Name                            |  required   |                   mode                        | Description                                   |
        | ------------------------------------------|:-----------:|:---------------------------------------------:| :---------------------------------------------|
        | **storageObj** *:object*                  |    true     | { token:undefined, userName:undefined, ...}   | list of data that needs to be persisted       |
-       | **storageImp** *?:AsyncStorage*           |    true     |           AsyncStorage                        | data Persistence Implementation Carrier       |
+       | **storageImp** *:AsyncStorage*            |    true     |           AsyncStorage                        | data Persistence Implementation Carrier       |
        | **initializedFunc** *:callback function*  |    true     |             ()=>{ ... }                       | callback after persistent mapping success     |   
        | **dataChangedFunc** *?:callback function* |    false    |         (dataSet)=>{ ... }                    | persistent data change callback               |
     

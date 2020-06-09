@@ -76,7 +76,7 @@ yarn add react-native-easy-app
        | 参数名                                     | 是否必须 |                   形式                        | 描述                                  |
        | ------------------------------------------|:-------:|:---------------------------------------------:| :------------------------------------|
        | **storageObj** *:object*                  |    是   | { token:undefined, userName:undefined, ...}   | 需要持久化的数据列表对象                 |
-       | **storageImp** *?:AsyncStorage*           |    是   |           AsyncStorage                        | 数据持久化实现基础(AsyncStorage实例)     |
+       | **storageImp** *:AsyncStorage*            |    是   |           AsyncStorage                        | 数据持久化实现基础(AsyncStorage实例)     |
        | **initializedFunc** *:callback function*  |    是   |         ()=>{ ... }                           | 持久化映射成功成功后的回调                |   
        | **dataChangedFunc** *?:callback function* |    否   |         (dataSet)=>{ ... }                    | 持久化数据变更后的回调                   |
        
