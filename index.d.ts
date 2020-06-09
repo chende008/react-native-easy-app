@@ -5,9 +5,9 @@ import {Image, TextProps, TouchableOpacityProps, FlatListProps, SectionListProps
 
 interface XStorage {
 
-    initStorage(targetObj: object, initializedCallback: () => void, dataChangedCallback?: (dataSet) => void, version?: string, storageImp?: object): string
+    initStorage(targetObj: object, storageImp: object, initializedCallback: () => void, dataChangedCallback?: (dataSet) => void): string
 
-    initStorageSync(targetObj: object, dataChangedCallback?: (dataSet) => void, version?: string, storageImp?: object): Promise<boolean>;
+    initStorageSync(targetObj: object, storageImp: object, dataChangedCallback?: (dataSet) => void): Promise<boolean>;
 
     multiGet(keys: string[]): Promise<any>;
 
