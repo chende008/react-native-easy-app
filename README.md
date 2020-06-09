@@ -21,7 +21,7 @@ yarn add react-native-easy-app
   * 支持灵活、可配置的Http请求
   * 灵活的基础控件(无感知多屏适配)
 
-### Versions
+### 版本
 
   * 1.7.0 XStorage的初始参数storageImp(AsyncStorage实例)设定为必须参数，并移除了版本号。 
 
