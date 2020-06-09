@@ -43,7 +43,7 @@ yarn add react-native-easy-app
       ```
       
       ```jsx 
-        import AsyncStorage from '@react-native-community/async-storage';
+        import { AsyncStorage } from 'react-native';
         import { XStorage } from 'react-native-easy-app';
          
         const initCallback = () => {
