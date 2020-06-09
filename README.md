@@ -64,8 +64,8 @@ yarn add react-native-easy-app
             
        | 方法                  |                   参数                                            |      返回值类型                | 描述                                                                      |
        | ----------------------|:-----------------------------------------------------------------|:-----------------------------:| :-----------------------------------------------------------------------|
-       | initStorage           | (targetObj, initCallback, dataCallback?, version?, storageImp?)  |  void                         | 将【targetObj】对象中的属性与【AsyncStorage】中的字段建立映射，形成绑定关系      |
-       | initStorageSync       | (targetObj, dataCallback?, version?, storageImp?)                |  Promise<boolean>             | 以Promise形式将【targetObj】与【AsyncStorage】建立绑定关系                   |                                                             |
+       | initStorage           | (targetObj, storageImp, initCallback, dataCallback?)             |  void                         | 将【targetObj】对象中的属性与【AsyncStorage】中的字段建立映射，形成绑定关系      |
+       | initStorageSync       | (targetObj, storageImp, dataCallback?)                           |  Promise<boolean>             | 以Promise形式将【targetObj】与【AsyncStorage】建立绑定关系                   |                                                             |
        | multiGet              |           **keys** *:string[]*                                   |  Promise<[string, string][]>  | 等价于 AsyncStorage.multiGet()                                           |
        | saveItems             |           **keyValuePairs** *:string[][]*                        |  Promise<void>                | 等价于 AsyncStorage.multiSet()                                           |
        | removeItems           |           **keys** *:string[]*                                   |  Promise<void>                | 等价于 AsyncStorage.multiRemove()                                        |

@@ -68,8 +68,8 @@ yarn add react-native-easy-app
             
        | Method                |                   param                                         |      ReturnType               | Description                                                             |
        | ----------------------|:----------------------------------------------------------------|:-----------------------------:| :-----------------------------------------------------------------------|
-       | initStorage           | (storageObj, initCallback, storageImp, dataCallback?)           |  void                         | Establish the mapping relationship between storageObj and AsyncStorage  |
-       | initStorageSync       | (storageObj, dataCallback?, version?, storageImp?)              |  Promise<boolean>             | Establish the mapping relationship between storageObj and AsyncStorage  |                                                             |
+       | initStorage           | (storageObj, storageImp, initCallback, dataCallback?)           |  void                         | Establish the mapping relationship between storageObj and AsyncStorage  |
+       | initStorageSync       | (storageObj, storageImp, dataCallback?)                         |  Promise<boolean>             | Establish the mapping relationship between storageObj and AsyncStorage  |                                                             |
        | multiGet              |           **keys** *:string[]*                                  |  Promise<[string, string][]>  | equal to AsyncStorage.multiGet()                                        |
        | saveItems             |           **keyValuePairs** *:string[][]*                       |  Promise<void>                | equal to AsyncStorage.multiSet()                                        |
        | removeItems           |           **keys** *:string[]*                                  |  Promise<void>                | equal to AsyncStorage.multiRemove()                                     |
