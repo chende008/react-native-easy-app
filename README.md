@@ -23,7 +23,7 @@ yarn add react-native-easy-app
 
 ### 版本
 
-  * 1.7.0 XStorage的初始参数storageImp(AsyncStorage实例)设定为必须参数，并移除了版本号。 
+  * 1.7.0 XStorage的初始参数storageImp(AsyncStorage实例)设定为必需参数，并移除了版本号。 
 
 
 ### 快速开始 
@@ -73,7 +73,7 @@ yarn add react-native-easy-app
    
        **XStorage.initStorage 方法参数描述**  
        
-       | 参数名                                     | 是否必须 |                   形式                        | 描述                                  |
+       | 参数名                                     | 是否必需 |                   形式                        | 描述                                  |
        | ------------------------------------------|:-------:|:---------------------------------------------:| :------------------------------------|
        | **storageObj** *:object*                  |    是   | { token:undefined, userName:undefined, ...}   | 需要持久化的数据列表对象                 |
        | **storageImp** *:AsyncStorage*            |    是   |           AsyncStorage                        | 数据持久化实现基础(AsyncStorage实例)     |
