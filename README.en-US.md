@@ -24,7 +24,7 @@ yarn add react-native-easy-app
 ### Versions
 
   * 1.7.0 XStorage initialization adds required parameter storageImp (AsyncStorage instance) 
-
+  * 1.7.4 Set the default timeout of XHttpConfig to 15 seconds; update the readme file and add XStorage synchronization initialization code snippets.
 
 ### Usage 
 
@@ -46,22 +46,32 @@ yarn add react-native-easy-app
         import { XStorage } from 'react-native-easy-app';
         import { AsyncStorage } from 'react-native';
          
-        const initCallback = () => {
+        XStorage.initStorage(RNStorage, AsyncStorage, () => {
+            ... // RNStorage 【Property access code snippet】
+        });
         
-             // From now on, you can write or read the variables in RNStorage synchronously
-             
-             // equal to [console.log(await AsyncStorage.getItem('isShow'))]
-             console.log(RNStorage.isShow); 
-             
-             // equal to [ await AsyncStorage.setItem('token',TOKEN1343DN23IDD3PJ2DBF3==') ]
-             RNStorage.token = 'TOKEN1343DN23IDD3PJ2DBF3=='; 
-             
-             // equal to [ await AsyncStorage.setItem('userInfo',JSON.stringify({ name:'rufeng', age:30})) ]
-             RNStorage.userInfo = {name: 'rufeng', age: 30}; 
-        };
+        OR ---------------------------------------------------------------
         
-        XStorage.initStorage(RNStorage, AsyncStorage, initCallback);   
+        const result = await XStorage.initStorageSync(RNStorage, AsyncStorage);
+        if (result) {
+            ... // RNStorage 【Property access code snippet】
+        }
                 
+      ```
+      
+      ```jsx 
+       // RNStorage 【Property access code snippet】
+       
+       // From now on, you can write or read the variables in RNStorage synchronously
+       
+       // equal to [console.log(await AsyncStorage.getItem('isShow'))]
+       console.log(RNStorage.isShow); 
+        
+       // equal to [ await AsyncStorage.setItem('token',TOKEN1343DN23IDD3PJ2DBF3==') ]
+       RNStorage.token = 'TOKEN1343DN23IDD3PJ2DBF3==';  
+       
+       // equal to [ await AsyncStorage.setItem('userInfo',JSON.stringify({ name:'rufeng', age:30})) ]
+       RNStorage.userInfo = {name: 'rufeng', age: 30};  
       ```
       
        **XStorage Object**
@@ -93,24 +103,24 @@ yarn add react-native-easy-app
       ```jsx 
       import { XHttpConfig, XHttpConst } from 'react-native-easy-app';
       
-       XHttpConfig().initHttpLogOn(true)
-                    .initBaseUrl('https://www.baidu.com')
-                    .initTimeout(15000)
-                    .initContentType(XHttpConst.CONTENT_TYPE_URLENCODED)
-                    .initLoadingFunc((isLoading)=>{
-                       ...
-                    })
-                    .initHeaderSetFunc((headers, request) => {
-                       ...
-                    })
-                    .initParamSetFunc((params, request) => {
-                       ...
-                    })
-                    .initParseDataFunc((result, request, callback) => {
-                       let {success, json, response, message, status} = result;
-                       ...
-                     }
-                );
+      XHttpConfig().initHttpLogOn(true)
+                   .initBaseUrl('https://www.baidu.com')
+                   .initTimeout(15000)
+                   .initContentType(XHttpConst.CONTENT_TYPE_URLENCODED)
+                   .initLoadingFunc((isLoading)=>{
+                      ...
+                   })
+                   .initHeaderSetFunc((headers, request) => {
+                      ...
+                   })
+                   .initParamSetFunc((params, request) => {
+                      ...
+                   })
+                   .initParseDataFunc((result, request, callback) => {
+                      let {success, json, response, message, status} = result;
+                      ...
+                    }
+               );
       ```
       
       **XHttpConfig Object （All method are optional）** 

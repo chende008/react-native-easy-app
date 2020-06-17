@@ -23,7 +23,8 @@ yarn add react-native-easy-app
 
 ### 版本
 
-  * 1.7.0 XStorage的初始参数storageImp(AsyncStorage实例)设定为必需参数，并移除了版本号。 
+  * 1.7.0 XStorage的初始参数storageImp(AsyncStorage实例)设定为必需参数，并移除了版本号。
+  * 1.7.4 设置XHttpConfig默认超时时间为15秒；更新readme文件，增加XStorage同步初始化代码片断。
 
 
 ### 快速开始 
@@ -45,19 +46,33 @@ yarn add react-native-easy-app
       ```jsx 
         import { XStorage } from 'react-native-easy-app';
         import { AsyncStorage } from 'react-native';
-         
-        const initCallback = () => {
         
-             // 现在起，你可以同步读、写RNStorage中的任何属性了
-             
-             console.log(RNStorage.isShow); // 相当于 [ console.log(await AsyncStorage.getItem('isShow')) ]
-             
-             RNStorage.token = 'TOKEN1343DN23IDD3PJ2DBF3=='; // 相当于 [ await AsyncStorage.setItem('token',TOKEN1343DN23IDD3PJ2DBF3==') ]
-             
-             RNStorage.userInfo = {name: 'rufeng', age: 30}; // 相当于 [ await AsyncStorage.setItem('userInfo',JSON.stringify({ name:'rufeng', age:30})) ] 
-        };
+        XStorage.initStorage(RNStorage, AsyncStorage, () => {
+            ... // RNStorage 【属性访问代码片段】
+        });
         
-        XStorage.initStorage(RNStorage, AsyncStorage, initCallback);   
+        <<或者>> ---------------------------------------------------------------
+        
+        const result = await XStorage.initStorageSync(RNStorage, AsyncStorage);
+        if (result) {
+            ... // RNStorage 【属性访问代码片段】
+        }
+           
+      ```
+      
+      ```jsx 
+       // RNStorage 【属性访问代码片段】 
+       
+       当自定义对象【RNStorage】被初始化完成之后，就如下可以任何的【同步访问】RNStorage对象中的任何属性了
+                   
+       // 相当于 [ console.log(await AsyncStorage.getItem('isShow')) ]
+       console.log(RNStorage.isShow); 
+       
+       // 相当于 [ await AsyncStorage.setItem('token',TOKEN1343DN23IDD3PJ2DBF3==') ]
+       RNStorage.token = 'TOKEN1343DN23IDD3PJ2DBF3=='; 
+       
+       // 相当于 [ await AsyncStorage.setItem('userInfo',JSON.stringify({ name:'rufeng', age:30})) ]
+       RNStorage.userInfo = {name: 'rufeng', age: 30}; 
       ```
       
        **XStorage 对象** 
@@ -90,24 +105,24 @@ yarn add react-native-easy-app
       ```jsx 
       import { XHttpConfig, XHttpConst } from 'react-native-easy-app';
       
-       XHttpConfig().initHttpLogOn(true)
-                    .initBaseUrl('https://www.baidu.com')
-                    .initTimeout(15000)
-                    .initContentType(XHttpConst.CONTENT_TYPE_URLENCODED)
-                    .initLoadingFunc((isLoading)=>{
-                       ...
-                    })
-                    .initHeaderSetFunc((headers, request) => {
-                       ...
-                    })
-                    .initParamSetFunc((params, request) => {
-                       ...
-                    })
-                    .initParseDataFunc((result, request, callback) => {
-                       let {success, json, response, message, status} = result;
-                       ...
-                     }
-                );
+      XHttpConfig().initHttpLogOn(true)
+                   .initBaseUrl('https://www.baidu.com')
+                   .initTimeout(15000)
+                   .initContentType(XHttpConst.CONTENT_TYPE_URLENCODED)
+                   .initLoadingFunc((isLoading)=>{
+                      ...
+                   })
+                   .initHeaderSetFunc((headers, request) => {
+                      ...
+                   })
+                   .initParamSetFunc((params, request) => {
+                      ...
+                   })
+                   .initParseDataFunc((result, request, callback) => {
+                      let {success, json, response, message, status} = result;
+                      ...
+                    }
+               );
       ```
       
       **XHttpConfig 对象 （所有方法都是可选的）** 
