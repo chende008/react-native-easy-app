@@ -51,7 +51,7 @@ yarn add react-native-easy-app
             ... // RNStorage 【属性访问代码片段】
         });
         
-        <<或者>> ---------------------------------------------------------------
+        // <<或者>> ---------------------------------------------------------------
         
         const result = await XStorage.initStorageSync(RNStorage, AsyncStorage);
         if (result) {
@@ -65,14 +65,14 @@ yarn add react-native-easy-app
        
        当自定义对象【RNStorage】被初始化完成之后，就如下可以任何的【同步访问】RNStorage对象中的任何属性了
                    
-       // 相当于 [ console.log(await AsyncStorage.getItem('isShow')) ]
-       console.log(RNStorage.isShow); 
+       console.log(RNStorage.isShow);
+       // 相当于 [ console.log(await AsyncStorage.getItem('isShow')) ] 
        
-       // 相当于 [ await AsyncStorage.setItem('token',TOKEN1343DN23IDD3PJ2DBF3==') ]
-       RNStorage.token = 'TOKEN1343DN23IDD3PJ2DBF3=='; 
+       RNStorage.token = 'TOKEN1343DN23IDD3PJ2DBF3==';
+       // 相当于 [ await AsyncStorage.setItem('token',TOKEN1343DN23IDD3PJ2DBF3==') ] 
        
-       // 相当于 [ await AsyncStorage.setItem('userInfo',JSON.stringify({ name:'rufeng', age:30})) ]
-       RNStorage.userInfo = {name: 'rufeng', age: 30}; 
+       RNStorage.userInfo = {name: 'rufeng', age: 30};
+       // 相当于 [ await AsyncStorage.setItem('userInfo',JSON.stringify({ name:'rufeng', age:30})) ] 
       ```
       
        **XStorage 对象** 
