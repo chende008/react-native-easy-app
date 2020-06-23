@@ -25,6 +25,7 @@ yarn add react-native-easy-app
 
   * 1.7.0 XStorage initialization adds required parameter storageImp (AsyncStorage instance) 
   * 1.7.4 Set the default timeout of XHttpConfig to 15 seconds; update the readme file and add XStorage synchronization initialization code snippets.
+  * 1.7.5 Remove the parameter urlEncoded processing of specific request, only support global encoding or no encoding; fix the encoding processing under non-formEncoded type。
 
 ### Usage 
 
