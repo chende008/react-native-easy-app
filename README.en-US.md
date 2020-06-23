@@ -125,18 +125,18 @@ yarn add react-native-easy-app
       
       **XHttpConfig Object （All method are optional）** 
       
-      | Method                |                   param                               |      ReturnType        | Description                                       |
-      | ----------------------|:------------------------------------------------------|:----------------------:| :------------------------------------------------ |
-      | constructor           |           **serverTag** *?:string*                    |  XHttpConfig Builder   | Corresponding to the server serverTag of XHttp    |
-      | initBaseUrl           |           **baseUrl** *:string*                       |  XHttpConfig Builder   | set baseUrl                                       |
-      | initTimeout           |           **timeout** *:number*                       |  XHttpConfig Builder   | set common timeout                                |
-      | initHttpLogOn         |           **logOn** *:bool*                           |  XHttpConfig Builder   | set print request log or not                      |
-      | initContentType       |           **contentType** *:string*                   |  XHttpConfig Builder   | set common contentType                            |
-      | initLoadingFunc       |           **(isLoading) => {...}**                    |  XHttpConfig Builder   | callback http request loading status              |
-      | initHeaderSetFunc     |           **(headers, request) => {...}**             |  XHttpConfig Builder   | Intercept header settings                         |
-      | initParamSetFunc      |           **(params, request) => {...}**              |  HttpRequest Builder   | Intercept params settings                         |
-      | initParseDataFunc     |           **(result, request, callback) => {...}**    |  XHttpConfig Builder   | Intercept interface returns data parsing          |
-      | initEncodeURIComponent|           **encodeComponent** *:boolean*              |  HttpRequest Builder   | Set common parameters(body) URL encoding          |
+      | Method                |                   param                               |      ReturnType        | Description                                                                                           |
+      | ----------------------|:------------------------------------------------------|:----------------------:| :-----------------------------------------------------------------------------------------------------|
+      | constructor           |           **serverTag** *?:string*                    |  XHttpConfig Builder   | Corresponding to the server serverTag of XHttp                                                        |
+      | initBaseUrl           |           **baseUrl** *:string*                       |  XHttpConfig Builder   | set baseUrl                                                                                           |
+      | initTimeout           |           **timeout** *:number*                       |  XHttpConfig Builder   | set common timeout                                                                                    |
+      | initHttpLogOn         |           **logOn** *:bool*                           |  XHttpConfig Builder   | set print request log or not                                                                          |
+      | initContentType       |           **contentType** *:string*                   |  XHttpConfig Builder   | set common contentType                                                                                |
+      | initLoadingFunc       |           **(isLoading) => {...}**                    |  XHttpConfig Builder   | callback http request loading status                                                                  |
+      | initHeaderSetFunc     |           **(headers, request) => {...}**             |  XHttpConfig Builder   | Intercept header settings                                                                             |
+      | initParamSetFunc      |           **(params, request) => {...}**              |  HttpRequest Builder   | Intercept params settings                                                                             |
+      | initParseDataFunc     |           **(result, request, callback) => {...}**    |  XHttpConfig Builder   | Intercept interface returns data parsing                                                              |
+      | initEncodeURIComponent|           **encodeComponent** *:boolean*              |  HttpRequest Builder   | Set common parameters(body) URL encoding，while contentType is [application/x-www-form-urlencoded]    |
      
    * **Send request template**
      
@@ -164,7 +164,6 @@ yarn add react-native-easy-app
             .timeout(10000)
             .extra({tag: 'xx'})
             .contentType('text/xml')
-            .encodeURLComponent(true)
             .loadingFunc((loading)=> showLoading('Please wait for a moment ...', loading))
             .rawData()
             .pureText()
@@ -190,7 +189,6 @@ yarn add react-native-easy-app
      | timeout               |           **timeout** *:number*                                  |  HttpRequest Builder  | set current request timeout (common timeout Settings will be replaced)                |
      | loadingFunc           |           **(isLoading)=>{ ... }**                               |  HttpRequest Builder  | request status callback (Reflects the status is loading or not)                       |
      | configCommonFunc      |( **enableHeaderFunc** *:bool*, **enableParamFunc** *:bool* )     |  HttpRequest Builder  | set common config **[initHeaderSetFunc] [initParamSetFunc]** are valid or not         |
-     | encodeURLComponent    |        **encodeComponent** *:boolean*                            |  HttpRequest Builder  | Set parameters(body) URL encoding                                                     |
      | rawData               |           none                                                   |  HttpRequest Builder  | Sets the callback result to return raw json (**[initParseDataFunc]** will be ignored) |
      | pureText              |           none                                                   |  HttpRequest Builder  | Set the callback result to return plain text                                          |
      | formJson              |           none                                                   |  HttpRequest Builder  | equal to set ( headers['Content-Type'] = 'application/json' )                         |
