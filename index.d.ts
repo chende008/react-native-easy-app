@@ -43,8 +43,6 @@ interface HttpRequest {
 
     configCommonFunc(enableHeaderFunc: boolean, enableParamFunc: boolean): HttpRequest;
 
-    encodeURLComponent(encodeComponent: boolean): HttpRequest;
-
     rawData(): HttpRequest;
 
     pureText(): HttpRequest;

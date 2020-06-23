@@ -75,12 +75,6 @@ export default class HttpRequest {
     configCommonFunc(enableCommonHeader: boolean, enableCommonParams: boolean): HttpRequest;
 
     /**
-     *
-     * @return return HttpRequest Builder
-     */
-    encodeURLComponent(encodeComponent: boolean): HttpRequest;
-
-    /**
      * callback result(json) : root data for request [ignore custom request parser]
      * @return return HttpRequest Builder
      */
