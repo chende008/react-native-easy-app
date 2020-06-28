@@ -40,7 +40,7 @@ yarn add react-native-easy-app
          export const RNStorage = {// RNStorage 自定义数据存储对象
              token: undefined, //  字符串类型
              isShow: undefined, // 布尔类型
-             userInfo: undefihttps://github.com/chende008/react-native-easy-app.git#masterned, // 对象类型
+             userInfo: undefined, // 对象类型
          };
       ```
       
