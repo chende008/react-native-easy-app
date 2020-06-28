@@ -45,27 +45,26 @@ yarn add react-native-easy-app
          };
       ```
       
-      ```jsx 
+      ```jsx
         import { XStorage } from 'react-native-easy-app';
         import { AsyncStorage } from 'react-native';
-        
-        XStorage.initStorage(RNStorage, AsyncStorage, () => {
-            ... // RNStorage 【属性访问代码片段】
-        });
-        
-        // <<或者>> ---------------------------------------------------------------
         
         const result = await XStorage.initStorageSync(RNStorage, AsyncStorage);
         if (result) {
             ... // RNStorage 【属性访问代码片段】
         }
-           
+        
+        // ----------上下，同、异步两种初始化方法 2选1--------------------------
+        
+        XStorage.initStorage(RNStorage, AsyncStorage, () => {
+            ... // RNStorage 【属性访问代码片段】
+        });
       ```
       
       ```jsx 
        // RNStorage 【属性访问代码片段】 
        
-       // 当自定义对象【RNStorage】被初始化完成之后，就可以任意的【同步访问】RNStorage对象中的所有属性了
+       // 当自定义对象【RNStorage】被初始化完成之后，就可以任意的同步访问：直接[取值]或者[赋值]形式 RNStorage对象中的任何属性了
                    
        console.log(RNStorage.isShow);
        // 相当于 [ console.log(await AsyncStorage.getItem('isShow')) ] 
