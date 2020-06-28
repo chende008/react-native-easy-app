@@ -64,7 +64,8 @@ yarn add react-native-easy-app
       ```jsx 
        // RNStorage 【属性访问代码片段】 
        
-       // 当自定义对象【RNStorage】被初始化完成之后，就可以任意的同步访问(取值 或 赋值 的形式访问) RNStorage对象中的任何属性了
+       // 当自定义对象 RNStorage 被初始化完成之后，就可以对其任何属性进行取值、赋值操作；
+       // 对RNStorage 属性的取、赋值操作会被自动映射成AsyncStorage的getItem与setItem方法；
                    
        console.log(RNStorage.isShow);
        // 相当于 [ console.log(await AsyncStorage.getItem('isShow')) ] 
