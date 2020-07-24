@@ -27,7 +27,7 @@ yarn add react-native-easy-app
   * 1.7.4 设置XHttpConfig默认超时时间为15秒；更新readme文件，增加XStorage同步初始化代码片断。
   * 1.7.5 移除特定请求的参数urlEncoded处理，只支持全局编码或者不编码；修复非formEncoded类型下的编码处理。
   * 1.7.6 设置XHttpConfig默认contentType为application/x-www-form-urlencoded；设置XText默认的图标处于文本的顶部。
-  * 1.7.7 XText增加iconStyle，resizeMode属性;XHttp普通参数可以支持传入FormData，并增加paramRaw原生参数直接发送请求支持
+  * 1.7.7 XText增加iconStyle，resizeMode属性;XHttp普通参数增加支持传入FormData，原参数paramRaw支持不做处理直接发送请求
 
 
 ### 快速开始 
