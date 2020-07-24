@@ -27,6 +27,7 @@ yarn add react-native-easy-app
   * 1.7.4 设置XHttpConfig默认超时时间为15秒；更新readme文件，增加XStorage同步初始化代码片断。
   * 1.7.5 移除特定请求的参数urlEncoded处理，只支持全局编码或者不编码；修复非formEncoded类型下的编码处理。
   * 1.7.6 设置XHttpConfig默认contentType为application/x-www-form-urlencoded；设置XText默认的图标处于文本的顶部。
+  * 1.7.7 XText增加iconStyle，resizeMode属性;XHttp普通参数可以支持传入FormData，并增加paramRaw原生参数直接发送请求支持
 
 
 ### 快速开始 
@@ -186,7 +187,8 @@ yarn add react-native-easy-app
      | constructor           |           **serverTag** *:string*                                |  HttpRequest Builder  | 与XHttpConfig(serverTag)保持一致(用于多服务器请求配置)，默认为空                                          |
      | url                   |           **url** *:string*                                      |  HttpRequest Builder  | 设置请求的url；若XHttpConfig中配置了baseUrl，当前只需要配置接口url后缀即可                                 |
      | header                |  **{ Accept, Authorization ... }**  *:object*                    |  HttpRequest Builder  | 设置当前请求的header参数；若与XHttpConfig中配置的公共header参数同名，则以当前设置为准                        |
-     | param                 |  **{ userName, password, customerId ...  }** *:object*           |  HttpRequest Builder  | 设置当前请求的params参数；若与XHttpConfig中配置的公共params参数同名，则以当前设置为准                        |
+     | param                 |  **{ userName, password ...  }** 或 **FormData** *:object*       |  HttpRequest Builder  | 设置当前请求的params参数(可以传FormData对象)；若与XHttpConfig中配置的公共params参数同名，则以当前设置为准      |
+     | paramRaw              |  **{ userName, password ...  }** *:object*                       |  HttpRequest Builder  | 设置当前请求的paramsRaw参数, 当前传入的参数不会做任何处理，直接作为fetch请求的的body                          |
      | contentType           |           **contentType** *:string*                              |  HttpRequest Builder  | 设置当前请求的ContentType；若XHttpConfig中设置公共的ContentType，则以当前设置为准                          |
      | internal              |           **internal** *:bool*                                   |  HttpRequest Builder  | 用于请求区别标记，默认为true；通常在XHttp中传入，在XHttpConfig的回调拦截器中使用，拦截器的request中可取该值     |
      | extra                 |           **{customTag ...}**                                    |  HttpRequest Builder  | 用于请求区别标记，通常在XHttp中传入，在XHttpConfig的回调拦截器中使用，拦截器的request中可取该值                |
@@ -290,8 +292,10 @@ yarn add react-native-easy-app
      | raw            |    bool         | 默认为false，若为true则不会自动处理多屏幕尺寸适配                                                                                                              |
      | text           |     string      | 文本                                                                                                                                                     |
      | textExtend     |     bool        | 如果包含图标，则等效于将Text组件设置属性: {flex:1}                                                                                                            |
-     | icon           |     string  | 相当于Image的source属性，可以接受的参数格式如：[https://xxx.yy.com/image.jpg]，[data: image / png; base64, iVBORw0KGgoAAAAN ...]，[require ('./ image.jpg')]       |
+     | icon           |     string      | 相当于Image的source属性，可以接受的参数格式如：[https://xxx.yy.com/image.jpg]，[data: image / png; base64, iVBORw0KGgoAAAAN ...]，[require ('./ image.jpg')]   |
      | iconSize       |     number      | 图标尺寸                                                                                                                                                  |
+     | iconStyle      |     number      | 图标Image的样式                                                                                                                                            |
+     | resizeMode     |     string      | 图标Image的resizeMode                                                                                                                                     |
      | iconMargin     |     number      | 图标与文本之间的距离                                                                                                                                        |
      | iconPosition   |     string      | 图标在当前控件中的位置，可以设置的值有： 'top', 'right', 'bottom', 'left'                                                                                      |
      | ...            |    ...          | 如果设置了onPress和onLongPress函数，XImage将被XView包裹，并且外部传入的属性将会自动被分配给正确的控件                                                               |

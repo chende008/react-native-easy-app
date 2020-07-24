@@ -26,7 +26,8 @@ yarn add react-native-easy-app
   * 1.7.0 XStorage initialization adds required parameter storageImp (AsyncStorage instance) 
   * 1.7.4 Set the default timeout of XHttpConfig to 15 seconds; update the readme file and add XStorage synchronization initialization code snippets.
   * 1.7.5 Remove the parameter urlEncoded processing of specific request, only support global encoding or no encoding; fix the encoding processing under non-formEncoded type.
-  * 1.7.6 Set the default contentType of XHttpConfig to application/x-www-form-urlencoded; set the default icon of XText at the top of the text.
+  * 1.7.6 Set the default contentType of XHttpConfig to application/x-www-form-urlencoded; set the default icon of XText to be at the top of the text.
+  * 1.7.7 XText adds iconStyle and resizeMode attributes; XHttp common parameters can support incoming FormData, and add paramRaw native parameters to directly send requests support.
 
 ### Usage 
 
@@ -184,7 +185,8 @@ yarn add react-native-easy-app
      | constructor           |           **serverTag** *:string*                                |  HttpRequest Builder  | Corresponding to the server serverTag of XHttpConfig                                  |
      | url                   |           **url** *:string*                                      |  HttpRequest Builder  | set full url or url suffixes                                                          |
      | header                |  **{ Accept, Authorization ... }**  *:object*                    |  HttpRequest Builder  | Set the headers parameters                                                            |
-     | param                 |  **{ userName, password, customerId ...  }** *:object*           |  HttpRequest Builder  | Set the body parameters                                                               |
+     | param                 |  **{ userName,...  }** or **FormData** *:object*                 |  HttpRequest Builder  | Set the body parameters                                                               |
+     | paramRaw              |  **{ userName,password ...  }** *:object*                        |  HttpRequest Builder  | Set the body parameters (paramRaw will be passed directly to the body of fetch)       |
      | contentType           |           **contentType** *:string*                              |  HttpRequest Builder  | set current request contentType (common contentType Settings will be replaced)        |
      | internal              |           **internal** *:bool*                                   |  HttpRequest Builder  | set request tag (default true), And then you can get it anywhere there's a request    |
      | extra                 |           **{customTag ...}**                                    |  HttpRequest Builder  | set request custom tag And then you can get it anywhere there's a request             |
@@ -290,7 +292,9 @@ yarn add react-native-easy-app
      | text                  |     string       | text                                                                                                                                                                        |
      | textExtend            |     bool         | if the icon is included, it is equivalent to setting the property of the Text component: {flex: 1}                                                                          |
      | icon                  |     string       | equivalent to Image's srouce attribute,Can accept such as [https://xxx.yy.com/../image.jpg], [data: image / png; base64, iVBORw0KGgoAAAAN ...] or [require ('./ image.jpg')]|
+     | resizeMode            |     string       | icon resizeMode                                                                                                                                                             |
      | iconSize              |     number       | icon size                                                                                                                                                                   |
+     | iconStyle             |     object       | icon style                                                                                                                                                                  |
      | iconMargin            |     number       | distance between icon and text                                                                                                                                              |
      | iconPosition          |     string       | the position of the icon in the View, only the following values can be set: 'top', 'right', 'bottom', 'left'                                                                |
      | ...                   |    ...           | if the onPress and onLongPress functions are set, XText will be wrapped by XView, and the externally passed properties will be automatically assigned to the correct control|

@@ -20,10 +20,17 @@ export default class HttpRequest {
 
     /**
      *
-     * @param param  params of fetch body
+     * @param param  params of fetch body [object or FormData]
      * @return return HttpRequest Builder
      */
     param(param: object): HttpRequest;
+
+    /**
+     *
+     * @param paramRaw will be passed directly to the body of fetch
+     * @return return HttpRequest Builder
+     */
+    paramRaw(paramRaw: object): HttpRequest;
 
     /**
      *

@@ -29,6 +29,8 @@ interface HttpRequest {
 
     param(param: object): HttpRequest;
 
+    paramRaw(paramRaw: object): HttpRequest;
+
     contentType(contentType: string): HttpRequest;
 
     internal(internal: boolean): HttpRequest;
@@ -157,6 +159,8 @@ export interface XTextProps {
     text: string,
     icon?: string,
     iconSize?: number,
+    iconStyle?: object,
+    resizeMode?: string,
     iconMargin?: number,
     textExtend?: boolean,
     iconPosition?: IconPosition,
