@@ -186,7 +186,7 @@ yarn add react-native-easy-app
      | url                   |           **url** *:string*                                      |  HttpRequest Builder  | set full url or url suffixes                                                          |
      | header                |  **{ Accept, Authorization ... }**  *:object*                    |  HttpRequest Builder  | Set the headers parameters                                                            |
      | param                 |  **{ userName,...  }** or **FormData** *:object*                 |  HttpRequest Builder  | Set the body parameters                                                               |
-     | paramRaw              |  **{ userName,password ...  }** *:object*                        |  HttpRequest Builder  | Set the body parameters (paramRaw will be passed directly to the body of fetch)       |
+     | paramRaw              |  **{ userName,...  }** or **FormData** *:object*                 |  HttpRequest Builder  | Set the body parameters (paramRaw will be passed directly to the body of fetch)       |
      | contentType           |           **contentType** *:string*                              |  HttpRequest Builder  | set current request contentType (common contentType Settings will be replaced)        |
      | internal              |           **internal** *:bool*                                   |  HttpRequest Builder  | set request tag (default true), And then you can get it anywhere there's a request    |
      | extra                 |           **{customTag ...}**                                    |  HttpRequest Builder  | set request custom tag And then you can get it anywhere there's a request             |

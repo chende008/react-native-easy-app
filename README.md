@@ -188,7 +188,7 @@ yarn add react-native-easy-app
      | url                   |           **url** *:string*                                      |  HttpRequest Builder  | 设置请求的url；若XHttpConfig中配置了baseUrl，当前只需要配置接口url后缀即可                                 |
      | header                |  **{ Accept, Authorization ... }**  *:object*                    |  HttpRequest Builder  | 设置当前请求的header参数；若与XHttpConfig中配置的公共header参数同名，则以当前设置为准                        |
      | param                 |  **{ userName, password ...  }** 或 **FormData** *:object*       |  HttpRequest Builder  | 设置当前请求的params参数(可以传FormData对象)；若与XHttpConfig中配置的公共params参数同名，则以当前设置为准      |
-     | paramRaw              |  **{ userName, password ...  }** *:object*                       |  HttpRequest Builder  | 设置当前请求的paramsRaw参数, 当前传入的参数不会做任何处理，直接作为fetch请求的的body                          |
+     | paramRaw              |  **{ userName, password ...  }** 或 **FormData** *:object*       |  HttpRequest Builder  | 设置当前请求的paramsRaw参数, 当前传入的参数不会做任何处理，直接作为fetch请求的的body                          |
      | contentType           |           **contentType** *:string*                              |  HttpRequest Builder  | 设置当前请求的ContentType；若XHttpConfig中设置公共的ContentType，则以当前设置为准                          |
      | internal              |           **internal** *:bool*                                   |  HttpRequest Builder  | 用于请求区别标记，默认为true；通常在XHttp中传入，在XHttpConfig的回调拦截器中使用，拦截器的request中可取该值     |
      | extra                 |           **{customTag ...}**                                    |  HttpRequest Builder  | 用于请求区别标记，通常在XHttp中传入，在XHttpConfig的回调拦截器中使用，拦截器的request中可取该值                |
