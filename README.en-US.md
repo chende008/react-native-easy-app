@@ -28,6 +28,7 @@ yarn add react-native-easy-app
   * 1.7.5 Remove the parameter urlEncoded processing of specific request, only support global encoding or no encoding; fix the encoding processing under non-formEncoded type.
   * 1.7.6 Set the default contentType of XHttpConfig to application/x-www-form-urlencoded; set the default icon of XText to be at the top of the text.
   * 1.7.7 XText adds iconStyle and resizeMode attributes; XHttp common parameters add support for incoming FormData, the original parameter paramRaw supports sending the request directly without processing.
+  * 1.7.8 Fix the defect that XImage does not support tintColor style when there is a click event.
 
 ### Usage 
 

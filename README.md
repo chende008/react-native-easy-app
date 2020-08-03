@@ -27,7 +27,8 @@ yarn add react-native-easy-app
   * 1.7.4 设置XHttpConfig默认超时时间为15秒；更新readme文件，增加XStorage同步初始化代码片断。
   * 1.7.5 移除特定请求的参数urlEncoded处理，只支持全局编码或者不编码；修复非formEncoded类型下的编码处理。
   * 1.7.6 设置XHttpConfig默认contentType为application/x-www-form-urlencoded；设置XText默认的图标处于文本的顶部。
-  * 1.7.7 XText增加iconStyle，resizeMode属性;XHttp普通参数增加支持传入FormData，原参数paramRaw支持不做处理直接发送请求
+  * 1.7.7 XText增加iconStyle，resizeMode属性;XHttp普通参数增加支持传入FormData，原参数paramRaw支持不做处理直接发送请求。
+  * 1.7.8 修复XImage在有点击事件的时候，不支持tintColor样式的缺陷。
 
 
 ### 快速开始 
@@ -273,23 +274,23 @@ yarn add react-native-easy-app
      
      | 属性        |    类型     |      描述                                                                                   |
      | ------------|:-----------:|:------------------------------------------------------------------------------------------|
-     | raw         |    bool     | 默认为false，若为true则不会自动处理多屏幕尺寸适配                                                |
+     | raw         |    bool     | 默认为false，若为true 则不会自动处理多屏幕尺寸适配                                               |
      | ...         |    ...      | 若包含onPress或onLongPress属性，则等同于TouchableXXX系列组件,否则等同于View组件,并拥有其相应的属性  |
      
      **XImage Object** 
      
      | 属性        |    类型          |      描述                                                                                                                                                |
      | ------------|:---------------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------|
-     | raw         |    bool         | 默认为false，若为true则不会自动处理多屏幕尺寸适配                                                                                                              |
+     | raw         |    bool         | 默认为false，若为true 则不会自动处理多屏幕尺寸适配                                                                                                             |
      | icon        |     string      | 相当于Image的source属性，可以接受的参数格式如：[https://xxx.yy.com/image.jpg]，[data: image / png; base64, iVBORw0KGgoAAAAN ...]，[require ('./ image.jpg')]   |
      | iconSize    |     number      | 图标的尺寸，优先级高于style的width与height                                                                                                                   |
-     | ...         |    ...          | 如果设置了onPress和onLongPress函数，XImage将被XView包裹，并且外部传入的属性将会自动被分配给正确的控件                                                               |
+     | ...         |    ...          | 如果设置了onPress和onLongPress函数，XImage将被XView包裹，并且外部传入的属性将会自动被分配给正确的控件                                                                |
 
      **XText 组件** 
      
      | 属性           |    类型          |      描述                                                                                                                                                |
      | ---------------|:---------------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------|
-     | raw            |    bool         | 默认为false，若为true则不会自动处理多屏幕尺寸适配                                                                                                              |
+     | raw            |    bool         | 默认为false，若为true 则不会自动处理多屏幕尺寸适配                                                                                                             |
      | text           |     string      | 文本                                                                                                                                                     |
      | textExtend     |     bool        | 如果包含图标，则等效于将Text组件设置属性: {flex:1}                                                                                                            |
      | icon           |     string      | 相当于Image的source属性，可以接受的参数格式如：[https://xxx.yy.com/image.jpg]，[data: image / png; base64, iVBORw0KGgoAAAAN ...]，[require ('./ image.jpg')]   |
