@@ -29,11 +29,12 @@ yarn add react-native-easy-app
   * 1.7.6 设置XHttpConfig默认contentType为application/x-www-form-urlencoded；设置XText默认的图标处于文本的顶部。
   * 1.7.7 XText增加iconStyle，resizeMode属性;XHttp普通参数增加支持传入FormData，原参数paramRaw支持不做处理直接发送请求。
   * 1.7.8 修复XImage在有点击事件的时候，不支持tintColor样式的bug。
+  * 1.7.9 XFlatList增加ref属性：ref => this.flatList = ref，以便XFlatList能支持FlatList所拥有的相关方法，使用方式如：this.refreshList.flatList.scrollToOffset({...})
 
 
 ### 快速开始 
 
-   详细使用方法，请参考示例项目 [Sample](https://github.com/chende008/react-native-easy-app-sample),  [Sample_MobX](https://github.com/chende008/Sample_MobX),  [Sample_Redux](https://github.com/chende008/Sample_Redux)
+   详细使用方法，请参考示例项目 [Sample](https://github.com/chende008/react-native-easy-app-sample),  [Sample_MobX](https://github.com/chende008/Sample_MobX),  [Sample_Redux](https://github.com/chende008/Sample_Redux),  [Sample_Hook](https://github.com/chende008/Sample_Hook)
   
    您也可以参考文章对react-native-easy-app使用介绍： [简书](https://www.jianshu.com/p/88821b1607a7)
 

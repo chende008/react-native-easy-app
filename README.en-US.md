@@ -29,10 +29,11 @@ yarn add react-native-easy-app
   * 1.7.6 Set the default contentType of XHttpConfig to application/x-www-form-urlencoded; set the default icon of XText to be at the top of the text.
   * 1.7.7 XText adds iconStyle and resizeMode attributes; XHttp common parameters add support for incoming FormData, the original parameter paramRaw supports sending the request directly without processing.
   * 1.7.8 Fix the bug that XImage does not support tintColor style when there is a click event.
+  * 1.7.9 XFlatList adds ref attribute: ref => this.flatList = ref, so that XFlatList can support the related methods owned by FlatList, the usage is as follows: this.refreshList.flatList.scrollToOffset({...}).
 
 ### Usage 
 
-  For detailed usage, please refer to the example project [Sample](https://github.com/chende008/react-native-easy-app-sample),  [Sample_MobX](https://github.com/chende008/Sample_MobX),  [Sample_Redux](https://github.com/chende008/Sample_Redux)
+  For detailed usage, please refer to the example project [Sample](https://github.com/chende008/react-native-easy-app-sample),  [Sample_MobX](https://github.com/chende008/Sample_MobX),  [Sample_Redux](https://github.com/chende008/Sample_Redux),  [Sample_Hook](https://github.com/chende008/Sample_Hook)
   
   You can also refer to the introduction of react-native-easy-app article : [简书](https://www.jianshu.com/p/88821b1607a7)
 
