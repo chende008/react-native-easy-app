@@ -30,6 +30,7 @@ yarn add react-native-easy-app
   * 1.7.7 XText增加iconStyle，resizeMode属性;XHttp普通参数增加支持传入FormData，原参数paramRaw支持不做处理直接发送请求。
   * 1.7.8 修复XImage在有点击事件的时候，不支持tintColor样式的bug。
   * 1.7.9 XFlatList增加ref属性：ref => this.flatList = ref，以便XFlatList能支持FlatList所拥有的相关方法，使用方式如：this.refreshList.flatList.scrollToOffset({...})
+  * 1.7.11 当请求成功后，及时清除无意义的超时计时器，减少不必要的计时器资源的浪费。
 
 
 ### 快速开始 
