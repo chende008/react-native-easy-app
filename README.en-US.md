@@ -30,7 +30,7 @@ yarn add react-native-easy-app
   * 1.7.7 XText adds iconStyle and resizeMode attributes; XHttp common parameters add support for incoming FormData, the original parameter paramRaw supports sending the request directly without processing.
   * 1.7.8 Fix the bug that XImage does not support tintColor style when there is a click event.
   * 1.7.9 XFlatList adds ref attribute: ref => this.flatList = ref, so that XFlatList can support the related methods owned by FlatList, the usage is as follows: this.refreshList.flatList.scrollToOffset({...}).
-  * 1.7.11 When the request is successful, the meaningless timeout timer is cleared in time to reduce unnecessary waste of timer resources.
+  * 1.7.12 When the request is successful, the meaningless timeout timer is cleared in time to reduce unnecessary waste of timer resources.
 
 ### Usage 
 
