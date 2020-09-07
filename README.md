@@ -31,6 +31,7 @@ yarn add react-native-easy-app
   * 1.7.8 修复XImage在有点击事件的时候，不支持tintColor样式的bug。
   * 1.7.9 XFlatList增加ref属性：ref => this.flatList = ref，以便XFlatList能支持FlatList所拥有的相关方法，使用方式如：this.refreshList.flatList.scrollToOffset({...})
   * 1.7.12 当请求成功后，及时清除无意义的超时计时器，减少不必要的计时器资源的浪费。
+  * 1.7.13 XFlatList增加属性renderFooter、indicatorProps以便更灵活的控制其样式及属性
 
 
 ### 快速开始 
@@ -315,6 +316,8 @@ yarn add react-native-easy-app
      | onRefresh             |   () => {...}     | 相当于FlatList控件的onRefresh属性                   |
      | onLoadMore            |   () => {...}     | 当列表滚动到底部，被执行的回调方法（需要加载更多数据时）   |
      | emptyViewHeight       |   number          | 无数据时，空View的高度                               |
+     | renderFooter          |  () => {...}      | 自定义footer的渲染（加载更多及报错信息的view）          |
+     | indicatorProps        |   object          | 设置下拉刷新控件RefreshControl的样式及属性            |
      | ...                   |   ...             | FlatList组件的所有剩余属性                           |     
 
      **FlatList 组件刷新状对象示例**

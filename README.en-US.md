@@ -31,6 +31,7 @@ yarn add react-native-easy-app
   * 1.7.8 Fix the bug that XImage does not support tintColor style when there is a click event.
   * 1.7.9 XFlatList adds ref attribute: ref => this.flatList = ref, so that XFlatList can support the related methods owned by FlatList, the usage is as follows: this.refreshList.flatList.scrollToOffset({...}).
   * 1.7.12 When the request is successful, the meaningless timeout timer is cleared in time to reduce unnecessary waste of timer resources.
+  * 1.7.13 XFlatList adds attributes renderFooter, indicatorProps to control its style and attributes more flexibly.
 
 ### Usage 
 
@@ -314,6 +315,8 @@ yarn add react-native-easy-app
      | onRefresh             |   () => {...}     | equivalent to onRefresh of FlatList control                                                             |
      | onLoadMore            |   () => {...}     | When the list scrolls to the bottom, the callback method is executed (when more data needs to be loaded)|
      | emptyViewHeight       |   number          | when there is no data, refresh the size of the control                                                  |
+     | renderFooter          |  () => {...}      | customize the rendering of the footer (load more views and error messages)                              |
+     | indicatorProps        |   object          | set the style and attributes of RefreshControl                                                          |
      | ...                   |   ...             | all remaining properties of [FlatList] component                                                        |     
 
      **FlatList component refreshStatus attribute example**
