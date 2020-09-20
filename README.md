@@ -21,19 +21,6 @@ yarn add react-native-easy-app
   * 支持灵活、可配置的Http请求
   * 灵活的基础控件(无感知多屏适配)
 
-### 版本
-
-  * 1.7.0 XStorage的初始参数storageImp(AsyncStorage实例)设定为必需参数，并移除了版本号。
-  * 1.7.4 设置XHttpConfig默认超时时间为15秒；更新readme文件，增加XStorage同步初始化代码片断。
-  * 1.7.5 移除特定请求的参数urlEncoded处理，只支持全局编码或者不编码；修复非formEncoded类型下的编码处理。
-  * 1.7.6 设置XHttpConfig默认contentType为application/x-www-form-urlencoded；设置XText默认的图标处于文本的顶部。
-  * 1.7.7 XText增加iconStyle，resizeMode属性;XHttp普通参数增加支持传入FormData，原参数paramRaw支持不做处理直接发送请求。
-  * 1.7.8 修复XImage在有点击事件的时候，不支持tintColor样式的bug。
-  * 1.7.9 XFlatList增加ref属性：ref => this.flatList = ref，以便XFlatList能支持FlatList所拥有的相关方法，使用方式如：this.refreshList.flatList.scrollToOffset({...})
-  * 1.7.12 当请求成功后，及时清除无意义的超时计时器，减少不必要的计时器资源的浪费。
-  * 1.7.13 XFlatList增加属性renderFooter、indicatorProps以便更灵活的控制其样式及属性
-
-
 ### 快速开始 
 
    详细使用方法，请参考示例项目 [Sample](https://github.com/chende008/react-native-easy-app-sample),  [Sample_MobX](https://github.com/chende008/Sample_MobX),  [Sample_Redux](https://github.com/chende008/Sample_Redux),  [Sample_Hook](https://github.com/chende008/Sample_Hook)
@@ -306,19 +293,16 @@ yarn add react-native-easy-app
      
      **XFlatList 组件** 
      
-     | 属性                   |   类型            |    描述                                           |
-     | ----------------------|:-----------------:| :------------------------------------------------|
-     | data                  |    array          | 相当于FlatList组件的data属性                        |
-     | noDataText            |    string         | 若数据为空时展示的文本                               |
-     | noDataImage           |     uri           | 若数据为空时展示在文本下的图片                        |
-     | indicatorOffset       |    number         | 下拉刷新loading指示器距顶部的距离                     |
-     | refreshStatus         |    object         | XFlatList列表在不同刷新状态展示的UI样式及文本设置对象   |
-     | onRefresh             |   () => {...}     | 相当于FlatList控件的onRefresh属性                   |
-     | onLoadMore            |   () => {...}     | 当列表滚动到底部，被执行的回调方法（需要加载更多数据时）   |
-     | emptyViewHeight       |   number          | 无数据时，空View的高度                               |
-     | renderFooter          |  () => {...}      | 自定义footer的渲染（加载更多及报错信息的view）          |
-     | indicatorProps        |   object          | 设置下拉刷新控件RefreshControl的样式及属性            |
-     | ...                   |   ...             | FlatList组件的所有剩余属性                           |     
+     | 属性                   |   类型                         |    描述                                           |
+     | ----------------------|:------------------------------:| :------------------------------------------------|
+     | data                  |    array                       | 相当于FlatList组件的data属性                        |
+     | refreshStatus         |    object                      | XFlatList列表在不同刷新状态展示的UI样式及文本设置对象   |
+     | indicatorProps        |   object                       | 设置下拉刷新控件RefreshControl的样式及属性            |
+     | onRefresh             |   () => {...}                  | 相当于FlatList控件的onRefresh属性                   |
+     | onLoadMore            |   () => {...}                  | 当列表滚动到底部，被执行的回调方法（需要加载更多数据时）   |
+     | renderEmptyViewFunc   |   (status, isEmpty) => {...}   | 自定义各种状态下的EmptyView的实现                    |
+     | renderRooterViewFunc  |   (status, isEmpty) => {...}   | 自定义各咱状态下的RooterView的实现                   |
+     | ...                   |   ...                          | FlatList组件的所有剩余属性                          |     
 
      **FlatList 组件刷新状对象示例**
      
@@ -338,8 +322,21 @@ yarn add react-native-easy-app
       }
      ```
  
-   详细使用方法，请参考示例项目 [Sample](https://github.com/chende008/react-native-easy-app-sample),  [Sample_MobX](https://github.com/chende008/Sample_MobX),  [Sample_Redux](https://github.com/chende008/Sample_Redux)
-    
-   您也可以参考文章对react-native-easy-app使用介绍： [简书](https://www.jianshu.com/nb/44288056)
+   详细使用方法，请参考示例项目 [Sample](https://github.com/chende008/react-native-easy-app-sample),  [Sample_MobX](https://github.com/chende008/Sample_MobX),  [Sample_Redux](https://github.com/chende008/Sample_Redux),  [Sample_Hook](https://github.com/chende008/Sample_Hook)
+  
+   您也可以参考文章对react-native-easy-app使用介绍： [简书](https://www.jianshu.com/p/88821b1607a7)
 
 
+
+### 版本日志
+
+  * 1.7.0 XStorage的初始参数storageImp(AsyncStorage实例)设定为必需参数，并移除了版本号。
+  * 1.7.4 设置XHttpConfig默认超时时间为15秒；更新readme文件，增加XStorage同步初始化代码片断。
+  * 1.7.5 移除特定请求的参数urlEncoded处理，只支持全局编码或者不编码；修复非formEncoded类型下的编码处理。
+  * 1.7.6 设置XHttpConfig默认contentType为application/x-www-form-urlencoded；设置XText默认的图标处于文本的顶部。
+  * 1.7.7 XText增加iconStyle，resizeMode属性;XHttp普通参数增加支持传入FormData，原参数paramRaw支持不做处理直接发送请求。
+  * 1.7.8 修复XImage在有点击事件的时候，不支持tintColor样式的bug。
+  * 1.7.9 XFlatList增加ref属性：ref => this.flatList = ref，以便XFlatList能支持FlatList所拥有的相关方法，使用方式如：this.refreshList.flatList.scrollToOffset({...})
+  * 1.7.12 当请求成功后，及时清除无意义的超时计时器，减少不必要的计时器资源的浪费。
+  * 1.7.13 XFlatList增加属性renderFooter、indicatorProps以便更灵活的控制其样式及属性
+  * 1.7.14 XFlatList增加属性indicatorProps、renderEmptyViewFunc、renderRooterViewFunc等属性，可以自定义indicator、各种状态下的emptyView以及rooterView的布局实现

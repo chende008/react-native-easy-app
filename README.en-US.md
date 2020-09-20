@@ -21,18 +21,6 @@ yarn add react-native-easy-app
   * Support for flexible Http requests through optional configuration
   * Support for Flexible base widget (no sensory multi-screen adaptation)
 
-### Versions
-
-  * 1.7.0 XStorage initialization adds required parameter storageImp (AsyncStorage instance) 
-  * 1.7.4 Set the default timeout of XHttpConfig to 15 seconds; update the readme file and add XStorage synchronization initialization code snippets.
-  * 1.7.5 Remove the parameter urlEncoded processing of specific request, only support global encoding or no encoding; fix the encoding processing under non-formEncoded type.
-  * 1.7.6 Set the default contentType of XHttpConfig to application/x-www-form-urlencoded; set the default icon of XText to be at the top of the text.
-  * 1.7.7 XText adds iconStyle and resizeMode attributes; XHttp common parameters add support for incoming FormData, the original parameter paramRaw supports sending the request directly without processing.
-  * 1.7.8 Fix the bug that XImage does not support tintColor style when there is a click event.
-  * 1.7.9 XFlatList adds ref attribute: ref => this.flatList = ref, so that XFlatList can support the related methods owned by FlatList, the usage is as follows: this.refreshList.flatList.scrollToOffset({...}).
-  * 1.7.12 When the request is successful, the meaningless timeout timer is cleared in time to reduce unnecessary waste of timer resources.
-  * 1.7.13 XFlatList adds attributes renderFooter, indicatorProps to control its style and attributes more flexibly.
-
 ### Usage 
 
   For detailed usage, please refer to the example project [Sample](https://github.com/chende008/react-native-easy-app-sample),  [Sample_MobX](https://github.com/chende008/Sample_MobX),  [Sample_Redux](https://github.com/chende008/Sample_Redux),  [Sample_Hook](https://github.com/chende008/Sample_Hook)
@@ -305,19 +293,16 @@ yarn add react-native-easy-app
      
      **XFlatList Object** 
      
-     | Property              |   type            |       Description                                                                                       |
-     | ----------------------|:-----------------:| :-------------------------------------------------------------------------------------------------------|
-     | data                  |    array          | equivalent to data of FlatList control                                                                  |
-     | noDataText            |    string         | when there is no data, the text displayed by the control                                                |
-     | noDataImage           |     uri           | when there is no data, the picture displayed below the text displayed by the control                    |
-     | indicatorOffset       |    number         | the distance from the loading indicator to the top                                                      |
-     | refreshStatus         |    object         | XFlatList list displays UI styles and text setting objects in different refresh states                  |
-     | onRefresh             |   () => {...}     | equivalent to onRefresh of FlatList control                                                             |
-     | onLoadMore            |   () => {...}     | When the list scrolls to the bottom, the callback method is executed (when more data needs to be loaded)|
-     | emptyViewHeight       |   number          | when there is no data, refresh the size of the control                                                  |
-     | renderFooter          |  () => {...}      | customize the rendering of the footer (load more views and error messages)                              |
-     | indicatorProps        |   object          | set the style and attributes of RefreshControl                                                          |
-     | ...                   |   ...             | all remaining properties of [FlatList] component                                                        |     
+     | Property              |   type                        |       Description                                                                                       |
+     | ----------------------|:-----------------------------:| :-------------------------------------------------------------------------------------------------------|
+     | data                  |    array                      | equivalent to data of FlatList control                                                                  |
+     | refreshStatus         |    object                     | XFlatList list displays UI styles and text setting objects in different refresh states                  |
+     | indicatorProps        |    object                     | set the style and attributes of RefreshControl                                                          |
+     | onRefresh             |   () => {...}                 | equivalent to onRefresh of FlatList control                                                             |
+     | onLoadMore            |   () => {...}                 | When the list scrolls to the bottom, the callback method is executed (when more data needs to be loaded)|
+     | renderEmptyViewFunc   |  (status, isEmpty) => {...}   | Customize the realization of EmptyView in various states                                                |
+     | renderRooterViewFunc  |  (status, isEmpty) => {...}   | Customize the implementation of RooterView in various states                                            |
+     | ...                   |   ...                         | all remaining properties of [FlatList] component                                                        |     
 
      **FlatList component refreshStatus attribute example**
      
@@ -337,7 +322,19 @@ yarn add react-native-easy-app
       }
      ```
  
-  For detailed usage, please refer to the example project [Sample](https://github.com/chende008/react-native-easy-app-sample),  [Sample_MobX](https://github.com/chende008/Sample_MobX),  [Sample_Redux](https://github.com/chende008/Sample_Redux)
+  For detailed usage, please refer to the example project [Sample](https://github.com/chende008/react-native-easy-app-sample),  [Sample_MobX](https://github.com/chende008/Sample_MobX),  [Sample_Redux](https://github.com/chende008/Sample_Redux),  [Sample_Hook](https://github.com/chende008/Sample_Hook)
   
-  You can also refer to the introduction of react-native-easy-app article : [简书](https://www.jianshu.com/nb/44288056)
+  You can also refer to the introduction of react-native-easy-app article : [简书](https://www.jianshu.com/p/88821b1607a7)
 
+### Version log
+
+  * 1.7.0 XStorage initialization adds required parameter storageImp (AsyncStorage instance) 
+  * 1.7.4 Set the default timeout of XHttpConfig to 15 seconds; update the readme file and add XStorage synchronization initialization code snippets.
+  * 1.7.5 Remove the parameter urlEncoded processing of specific request, only support global encoding or no encoding; fix the encoding processing under non-formEncoded type.
+  * 1.7.6 Set the default contentType of XHttpConfig to application/x-www-form-urlencoded; set the default icon of XText to be at the top of the text.
+  * 1.7.7 XText adds iconStyle and resizeMode attributes; XHttp common parameters add support for incoming FormData, the original parameter paramRaw supports sending the request directly without processing.
+  * 1.7.8 Fix the bug that XImage does not support tintColor style when there is a click event.
+  * 1.7.9 XFlatList adds ref attribute: ref => this.flatList = ref, so that XFlatList can support the related methods owned by FlatList, the usage is as follows: this.refreshList.flatList.scrollToOffset({...}).
+  * 1.7.12 When the request is successful, the meaningless timeout timer is cleared in time to reduce unnecessary waste of timer resources.
+  * 1.7.13 XFlatList adds attributes renderFooter, indicatorProps to control its style and attributes more flexibly.
+  * 1.7.14 XFlatList adds attributes such as indicatorProps, renderEmptyViewFunc, renderRooterViewFunc, etc., which can customize the layout of indicator, emptyView in various states and rooterView
