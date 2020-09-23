@@ -337,4 +337,4 @@ yarn add react-native-easy-app
   * 1.7.9 XFlatList adds ref attribute: ref => this.flatList = ref, so that XFlatList can support the related methods owned by FlatList, the usage is as follows: this.refreshList.flatList.scrollToOffset({...}).
   * 1.7.12 When the request is successful, the meaningless timeout timer is cleared in time to reduce unnecessary waste of timer resources.
   * 1.7.13 XFlatList adds attributes renderFooter, indicatorProps to control its style and attributes more flexibly.
-  * 1.7.15 XFlatList adds attributes such as indicatorProps, renderEmptyViewFunc, renderRooterViewFunc, etc., which can customize the layout of indicator, emptyView in various states and rooterView
+  * 1.7.16 XFlatList adds attributes such as indicatorProps, renderEmptyViewFunc, renderRooterViewFunc, etc., which can customize the layout of indicator, emptyView in various states and rooterView

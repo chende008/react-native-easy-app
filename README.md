@@ -339,4 +339,4 @@ yarn add react-native-easy-app
   * 1.7.9 XFlatList增加ref属性：ref => this.flatList = ref，以便XFlatList能支持FlatList所拥有的相关方法，使用方式如：this.refreshList.flatList.scrollToOffset({...})
   * 1.7.12 当请求成功后，及时清除无意义的超时计时器，减少不必要的计时器资源的浪费。
   * 1.7.13 XFlatList增加属性renderFooter、indicatorProps以便更灵活的控制其样式及属性
-  * 1.7.15 XFlatList增加属性indicatorProps、renderEmptyViewFunc、renderRooterViewFunc等属性，可以自定义indicator、各种状态下的emptyView以及rooterView的布局实现
+  * 1.7.16 XFlatList增加属性indicatorProps、renderEmptyViewFunc、renderRooterViewFunc等属性，可以自定义indicator、各种状态下的emptyView以及rooterView的布局实现
