@@ -302,6 +302,7 @@ yarn add react-native-easy-app
      | onLoadMore            |   () => {...}                  | 当列表滚动到底部，被执行的回调方法（需要加载更多数据时）   |
      | renderEmptyViewFunc   |   (status, isEmpty) => {...}   | 自定义各种状态下的EmptyView的实现                    |
      | renderRooterViewFunc  |   (status, isEmpty) => {...}   | 自定义各咱状态下的RooterView的实现                   |
+     | renderPreEmptyViewFunc|   () => {...}                  | 自定义列表未做任何加载处理时的默认EmptyView的实现       |
      | ...                   |   ...                          | FlatList组件的所有剩余属性                          |     
 
      **FlatList 组件刷新状对象示例**
@@ -340,3 +341,4 @@ yarn add react-native-easy-app
   * 1.7.12 当请求成功后，及时清除无意义的超时计时器，减少不必要的计时器资源的浪费。
   * 1.7.13 XFlatList增加属性renderFooter、indicatorProps以便更灵活的控制其样式及属性
   * 1.7.16 XFlatList增加属性indicatorProps、renderEmptyViewFunc、renderRooterViewFunc等属性，可以自定义indicator、各种状态下的emptyView以及rooterView的布局实现
+  * 1.7.17 XFlatList增加属性renderPreEmptyViewFunc，用于列表未做任何数据加载时的EmptyView的布局自定义实现

@@ -302,6 +302,7 @@ yarn add react-native-easy-app
      | onLoadMore            |   () => {...}                 | When the list scrolls to the bottom, the callback method is executed (when more data needs to be loaded)|
      | renderEmptyViewFunc   |  (status, isEmpty) => {...}   | Customize the realization of EmptyView in various states                                                |
      | renderRooterViewFunc  |  (status, isEmpty) => {...}   | Customize the implementation of RooterView in various states                                            |
+     | renderPreEmptyViewFunc|  () => {...}                  | The implementation of the default EmptyView when the custom list is not loaded                          |
      | ...                   |   ...                         | all remaining properties of [FlatList] component                                                        |     
 
      **FlatList component refreshStatus attribute example**
@@ -338,3 +339,4 @@ yarn add react-native-easy-app
   * 1.7.12 When the request is successful, the meaningless timeout timer is cleared in time to reduce unnecessary waste of timer resources.
   * 1.7.13 XFlatList adds attributes renderFooter, indicatorProps to control its style and attributes more flexibly.
   * 1.7.16 XFlatList adds attributes such as indicatorProps, renderEmptyViewFunc, renderRooterViewFunc, etc., which can customize the layout of indicator, emptyView in various states and rooterView
+  * 1.7.17 XFlatList adds attribute renderPreEmptyViewFunc, which is used to customize the layout of EmptyView when the list is not loaded with any data.
