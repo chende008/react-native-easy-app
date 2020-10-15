@@ -97,6 +97,7 @@ interface HttpConfig {
 
     initEncodeURIComponent(encodeComponent: boolean): HttpConfig;
 
+    initNetworkExceptionFunc(netInfo, networkExceptionFunc: (message: string, code: number) => void): HttpConfig;
 }
 
 interface XHttpConst {

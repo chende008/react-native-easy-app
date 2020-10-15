@@ -121,18 +121,19 @@ yarn add react-native-easy-app
       
       **XHttpConfig 对象 （所有方法都是可选的）** 
       
-      | 方法                  |                   参数                                 |      返回类型           | 描述                                                                                     |
-      | ----------------------|:------------------------------------------------------|:----------------------:| :---------------------------------------------------------------------------------------|
-      | constructor           |           **serverTag** *?:string*                    |  XHttpConfig Builder   | 与XHttp(serverTag)保持一致(用于多服务器请求配置)，默认为空                                     |
-      | initBaseUrl           |           **baseUrl** *:string*                       |  XHttpConfig Builder   | 设置Http请求公共的BaseUrl                                                                  |
-      | initTimeout           |           **timeout** *:number*                       |  XHttpConfig Builder   | 设置公共的默认请求超时时间                                                                   |
-      | initHttpLogOn         |           **logOn** *:bool*                           |  XHttpConfig Builder   | 设置是否打印Http请求日志                                                                    |
-      | initContentType       |           **contentType** *:string*                   |  XHttpConfig Builder   | 设置Http请求默认的ContentType                                                              |
-      | initLoadingFunc       |           **(isLoading) => {...}**                    |  XHttpConfig Builder   | Http公共请求状态回调，isLoading为true表示请求进行中                                           |
-      | initHeaderSetFunc     |           **(headers, request) => {...}**             |  XHttpConfig Builder   | 请求header设置拦截器；可在此处，为请求添加公共的headers参数                                     |
-      | initParamSetFunc      |           **(params, request) => {...}**              |  HttpRequest Builder   | 请求body(params)设置拦截器；可在此处，为请求添加公共的params参数                                |
-      | initParseDataFunc     |           **(result, request, callback) => {...}**    |  XHttpConfig Builder   | 请求回调拦截器；可在此处，为接口返回数据做公共解析处理                                           |
-      | initEncodeURIComponent|           **encodeComponent** *:boolean*              |  HttpRequest Builder   | 全局设置是否对参数进行encodeURLComponent编码，内容类型为：application/x-www-form-urlencoded 时 |
+      | 方法                      |                   参数                                 |      返回类型           | 描述                                                                                     |
+      | -------------------------|:------------------------------------------------------|:----------------------:| :---------------------------------------------------------------------------------------|
+      | constructor              |           **serverTag** *?:string*                    |  XHttpConfig Builder   | 与XHttp(serverTag)保持一致(用于多服务器请求配置)，默认为空                                     |
+      | initBaseUrl              |           **baseUrl** *:string*                       |  XHttpConfig Builder   | 设置Http请求公共的BaseUrl                                                                  |
+      | initTimeout              |           **timeout** *:number*                       |  XHttpConfig Builder   | 设置公共的默认请求超时时间                                                                   |
+      | initHttpLogOn            |           **logOn** *:bool*                           |  XHttpConfig Builder   | 设置是否打印Http请求日志                                                                    |
+      | initContentType          |           **contentType** *:string*                   |  XHttpConfig Builder   | 设置Http请求默认的ContentType                                                              |
+      | initLoadingFunc          |           **(isLoading) => {...}**                    |  XHttpConfig Builder   | Http公共请求状态回调，isLoading为true表示请求进行中                                           |
+      | initHeaderSetFunc        |           **(headers, request) => {...}**             |  XHttpConfig Builder   | 请求header设置拦截器；可在此处，为请求添加公共的headers参数                                     |
+      | initParamSetFunc         |           **(params, request) => {...}**              |  HttpRequest Builder   | 请求body(params)设置拦截器；可在此处，为请求添加公共的params参数                                |
+      | initParseDataFunc        |           **(result, request, callback) => {...}**    |  XHttpConfig Builder   | 请求回调拦截器；可在此处，为接口返回数据做公共解析处理                                           |
+      | initEncodeURIComponent   |           **encodeComponent** *:boolean*              |  HttpRequest Builder   | 全局设置是否对参数进行encodeURLComponent编码，内容类型为：application/x-www-form-urlencoded 时 |
+      | initNetworkExceptionFunc |           **(NetInfo,(message, code) => {...})**      |  HttpRequest Builder   | 给请求库提供检查当前网络状态的工具库(@react-native-community/netinfo的实例对象) [require => android.permission.CHANGE_NETWORK_STATE] |
      
    * **发送请求模板**
      
@@ -342,3 +343,4 @@ yarn add react-native-easy-app
   * 1.7.13 XFlatList增加属性renderFooter、indicatorProps以便更灵活的控制其样式及属性
   * 1.7.16 XFlatList增加属性indicatorProps、renderEmptyViewFunc、renderRooterViewFunc等属性，可以自定义indicator、各种状态下的emptyView以及rooterView的布局实现
   * 1.7.17 XFlatList增加属性renderPreEmptyViewFunc，用于列表未做任何数据加载时的EmptyView的布局自定义实现
+  * 1.7.18 HttpConfig增加initNetworkExceptionFunc方法，通过用户指定的@react-native-community/netinfo实例对象，在请求时根据当前网络状态做相应的回调处理

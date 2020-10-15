@@ -74,6 +74,13 @@ export default class HttpConfig {
      */
     initEncodeURIComponent(encodeComponent: boolean): HttpConfig;
 
+    /**
+     *
+     * @param netInfo instance of @react-native-community/netinfo
+     * @param networkExceptin callback
+     */
+    initNetworkExceptionFunc(netInfo, networkExceptionFunc: (message: string, code: number) => void): HttpConfig;
+
 }
 
 interface XHttpConst {
@@ -81,6 +88,7 @@ interface XHttpConst {
     CONTENT_TYPE_JSON: string,
     CONTENT_TYPE_FORM_DATA: string,
     CONTENT_TYPE_URLENCODED: string,
+    NETWORK_INVALID: string,
     ServerTag: string,
     Methods: object,
     errorDesc: object

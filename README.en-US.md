@@ -120,18 +120,19 @@ yarn add react-native-easy-app
       
       **XHttpConfig Object （All method are optional）** 
       
-      | Method                |                   param                               |      ReturnType        | Description                                                                                           |
-      | ----------------------|:------------------------------------------------------|:----------------------:| :-----------------------------------------------------------------------------------------------------|
-      | constructor           |           **serverTag** *?:string*                    |  XHttpConfig Builder   | Corresponding to the server serverTag of XHttp                                                        |
-      | initBaseUrl           |           **baseUrl** *:string*                       |  XHttpConfig Builder   | set baseUrl                                                                                           |
-      | initTimeout           |           **timeout** *:number*                       |  XHttpConfig Builder   | set common timeout                                                                                    |
-      | initHttpLogOn         |           **logOn** *:bool*                           |  XHttpConfig Builder   | set print request log or not                                                                          |
-      | initContentType       |           **contentType** *:string*                   |  XHttpConfig Builder   | set common contentType                                                                                |
-      | initLoadingFunc       |           **(isLoading) => {...}**                    |  XHttpConfig Builder   | callback http request loading status                                                                  |
-      | initHeaderSetFunc     |           **(headers, request) => {...}**             |  XHttpConfig Builder   | Intercept header settings                                                                             |
-      | initParamSetFunc      |           **(params, request) => {...}**              |  HttpRequest Builder   | Intercept params settings                                                                             |
-      | initParseDataFunc     |           **(result, request, callback) => {...}**    |  XHttpConfig Builder   | Intercept interface returns data parsing                                                              |
-      | initEncodeURIComponent|           **encodeComponent** *:boolean*              |  HttpRequest Builder   | Set common parameters(body) URL encoding，while contentType is [application/x-www-form-urlencoded]    |
+      | Method                   |                   param                               |      ReturnType        | Description                                                                                           |
+      | -------------------------|:------------------------------------------------------|:----------------------:| :-----------------------------------------------------------------------------------------------------|
+      | constructor              |           **serverTag** *?:string*                    |  XHttpConfig Builder   | Corresponding to the server serverTag of XHttp                                                        |
+      | initBaseUrl              |           **baseUrl** *:string*                       |  XHttpConfig Builder   | set baseUrl                                                                                           |
+      | initTimeout              |           **timeout** *:number*                       |  XHttpConfig Builder   | set common timeout                                                                                    |
+      | initHttpLogOn            |           **logOn** *:bool*                           |  XHttpConfig Builder   | set print request log or not                                                                          |
+      | initContentType          |           **contentType** *:string*                   |  XHttpConfig Builder   | set common contentType                                                                                |
+      | initLoadingFunc          |           **(isLoading) => {...}**                    |  XHttpConfig Builder   | callback http request loading status                                                                  |
+      | initHeaderSetFunc        |           **(headers, request) => {...}**             |  XHttpConfig Builder   | Intercept header settings                                                                             |
+      | initParamSetFunc         |           **(params, request) => {...}**              |  HttpRequest Builder   | Intercept params settings                                                                             |
+      | initParseDataFunc        |           **(result, request, callback) => {...}**    |  XHttpConfig Builder   | Intercept interface returns data parsing                                                              |
+      | initEncodeURIComponent   |           **encodeComponent** *:boolean*              |  HttpRequest Builder   | Set common parameters(body) URL encoding，while contentType is [application/x-www-form-urlencoded]    |
+      | initNetworkExceptionFunc |           **(NetInfo,(message, code) => {...})**      |  HttpRequest Builder   | Provide the request library with a tool library to check the current network status (an instance object of @react-native-community/netinfo)  [require => android.permission.CHANGE_NETWORK_STATE]  |
      
    * **Send request template**
      
@@ -340,3 +341,4 @@ yarn add react-native-easy-app
   * 1.7.13 XFlatList adds attributes renderFooter, indicatorProps to control its style and attributes more flexibly.
   * 1.7.16 XFlatList adds attributes such as indicatorProps, renderEmptyViewFunc, renderRooterViewFunc, etc., which can customize the layout of indicator, emptyView in various states and rooterView
   * 1.7.17 XFlatList adds attribute renderPreEmptyViewFunc, which is used to customize the layout of EmptyView when the list is not loaded with any data.
+  * 1.7.18 HttpConfig adds the initNetworkExceptionFunc method, through the @react-native-community/netinfo instance object specified by the user, the corresponding callback processing is done according to the current network status when requesting
