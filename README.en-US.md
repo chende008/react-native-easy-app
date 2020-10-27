@@ -303,7 +303,6 @@ yarn add react-native-easy-app
      | onLoadMore            |   () => {...}                 | When the list scrolls to the bottom, the callback method is executed (when more data needs to be loaded)|
      | renderEmptyViewFunc   |  (status, isEmpty) => {...}   | Customize the realization of EmptyView in various states                                                |
      | renderRooterViewFunc  |  (status, isEmpty) => {...}   | Customize the implementation of RooterView in various states                                            |
-     | renderPreEmptyViewFunc|  () => {...}                  | The implementation of the default EmptyView when the custom list is not loaded                          |
      | ...                   |   ...                         | all remaining properties of [FlatList] component                                                        |     
 
      **FlatList component refreshStatus attribute example**
@@ -342,3 +341,4 @@ yarn add react-native-easy-app
   * 1.7.16 XFlatList adds attributes such as indicatorProps, renderEmptyViewFunc, renderRooterViewFunc, etc., which can customize the layout of indicator, emptyView in various states and rooterView
   * 1.7.17 XFlatList adds attribute renderPreEmptyViewFunc, which is used to customize the layout of EmptyView when the list is not loaded with any data.
   * 1.7.18 HttpConfig adds the initNetworkExceptionFunc method, through the @react-native-community/netinfo instance object specified by the user, the corresponding callback processing is done according to the current network status when requesting
+  * 1.7.19 XFlatList merges renderPreEmptyViewFunc into renderEmptyViewFunc method, removes XText’s default support for allowFontScaling
