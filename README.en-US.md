@@ -342,3 +342,4 @@ yarn add react-native-easy-app
   * 1.7.17 XFlatList adds attribute renderPreEmptyViewFunc, which is used to customize the layout of EmptyView when the list is not loaded with any data.
   * 1.7.18 HttpConfig adds the initNetworkExceptionFunc method, through the @react-native-community/netinfo instance object specified by the user, the corresponding callback processing is done according to the current network status when requesting
   * 1.7.19 XFlatList merges renderPreEmptyViewFunc into renderEmptyViewFunc method, removes XText’s default support for allowFontScaling
+  * 1.7.20 Fix the bug that the judgment condition of the screen adaptation method validReferSize is wrong
