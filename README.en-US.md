@@ -316,8 +316,8 @@ yarn add react-native-easy-app
         LoadFailure: { image: ImageRes.loadFail, text: 'Failed to load' }, // Drop-down refresh (load failed)
       
         LoadingMoreData: { moreText: 'Loading more data…' }, // Load more, in progress...
-        NoMoreData: { moreText: 'No more data') }, // Load more (no data)
-        LoadMoreFailure: { moreText: 'Click to reload' } // Load more (load failed)
+        NoMoreData: { moreText: 'No more data' }, // Load more (no data)
+        LoadMoreFailure: { moreText: 'Click to reload' }, // Load more (load failed)
         
         NetException: {text: 'network exception', moreText: 'Network exception, click reload'}, // network exception
       }
