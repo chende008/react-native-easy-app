@@ -302,7 +302,7 @@ yarn add react-native-easy-app
      | onRefresh             |   () => {...}                  | 相当于FlatList控件的onRefresh属性                   |
      | onLoadMore            |   () => {...}                  | 当列表滚动到底部，被执行的回调方法（需要加载更多数据时）   |
      | renderEmptyViewFunc   |   (status, isEmpty) => {...}   | 自定义各种状态下的EmptyView的实现                    |
-     | renderRooterViewFunc  |   (status, isEmpty) => {...}   | 自定义各咱状态下的RooterView的实现                   |
+     | renderRooterViewFunc  |   (status, isEmpty) => {...}   | 自定义各种状态下的RooterView的实现                   |
      | ...                   |   ...                          | FlatList组件的所有剩余属性                          |     
 
      **FlatList 组件刷新状对象示例**
@@ -345,3 +345,4 @@ yarn add react-native-easy-app
   * 1.7.18 HttpConfig增加initNetworkExceptionFunc方法，通过用户指定的@react-native-community/netinfo实例对象，在请求时根据当前网络状态做相应的回调处理
   * 1.7.19 XFlatList合并renderPreEmptyViewFunc到renderEmptyViewFunc方法中，移除XText对allowFontScaling的默认支持
   * 1.7.20 修复屏幕适配方法validReferSize判断条件错误的bug
+  * 1.7.21 移除了XStorage从持久化中读取数据到内存时的不必要的数据类型转换实现

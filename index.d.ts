@@ -128,11 +128,11 @@ export function XSize(size: number): number
 
 export function XTSize(size: number): number
 
-export function XResetStyle(style: ViewStyle): ViewStyle
+export function ResetStyle(style: ViewStyle): ViewStyle
 
-export function XSplitStyle(style: ViewStyle): object
+export function SplitStyle(style: ViewStyle): object
 
-export function XFattenStyle(style: ViewStyle): ViewStyle
+export function FattenStyle(style: ViewStyle): ViewStyle
 
 interface XWidget {
     initResource(imageBaseUrl: string): XWidget;
