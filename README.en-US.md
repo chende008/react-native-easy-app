@@ -344,3 +344,4 @@ yarn add react-native-easy-app
   * 1.7.19 XFlatList merges renderPreEmptyViewFunc into renderEmptyViewFunc method, removes XText’s default support for allowFontScaling
   * 1.7.20 Fix the bug that the judgment condition of the screen adaptation method validReferSize is wrong
   * 1.7.23 Removed unnecessary data type conversion implementation when XStorage reads data from persistence to memory
+  * 1.7.24 Compatible XStorage data storage can not effectively handle the bug of undefined type data (an exception will be reported on IOS)
