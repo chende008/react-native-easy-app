@@ -31,9 +31,9 @@ yarn add react-native-easy-app
    
       ```jsx 
          export const RNStorage = {// RNStorage 自定义数据存储对象
-             token: undefined, //  字符串类型
-             isShow: undefined, // 布尔类型
-             userInfo: undefined, // 对象类型
+             token: null, //  字符串类型
+             isShow: null, // 布尔类型
+             userInfo: null, // 对象类型
          };
       ```
       
@@ -99,7 +99,7 @@ yarn add react-native-easy-app
       ```jsx 
       import { XHttpConfig, XHttpConst } from 'react-native-easy-app';
       
-      XHttpConfig().initHttpLogOn(true)
+      XHttpConfig().initLogOn(true)
                    .initBaseUrl('https://www.baidu.com')
                    .initTimeout(15000)
                    .initContentType(XHttpConst.CONTENT_TYPE_URLENCODED)
@@ -126,7 +126,7 @@ yarn add react-native-easy-app
       | constructor              |           **serverTag** *?:string*                    |  XHttpConfig Builder   | 与XHttp(serverTag)保持一致(用于多服务器请求配置)，默认为空                                     |
       | initBaseUrl              |           **baseUrl** *:string*                       |  XHttpConfig Builder   | 设置Http请求公共的BaseUrl                                                                  |
       | initTimeout              |           **timeout** *:number*                       |  XHttpConfig Builder   | 设置公共的默认请求超时时间                                                                   |
-      | initHttpLogOn            |           **logOn** *:bool*                           |  XHttpConfig Builder   | 设置是否打印Http请求日志                                                                    |
+      | initLogOn                |           **logOn** *:bool*                           |  XHttpConfig Builder   | 设置是否打印Http请求日志                                                                    |
       | initContentType          |           **contentType** *:string*                   |  XHttpConfig Builder   | 设置Http请求默认的ContentType                                                              |
       | initLoadingFunc          |           **(isLoading) => {...}**                    |  XHttpConfig Builder   | Http公共请求状态回调，isLoading为true表示请求进行中                                           |
       | initHeaderSetFunc        |           **(headers, request) => {...}**             |  XHttpConfig Builder   | 请求header设置拦截器；可在此处，为请求添加公共的headers参数                                     |
@@ -147,7 +147,7 @@ yarn add react-native-easy-app
              if (success) {
                 showToast(JSON.stringify(json))
              } else {
-                showToast(msg)
+                showToast(message)
              }
         };
      
@@ -166,9 +166,7 @@ yarn add react-native-easy-app
             .pureText()
             .configCommonFunc(true,true)
             .[formJson|formData|formEncoded]()
-            .[get|post|put|patch|delete|options]((success, json, message, status, respoonse)=>{
-              ...
-            });
+            .[get|post|put|patch|delete|options](callback);
        
      ```
      
@@ -302,7 +300,7 @@ yarn add react-native-easy-app
      | onRefresh             |   () => {...}                  | 相当于FlatList控件的onRefresh属性                   |
      | onLoadMore            |   () => {...}                  | 当列表滚动到底部，被执行的回调方法（需要加载更多数据时）   |
      | renderEmptyViewFunc   |   (status, isEmpty) => {...}   | 自定义各种状态下的EmptyView的实现                    |
-     | renderRooterViewFunc  |   (status, isEmpty) => {...}   | 自定义各种状态下的RooterView的实现                   |
+     | renderFooterViewFunc  |   (status, isEmpty) => {...}   | 自定义各种状态下的FooterView的实现                   |
      | ...                   |   ...                          | FlatList组件的所有剩余属性                          |     
 
      **FlatList 组件刷新状对象示例**
@@ -311,9 +309,9 @@ yarn add react-native-easy-app
       const RefreshStatus = {
         Idle: {}, //闲置状态
       
-        RefreshingData: {image: ImageRes.loading, text: '加载中，请稍候...'}, //下拉刷新中..
-        NoData: {image: ImageRes.noData, text: '加载完成，无数据'}, //下拉刷新（无数据）
-        LoadFailure: {image: ImageRes.loadFail, text: '加载失败'}, //下拉刷新（加载失败）
+        RefreshingData: { text: '加载中，请稍候...'}, //下拉刷新中..
+        NoData: { text: '加载完成，无数据'}, //下拉刷新（无数据）
+        LoadFailure: { text: '加载失败'}, //下拉刷新（加载失败）
       
         LoadingMoreData: {moreText: '数据加载中…'}, //加载更多,进行中...
         NoMoreData: {moreText: '已加载全部数据'}, //加载更多（无数据）
@@ -340,10 +338,11 @@ yarn add react-native-easy-app
   * 1.7.9 XFlatList增加ref属性：ref => this.flatList = ref，以便XFlatList能支持FlatList所拥有的相关方法，使用方式如：this.refreshList.flatList.scrollToOffset({...})
   * 1.7.12 当请求成功后，及时清除无意义的超时计时器，减少不必要的计时器资源的浪费。
   * 1.7.13 XFlatList增加属性renderFooter、indicatorProps以便更灵活的控制其样式及属性
-  * 1.7.16 XFlatList增加属性indicatorProps、renderEmptyViewFunc、renderRooterViewFunc等属性，可以自定义indicator、各种状态下的emptyView以及rooterView的布局实现
+  * 1.7.16 XFlatList增加属性indicatorProps、renderEmptyViewFunc、renderFooterViewFunc等属性，可以自定义indicator、各种状态下的emptyView以及FooterView的布局实现
   * 1.7.17 XFlatList增加属性renderPreEmptyViewFunc，用于列表未做任何数据加载时的EmptyView的布局自定义实现
   * 1.7.18 HttpConfig增加initNetworkExceptionFunc方法，通过用户指定的@react-native-community/netinfo实例对象，在请求时根据当前网络状态做相应的回调处理
   * 1.7.19 XFlatList合并renderPreEmptyViewFunc到renderEmptyViewFunc方法中，移除XText对allowFontScaling的默认支持
   * 1.7.20 修复屏幕适配方法validReferSize判断条件错误的bug
   * 1.7.23 移除了XStorage从持久化中读取数据到内存时的不必要的数据类型转换实现
   * 1.7.25 兼容XStorage数据存储不能有效处理undefined类型数据的bug（在IOS上会报异常）
+  * 1.7.26 重全名XHttpConfig方法initHttpLogOn为initLogOn、重命名XFlatList方法renderRooterViewFunc为renderFooterViewFunc、修正readme文档描述

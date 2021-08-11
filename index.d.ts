@@ -83,7 +83,7 @@ interface HttpConfig {
 
     initTimeout(timeout: number): HttpConfig;
 
-    initHttpLogOn(httpLogOn: boolean): HttpConfig;
+    initLogOn(logOn: boolean): HttpConfig;
 
     initHeaderSetFunc(headerSetFunc: (headers: object, request: object) => void): HttpConfig;
 

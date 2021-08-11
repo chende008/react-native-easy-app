@@ -27,10 +27,10 @@ export default class HttpConfig {
 
     /**
      *
-     * @param httpLogOn http log tag
+     * @param logOn http log tag
      * @return return HttpConfig Builder
      */
-    initHttpLogOn(httpLogOn: boolean): HttpConfig;
+    initLogOn(logOn: boolean): HttpConfig;
 
     /**
      *

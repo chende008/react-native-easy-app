@@ -31,9 +31,9 @@ yarn add react-native-easy-app
    
       ```jsx 
          export const RNStorage = {// RNStorage : custom data store object
-             token: undefined, // string type
-             isShow: undefined, // bool type
-             userInfo: undefined, // object type
+             token: null, // string type
+             isShow: null, // bool type
+             userInfo: null, // object type
          };
       ```
       
@@ -98,7 +98,7 @@ yarn add react-native-easy-app
       ```jsx 
       import { XHttpConfig, XHttpConst } from 'react-native-easy-app';
       
-      XHttpConfig().initHttpLogOn(true)
+      XHttpConfig().initLogOn(true)
                    .initBaseUrl('https://www.baidu.com')
                    .initTimeout(15000)
                    .initContentType(XHttpConst.CONTENT_TYPE_URLENCODED)
@@ -125,7 +125,7 @@ yarn add react-native-easy-app
       | constructor              |           **serverTag** *?:string*                    |  XHttpConfig Builder   | Corresponding to the server serverTag of XHttp                                                        |
       | initBaseUrl              |           **baseUrl** *:string*                       |  XHttpConfig Builder   | set baseUrl                                                                                           |
       | initTimeout              |           **timeout** *:number*                       |  XHttpConfig Builder   | set common timeout                                                                                    |
-      | initHttpLogOn            |           **logOn** *:bool*                           |  XHttpConfig Builder   | set print request log or not                                                                          |
+      | initLogOn            |           **logOn** *:bool*                           |  XHttpConfig Builder   | set print request log or not                                                                          |
       | initContentType          |           **contentType** *:string*                   |  XHttpConfig Builder   | set common contentType                                                                                |
       | initLoadingFunc          |           **(isLoading) => {...}**                    |  XHttpConfig Builder   | callback http request loading status                                                                  |
       | initHeaderSetFunc        |           **(headers, request) => {...}**             |  XHttpConfig Builder   | Intercept header settings                                                                             |
@@ -165,9 +165,7 @@ yarn add react-native-easy-app
             .pureText()
             .configCommonFunc(true,true)
             .[formJson|formData|formEncoded]()
-            .[get|post|put|patch|delete|options]((success, json, message, status, respoonse)=>{
-              ...
-            });
+            .[get|post|put|patch|delete|options](callback);
        
      ```
      
@@ -311,9 +309,9 @@ yarn add react-native-easy-app
       const RefreshStatus = {
         Idle: {}, //idle status
       
-        RefreshingData: { image: ImageRes.loading, text: 'Loading...' }, // Pull-down refresh..
-        NoData: { image: ImageRes.noData, text: 'No data' }, // To drop down to refresh (no data).
-        LoadFailure: { image: ImageRes.loadFail, text: 'Failed to load' }, // Drop-down refresh (load failed)
+        RefreshingData: {  text: 'Loading...' }, // Pull-down refresh..
+        NoData: {  text: 'No data' }, // To drop down to refresh (no data).
+        LoadFailure: {  text: 'Failed to load' }, // Drop-down refresh (load failed)
       
         LoadingMoreData: { moreText: 'Loading more data…' }, // Load more, in progress...
         NoMoreData: { moreText: 'No more data' }, // Load more (no data)
@@ -345,3 +343,4 @@ yarn add react-native-easy-app
   * 1.7.20 Fix the bug that the judgment condition of the screen adaptation method validReferSize is wrong
   * 1.7.23 Removed unnecessary data type conversion implementation when XStorage reads data from persistence to memory
   * 1.7.25 Compatible XStorage data storage can not effectively handle the bug of undefined type data (an exception will be reported on IOS)
+  * 1.7.26 Rename the XHttpConfig method initHttpLogOn to initLogOn, rename the XFlatList method renderRooterViewFunc to renderFooterViewFunc, modify the readme document description
