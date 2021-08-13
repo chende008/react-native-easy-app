@@ -345,4 +345,4 @@ yarn add react-native-easy-app
   * 1.7.20 修复屏幕适配方法validReferSize判断条件错误的bug
   * 1.7.23 移除了XStorage从持久化中读取数据到内存时的不必要的数据类型转换实现
   * 1.7.25 兼容XStorage数据存储不能有效处理undefined类型数据的bug（在IOS上会报异常）
-  * 1.7.26 重全名XHttpConfig方法initHttpLogOn为initLogOn、重命名XFlatList方法renderRooterViewFunc为renderFooterViewFunc、修正readme文档描述
+  * 1.7.26 重命名XHttpConfig方法initHttpLogOn为initLogOn、重命名XFlatList方法renderRooterViewFunc为renderFooterViewFunc、修正readme文档描述
