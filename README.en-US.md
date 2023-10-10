@@ -161,8 +161,6 @@ yarn add react-native-easy-app
             .extra({tag: 'xx'})
             .contentType('text/xml')
             .loadingFunc((loading)=> showLoading('Please wait for a moment ...', loading))
-            .rawData()
-            .pureText()
             .configCommonFunc(true,true)
             .[formJson|formData|formEncoded]()
             .[get|post|put|patch|delete|options](callback);
